@@ -1,12 +1,11 @@
 import pygame
 import os
 from UnitManagement.Unit import Unit
-from ImageCache import ImageLoader
+from ImageCache.ImageLoader import GetImage
 
 pygame.init()
 screen = pygame.display.set_mode((1200, 650))
 done = False
-is_blue = True
 x = 30
 y = 30
 
@@ -28,7 +27,7 @@ while not done:
         
         screen.fill((0, 0, 0))
         
-        screen.blit(ImageLoader.get_image("/home/jrreap/workspace/StickWars/StickWarsInSpace/Images/background.jpg"), (0,0))
+        screen.blit(GetImage("./Images/background.jpg"), (0,0))
         
         pygame.display.set_caption("Mongolian Space Stick Wars XD Special Day One Edition")
         pygame.display.flip()
