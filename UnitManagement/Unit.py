@@ -1,5 +1,6 @@
 #Main class for managing and adjusting unit and unit information
 #Should be linked to every unit on the game screen
+
 class Unit():
     
     unitclass = "Empty"
