@@ -1,5 +1,6 @@
 import pygame, sys
 
+pygame.init()
 
 #Preset color presents to allow for quick colors to be set
 WHITE = (255,255,255)
@@ -13,7 +14,7 @@ class Button():
         self.fg = fg
         self.size = size
         
-        self.font = pygame.font.SysFont(font_name, font_size)
+        self.font = pygame.font.SysFont(font_name, font_size, True, False)
         self.txt = txt
         self.txt_surf = self.font.render(self.txt, 1, self.fg)
         self.txt_rect = self.txt_surf.get_rect(center=[s//2 for s in self.size])
@@ -33,7 +34,7 @@ class Button():
     def mouseover(self):
         self.bg = self.color
         pos = pygame.mouse.get_pos()
-        if self.rect.test_collidepoint(pos):
+        if self.rect.collidepoint(pos):
             self.bg = GREY 
             
     def call_back(self):

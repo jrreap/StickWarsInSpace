@@ -6,10 +6,9 @@ from UI.Button import Button
 #This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
     
-    
     def __init__(self):
         SceneBase.__init__(self)
-        menubutton = Button("BUTTON", (60,30), self.function)
+        self.menubutton = Button("BUTTON", (60,30), self.function)
     
     def ProcessInput(self, events, pressed_keys):
         for event in events:

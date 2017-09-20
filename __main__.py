@@ -5,7 +5,6 @@ from Scenes.MenuScene import MenuScene
 #MAIN METHOD
 def Start(width, height, fps, starting_scene):
     pygame.init()
-    pygame.font.init()
     screen = pygame.display.set_mode((width, height))
     
     clock = pygame.time.Clock()
