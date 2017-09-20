@@ -2,13 +2,17 @@ import pygame
 from SceneBase import SceneBase
 from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
+from UI.Text import Text
 
 #This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
     
     def __init__(self):
         SceneBase.__init__(self)
-        self.menubutton = Button("BUTTON", (60,30), self.function)
+        self.startbutton = Button("Start Game", (520,325), self.function, size=(120,60), font_size=20)
+        self.exitbutton = Button("Exit Game", (720,325), self.function, size=(120,60), font_size=20)
+        
+        self.text = Text(225, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True)
     
     def ProcessInput(self, events, pressed_keys):
         for event in events:
@@ -27,11 +31,15 @@ class MenuScene(SceneBase):
             
         screen.blit(GetImage("./Images/background.jpg"), (0,0))
         
-        self.menubutton.Draw(screen)
+        self.text.Draw(screen)
+        
+        self.startbutton.Draw(screen)
+        self.exitbutton.Draw(screen)
         
 
     def function(self):
-        print ("WHOOOOOOOOOO")
+        SceneBase.next = None
+        
         
         
         

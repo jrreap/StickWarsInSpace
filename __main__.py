@@ -47,7 +47,7 @@ def Start(width, height, fps, starting_scene):
             pygame.display.set_caption("Mongolian Space Stick Wars XD Special Day One Edition")
             pygame.display.flip()
             clock.tick(fps)
-  
+    
 #Start the game
 Start(1200, 650, 60, MenuScene())
 
