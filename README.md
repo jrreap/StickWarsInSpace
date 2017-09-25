@@ -17,3 +17,6 @@ All scenes reference the SceneBase class, refer to that class for more informati
 ### ImageCache
 The ImageCache package provides utility methods to load images for the game. This makes sure we don't load copies of images and saves memory in the long run. Only use these methods for loading image files from the Images folder.
 
+### UI
+The UI package provides useful classes and methods for displaying information onto the screen, such as text or buttons. Use this package to create UI elements within the game. Refer to the package for further information. 
+
