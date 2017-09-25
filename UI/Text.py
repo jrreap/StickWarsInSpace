@@ -14,6 +14,12 @@ class Text():
         self.txt = self.font.render(text, bold, color)
         self.size = self.font.size(text)
         
+    def DrawCenter(self, screen):
+        drawX = (screen.get_width() / 2.) - (self.size[0] / 2.)
+        drawY = self.y - (self.size[1] / 2.)
+        coords = (drawX, drawY)
+        screen.blit(self.txt, coords)
+        
     def Draw(self, screen):
         drawX = self.x - (self.size[0] / 2.)
         drawY = self.y - (self.size[1] / 2.)
