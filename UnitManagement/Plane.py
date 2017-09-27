@@ -12,4 +12,4 @@ self.buildtime = 5
 self.attackrate = 1
 self.unitrange = 7
 
-return None
+
