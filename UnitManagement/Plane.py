@@ -3,13 +3,14 @@ from UnitManagement.Unit import Unit
 
 class Plane (Unit):
 
-self.unitclass = "Space Plane"
-self.damage = 100
-self.speed = 2.5
-self.health = 200
-self.unitcost = 500
-self.buildtime = 5
-self.attackrate = 1
-self.unitrange = 7
+   def __init__(self):
+        unitclass = "Space Plane"
+        damage = 100
+        speed = 1
+        health = 200
+        unitcost = 500
+        buildtime = 5
+        attackrate = 1
+        unitrange = 7
 
 
