@@ -1,7 +1,7 @@
 import pygame
 from UnitManagement.Unit import Unit
 
-class SpaceRaider (Unit)
+class SpaceRaider (Unit):
 
 unitclass = "Space Raider"
 damage = 50
