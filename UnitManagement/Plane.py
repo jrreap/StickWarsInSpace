@@ -3,12 +3,13 @@ from UnitManagement.Unit import Unit
 
 class Plane (Unit):
 
-unitclass = "Space Plane"
-damage = 100
-speed = 2.5
-health = 200
-unitcost = 500
-buildtime = 5
-attackrate = 1
+self.unitclass = "Space Plane"
+self.damage = 100
+self.speed = 2.5
+self.health = 200
+self.unitcost = 500
+self.buildtime = 5
+self.attackrate = 1
+self.unitrange = 7
 
 return None
