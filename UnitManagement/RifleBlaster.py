@@ -3,12 +3,12 @@ from UnitManagement.Unit import Unit
 
 class RifleBlaster (Unit):
 
-self.unitclass = "Rifle Blaster"
-self.damage = 100
-self.speed = 1
-self.health = 200
-self.unitcost = 200
-self.buildtime = 2
-self.attackrate = 1
-self.unitrange = 6
-
+   def __init__(self):
+        unitclass = "Space Rifle Blaster"
+        damage = 100
+        speed = 1
+        health = 200
+        unitcost = 200
+        buildtime = 2
+        attackrate = 1
+        unitrange = 6
