@@ -11,7 +11,7 @@ class Unit():
     unitcost = 0
     buildtime = 0
     attackrate = 0
-    range = 0
+    unitrange = 0
     
     
     def __init__(self, uclass, uid, udamage, uspeed, uhealth, upcost, umbt, urate, urange):
@@ -23,7 +23,7 @@ class Unit():
         self.unitcost = upcost
         self.buildtime = umbt
         self.attackrate = urate
-        self.range = urange
+        self.unitrange = urange
         
     def DamageUnit(self, amount):
         self.health = self.health - amount
