@@ -3,12 +3,13 @@ from UnitManagement.Unit import Unit
 
 class SpaceRaider (Unit):
 
-unitclass = "Space Raider"
-damage = 50
-speed = 1.5
-health = 100
-unitcost = 100
-buildtime = 1
-attackrate = 1
+self.unitclass = "Space Raider"
+self.damage = 50
+self.speed = 1.5
+self.health = 100
+self.unitcost = 100
+self.buildtime = 1
+self.attackrate = 1
+self.unitrange = 1
 
 return None
