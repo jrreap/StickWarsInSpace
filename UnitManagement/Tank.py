@@ -1,7 +1,7 @@
 import pygame
 from UnitManagement.Unit import Unit
 
-class SpaceTank(Unit):
+class Tank(Unit)
     unitclass = "Space Tank"
     damage = 500
     speed = .5
