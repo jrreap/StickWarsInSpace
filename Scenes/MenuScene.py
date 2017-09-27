@@ -15,11 +15,14 @@ class MenuScene(SceneBase):
         self.text = Text(225, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(45,185,255))
     
     def ProcessInput(self, events, pressed_keys):
+        mousepos = pygame.mouse.get_pos()
         for event in events:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 self.SwitchToScene(None)
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                mousepos = pygame.mouse.get_pos()
+                #Check if the button has been pressed
+                if self.startbutton.IsClicked(mousepos):
+                    self.startbutton.call_back_()
                 
                 
                 
@@ -38,7 +41,8 @@ class MenuScene(SceneBase):
         
 
     def function(self):
-        SceneBase.next = None
+        print("Switching Scene")
+        self.next = None
         
         
         

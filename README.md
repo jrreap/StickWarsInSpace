@@ -9,6 +9,8 @@ __main__.py is the main entry point for the whole program and is what starts the
 
 Each python package represents a "module" of the game. For example all classes that do UI related tasks are in the "UI" package. This allows for quick and easy referencing of code and makes the code easier to manage.
 
+## Modules
+A list of the main modules that are in the project and how they should be used and referenced.
 ### Scenes
 The Scene system represents a "view" of the game. For example there is a Scene for the main menu, but when you hit start it loads the game scene which would run the actual game.
 

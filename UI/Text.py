@@ -2,7 +2,10 @@ import pygame
 
 pygame.init()
 
-#Class that is responsible for the creation of text on the screen
+# Class that is responsible for the creation of text on the screen
+# It takes 3 main variables and then you can configure the color and bold as extras
+# height and width are the location of the text from the top left corner
+# text is the actual text... can be whatever you want it to be as long as its a string
 class Text():
     
     def __init__(self, height, width, text, color=(255,255,255), bold=False):

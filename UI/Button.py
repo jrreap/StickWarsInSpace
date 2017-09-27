@@ -7,6 +7,9 @@ WHITE = (255,255,255)
 GREY = (200,200,200)
 BLACK = (0,0,0)
 
+
+#Main class that handles the creation of buttons. Also manages the tracking of if the button has been clicked
+#and then calling the call back function (aka the action)
 class Button():
     def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80,30), font_name= "Segoe Print", font_size=16):
         self.color = bg
@@ -25,13 +28,19 @@ class Button():
         self.call_back_ = action
         
     def Draw(self, screen):
-        self.mouseover()
+        self.Mouseover()
         
         self.surface.fill(self.bg)
         self.surface.blit(self.txt_surf, self.txt_rect)
         screen.blit(self.surface, self.rect)
-        
-    def mouseover(self):
+
+    def IsClicked(self, pos):
+        if self.rect.collidepoint(pos):
+            return True
+        else:
+            return False
+
+    def Mouseover(self):
         self.bg = self.color
         pos = pygame.mouse.get_pos()
         if self.rect.collidepoint(pos):
