@@ -3,11 +3,12 @@ from UnitManagement.Unit import Unit
 
 class Turret (Unit):
 
-self.unitclass = "Space Turret"
-self.damage = 50
-self.speed = 0
-self.health = 500
-self.unitcost = 500
-self.buildtime = 5
-self.attackrate = .5
-self.unitrange = 10
+   def __init__(self):
+        unitclass = "Space Turret"
+        damage = 50
+        speed = 0
+        health = 500
+        unitcost = 500
+        buildtime = 5
+        attackrate = .5
+        unitrange = 10
