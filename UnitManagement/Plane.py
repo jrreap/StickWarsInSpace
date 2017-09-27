@@ -1,7 +1,7 @@
 import pygame
 from UnitManagement.Unit import Unit
 
-class Plane (Unit)
+class Plane (Unit):
 
 unitclass = "Space Plane"
 damage = 100
