@@ -1,7 +1,7 @@
 import pygame
 from UnitManagement.Unit import Unit
 
-class HorseRifleBlaster (Unit)
+class HorseRifleBlaster (Unit):
 
 unitclass = "Horse Rifle Blaster"
 damage = 50
