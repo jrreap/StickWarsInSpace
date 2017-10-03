@@ -16,7 +16,9 @@ class GameScene(SceneBase):
         self.attackbutton = Button("Attack", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.defendbutton = Button("Defense", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.resourcebar = Bar("Moon Crystals: ", (1140, 605), size=(120,30), font_size=20, bg=(176,185,186))
+        self.resourcebar = Bar("Moon Crystals: 100", (1140, 605), size=(120,30), font_size=20, bg=(176,185,186))
+
+        self.buildhorserifleblaster = Button("HRB", (1140, 635), self.BHRB ,size=(60,30), font_size=15, bg=(109,177,255))
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -36,18 +38,22 @@ class GameScene(SceneBase):
                 if self.holdbutton.IsClicked(mousepos):
                     self.HoldPosition()
 
+                if self.buildhorserifleblaster.IsClicked(mousepos):
+                    self.BHRB()
+
     def Update(self):
         pass
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/background.jpg"), (0, 0))
+        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
         self.resourcebar.Draw(screen)
+        self.buildhorserifleblaster.Draw(screen)
         self.text.Draw(screen)
 
     # Button functions
@@ -60,3 +66,6 @@ class GameScene(SceneBase):
 
     def DefendPosition(self):
         print("Retreat To The Ship!")
+
+    def BHRB(self):
+        print("Built!")
