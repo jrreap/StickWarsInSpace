@@ -12,9 +12,9 @@ class GameScene(SceneBase):
 
         self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
 
-        self.attackbutton = Button("Attack", (60,635), self.Attack(), size=(120,30), font_size=20, bg=(109,177,255))
-        self.holdbutton = Button("Hold", (185,635), self.HoldPosition(), size=(120,30), font_size=20, bg=(109,177,255))
-        self.defendbutton = Button("Defense", (310,635), self.DefendPosition(), size=(120,30), font_size=20, bg=(109,177,255))
+        self.attackbutton = Button("Attack", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
+        self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
+        self.defendbutton = Button("Defense", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -24,7 +24,15 @@ class GameScene(SceneBase):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 self.SwitchToScene(None)
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                print("Input Caught")
+
+                if self.attackbutton.IsClicked(mousepos):
+                    self.Attack()
+
+                if self.defendbutton.IsClicked(mousepos):
+                    self.DefendPosition()
+
+                if self.holdbutton.IsClicked(mousepos):
+                    self.HoldPosition()
 
     def Update(self):
         pass
