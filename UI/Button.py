@@ -2,14 +2,14 @@ import pygame
 
 pygame.init()
 
-#Preset color presents to allow for quick colors to be set
+# Preset color presents to allow for quick colors to be set
 WHITE = (255,255,255)
 GREY = (200,200,200)
 BLACK = (0,0,0)
 
 
-#Main class that handles the creation of buttons. Also manages the tracking of if the button has been clicked
-#and then calling the call back function (aka the action)
+# Main class that handles the creation of buttons. Also manages the tracking of if the button has been clicked
+# and then calling the call back function (aka the action)
 class Button():
     def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80,30), font_name= "Segoe Print", font_size=16):
         self.color = bg
