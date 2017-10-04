@@ -15,8 +15,8 @@ class GameScene(SceneBase):
 
         self.attackbutton = Button("Attack", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.defendbutton = Button("Defense", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.resourcebar = Bar("Moon Crystals: 100", (1140, 605), size=(120,30), font_size=20, bg=(176,185,186))
+        self.defendbutton = Button("Defend", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
+        self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
         self.buildhorserifleblaster = Button("HRB", (1140, 635), self.BHRB ,size=(60,30), font_size=15, bg=(109,177,255))
 
