@@ -19,6 +19,7 @@ class UnitLoader():
     def GetUnitByUnitClass(self, unitclass):
 
         for unit in self.UnitList:
+            print("Searching for " + unitclass + " against " + unit.unitclass)
             if unit.unitclass == unitclass:
                 return unit
             else:

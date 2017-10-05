@@ -1,6 +1,7 @@
 import pygame
 from SceneBase import SceneBase
 from ImageCache.ImageLoader import GetImage
+from UnitManagement.UnitLoader import UnitLoader
 from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
@@ -10,6 +11,8 @@ class GameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
+
+        self.UnitLoader = UnitLoader()
 
         # Unit Position (FOR TESTING ONLY!)
         self.x = 15
@@ -34,10 +37,12 @@ class GameScene(SceneBase):
 
             # Rough unit movement
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                self.x = self.x + 5
+                if self.x < 1175:
+                    self.x = self.x + 5
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-                self.x = self.x - 5
+                if self.x > 15:
+                    self.x = self.x - 5
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -54,7 +59,8 @@ class GameScene(SceneBase):
                     self.BHRB()
 
     def Update(self):
-        pass
+
+        self.cu = self.UnitLoader.CreatedUnits
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
@@ -63,6 +69,10 @@ class GameScene(SceneBase):
 
         # Draw our stickfigure
         screen.blit(GetImage("Images/StickSoldier.jpg"), (self.x, self.y))
+
+        # Draw units on screen
+        for unit in self.cu:
+            screen.blit(GetImage("Images/StickSoldier.jpg"), (0,0))
 
         # Draw the GUI
         self.attackbutton.Draw(screen)
@@ -84,4 +94,6 @@ class GameScene(SceneBase):
         print("Retreat To The Ship!")
 
     def BHRB(self):
-        print("Built!")
+        #unit = self.UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        #unit.laneid = 1
+        #self.UnitLoader.InstantiateUnit(unit)

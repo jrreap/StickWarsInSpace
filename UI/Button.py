@@ -42,7 +42,8 @@ class Button():
             return False
 
     # Determines if the cursor is over the current button and changes to its hovered color
-    def Mouseover(self, pos):
+    def Mouseover(self):
+        pos = pygame.mouse.get_pos()
         self.bg = self.color
         if self.rect.collidepoint(pos):
             self.bg = GREY 
