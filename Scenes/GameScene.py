@@ -94,6 +94,7 @@ class GameScene(SceneBase):
         print("Retreat To The Ship!")
 
     def BHRB(self):
+        pass
         #unit = self.UnitLoader.GetUnitByUnitClass("Rifle Blaster")
         #unit.laneid = 1
         #self.UnitLoader.InstantiateUnit(unit)
