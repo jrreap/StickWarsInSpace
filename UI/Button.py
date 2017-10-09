@@ -34,17 +34,20 @@ class Button():
         self.surface.blit(self.txt_surf, self.txt_rect)
         screen.blit(self.surface, self.rect)
 
+    # Determines if the cursor is over the current button
     def IsClicked(self, pos):
         if self.rect.collidepoint(pos):
             return True
         else:
             return False
 
+    # Determines if the cursor is over the current button and changes to its hovered color
     def Mouseover(self):
-        self.bg = self.color
         pos = pygame.mouse.get_pos()
+        self.bg = self.color
         if self.rect.collidepoint(pos):
             self.bg = GREY 
-            
-    def call_back(self):
+
+    # Calls the action assigned to this button
+    def CallAction(self):
         self.call_back_()

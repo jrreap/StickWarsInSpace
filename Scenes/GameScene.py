@@ -1,6 +1,7 @@
 import pygame
 from SceneBase import SceneBase
 from ImageCache.ImageLoader import GetImage
+from UnitManagement.UnitLoader import UnitLoader
 from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
@@ -10,6 +11,12 @@ class GameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
+
+        self.UnitLoader = UnitLoader()
+
+        # Unit Position (FOR TESTING ONLY!)
+        self.x = 15
+        self.y = 500
 
         self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
 
@@ -27,6 +34,16 @@ class GameScene(SceneBase):
                 self.SwitchToScene(None)
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 self.SwitchToScene(None)
+
+            # Rough unit movement
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                if self.x < 1175:
+                    self.x = self.x + 5
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+                if self.x > 15:
+                    self.x = self.x - 5
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 if self.attackbutton.IsClicked(mousepos):
@@ -42,13 +59,22 @@ class GameScene(SceneBase):
                     self.BHRB()
 
     def Update(self):
-        pass
+
+        self.cu = self.UnitLoader.CreatedUnits
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
+        # Draw our stickfigure
+        screen.blit(GetImage("Images/StickSoldier.jpg"), (self.x, self.y))
+
+        # Draw units on screen
+        for unit in self.cu:
+            screen.blit(GetImage("Images/StickSoldier.jpg"), (0,0))
+
+        # Draw the GUI
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
@@ -68,4 +94,7 @@ class GameScene(SceneBase):
         print("Retreat To The Ship!")
 
     def BHRB(self):
-        print("Built!")
+        pass
+        #unit = self.UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        #unit.laneid = 1
+        #self.UnitLoader.InstantiateUnit(unit)

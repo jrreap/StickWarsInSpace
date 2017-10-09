@@ -1,6 +1,6 @@
 import pygame
-from SceneBase import SceneBase
-from GameScene import GameScene
+from Scenes.SceneBase import SceneBase
+from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
 from UI.Text import Text

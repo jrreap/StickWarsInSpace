@@ -2,6 +2,7 @@ import pygame
 from UnitManagement.Unit import Unit
 
 class Tank(Unit):
+
    def __init__(self):
         unitclass = "Space Tank"
         damage = 500
