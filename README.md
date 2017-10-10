@@ -23,5 +23,5 @@ The ImageCache package provides utility methods to load images for the game. Thi
 The UI package provides useful classes and methods for displaying information onto the screen, such as text or buttons. Use this package to create UI elements within the game. Refer to the package for further information. 
 
 ### UnitMangement
-The UnitManagement package contains all of the Units for the game. It also includes the UnitLoader class which is responsible for the creation and deletion of units in the game. Refer to the package for more information.K
+The UnitManagement package contains all of the Units for the game. It also includes the UnitLoader class which is responsible for the creation and deletion of units in the game. Refer to the package for more information.
 
