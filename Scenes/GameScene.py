@@ -2,6 +2,7 @@ import pygame
 from SceneBase import SceneBase
 from ImageCache.ImageLoader import GetImage
 from UnitManagement.UnitLoader import UnitLoader
+from UnitManagement.UnitMovement import UnitMovement
 from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
@@ -12,11 +13,9 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
 
-        self.UnitLoader = UnitLoader()
+        self.unitidgen = 0
 
-        # Unit Position (FOR TESTING ONLY!)
-        self.x = 15
-        self.y = 500
+        self.UnitMovement = UnitMovement()
 
         self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
 
@@ -25,7 +24,7 @@ class GameScene(SceneBase):
         self.defendbutton = Button("Defend", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
-        self.buildhorserifleblaster = Button("HRB", (1140, 635), self.BHRB ,size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("RB", (1140, 635), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -56,19 +55,19 @@ class GameScene(SceneBase):
                     self.HoldPosition()
 
                 if self.buildhorserifleblaster.IsClicked(mousepos):
-                    self.BHRB()
+                    self.BRB()
 
     def Update(self):
 
-        self.cu = self.UnitLoader.CreatedUnits
+        self.cu = UnitLoader.GetCreatedUnits()
+
+        # Move all the units based on the current movement mode
+        self.UnitMovement.MoveUnits()
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
-
-        # Draw our stickfigure
-        screen.blit(GetImage("Images/StickSoldier.jpg"), (self.x, self.y))
 
         # Draw all created units on screen
         for unit in self.cu:
@@ -85,15 +84,18 @@ class GameScene(SceneBase):
     # Button functions
 
     def Attack(self):
-        print("Charge!")
+        self.UnitMovement.SetMovementMode("A")
 
     def HoldPosition(self):
-        print("Hold Your Ground!")
+        self.UnitMovement.SetMovementMode("H")
 
     def DefendPosition(self):
-        print("Retreat To The Ship!")
+        self.UnitMovement.SetMovementMode("D")
 
-    def BHRB(self):
-        unit = self.UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+    def BRB(self):
+        unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
         unit.laneid = 1
-        self.UnitLoader.InstantiateUnit(unit)
+
+        self.unitidgen += 1
+
+        UnitLoader.InstantiateUnit(unit, self.unitidgen)

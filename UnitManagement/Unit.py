@@ -49,6 +49,12 @@ class Unit():
     def SetLaneID(self, lid):
         self.laneid = lid
 
+    def GetPositionX(self):
+        return self.xpos
+
+    def GetPositionY(self):
+        return self.ypos
+
     def SetPosition(self, x, y):
         self.xpos = x
         self.ypos = y

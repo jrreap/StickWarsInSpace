@@ -10,15 +10,15 @@ from UnitManagement.Turret import Turret
 
 class UnitLoader():
 
-    def __init__(self):
-        self.UnitList = [Plane(0), HorseRifleBlaster(0), RifleBlaster(0), SpaceRaider(0), Tank(0), Turret(0)]
-        self.CreatedUnits = []
-        self.idgen = 1
+    global CreatedUnits
+    CreatedUnits = []
 
     # Searches through all the units and returns an instance of the unit by class
-    def GetUnitByUnitClass(self, unitclass):
+    @staticmethod
+    def GetUnitByUnitClass(unitclass):
+        UnitList = [Plane(0), HorseRifleBlaster(0), RifleBlaster(0), SpaceRaider(0), Tank(0), Turret(0)]
 
-        for x in self.UnitList:
+        for x in UnitList:
             print("Searching for " + unitclass + " against " + x.unitclass)
             if x.unitclass == unitclass:
                 return x
@@ -26,25 +26,26 @@ class UnitLoader():
         return None
 
     # Instantiates a Unit and displays it to the screen
-    def InstantiateUnit(self, unit):
+    @staticmethod
+    def InstantiateUnit(unit, uid):
 
-        # Generate a unique ID for this unit to reference later
-        self.idgen = self.idgen + 1
-        unit.unitid = self.idgen
+        unit.unitid = uid
 
         # Set starting position to be in the main lane
         unit.xpos = 15
         unit.ypos = 500
 
-        self.CreatedUnits.append(unit)
+        CreatedUnits.append(unit)
 
-    # Removes a Unit from the array of currently created unitsK
-    def DeleteUnit(self, unit):
+    # Removes a Unit from the array of currently created units
+    @staticmethod
+    def DeleteUnit(unit):
 
-         for x in self.CreatedUnits:
+         for x in CreatedUnits:
              if unit.unitid == x.unitid:
-                 self.CreatedUnits.remove(x)
+                 CreatedUnits.remove(x)
 
     # Returns the list of all currently existing units
-    def GetCreatedUnits(self):
-        return self.CreatedUnits
+    @staticmethod
+    def GetCreatedUnits():
+        return CreatedUnits
