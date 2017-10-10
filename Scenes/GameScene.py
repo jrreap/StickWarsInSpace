@@ -70,7 +70,7 @@ class GameScene(SceneBase):
         # Draw our stickfigure
         screen.blit(GetImage("Images/StickSoldier.jpg"), (self.x, self.y))
 
-        # Draw units on screen
+        # Draw all created units on screen
         for unit in self.cu:
             screen.blit(GetImage("Images/StickSoldier.jpg"), (unit.xpos, unit.ypos))
 

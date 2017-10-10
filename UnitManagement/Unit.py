@@ -51,4 +51,4 @@ class Unit():
 
     def SetPosition(self, x, y):
         self.xpos = x
-        self.ypos = y;
+        self.ypos = y

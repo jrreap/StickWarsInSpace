@@ -1,4 +1,3 @@
-import pygame
 from UnitManagement.HorseRifleBlaster import HorseRifleBlaster
 from UnitManagement.Plane import Plane
 from UnitManagement.RifleBlaster import RifleBlaster
