@@ -3,7 +3,7 @@ from UnitManagement.Unit import Unit
 
 class Turret (Unit):
 
-   def __init__(self):
+   def __init__(self, uid):
         unitclass = "Space Turret"
         damage = 50
         speed = 0
@@ -12,3 +12,4 @@ class Turret (Unit):
         buildtime = 5
         attackrate = .5
         unitrange = 10
+        Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange)

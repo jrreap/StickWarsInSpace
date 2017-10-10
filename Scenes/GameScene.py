@@ -72,7 +72,7 @@ class GameScene(SceneBase):
 
         # Draw units on screen
         for unit in self.cu:
-            screen.blit(GetImage("Images/StickSoldier.jpg"), (0,0))
+            screen.blit(GetImage("Images/StickSoldier.jpg"), (unit.xpos, unit.ypos))
 
         # Draw the GUI
         self.attackbutton.Draw(screen)
@@ -94,7 +94,6 @@ class GameScene(SceneBase):
         print("Retreat To The Ship!")
 
     def BHRB(self):
-        pass
-        #unit = self.UnitLoader.GetUnitByUnitClass("Rifle Blaster")
-        #unit.laneid = 1
-        #self.UnitLoader.InstantiateUnit(unit)
+        unit = self.UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        unit.laneid = 1
+        self.UnitLoader.InstantiateUnit(unit)

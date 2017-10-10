@@ -3,7 +3,7 @@ from UnitManagement.Unit import Unit
 
 class Plane (Unit):
 
-   def __init__(self):
+   def __init__(self, uid):
         unitclass = "Space Plane"
         damage = 100
         speed = 1
@@ -12,5 +12,6 @@ class Plane (Unit):
         buildtime = 5
         attackrate = 1
         unitrange = 7
+        Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange)
 
 

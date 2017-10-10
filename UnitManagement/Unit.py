@@ -17,8 +17,8 @@ class Unit():
     unitrange = 0
 
     # Position information
-    xpos = 0
-    ypos = 0
+    xpos = 15
+    ypos = 500
     laneid = 0
 
     # Image and Graphic Information

@@ -3,7 +3,7 @@ from UnitManagement.Unit import Unit
 
 class Tank(Unit):
 
-   def __init__(self):
+   def __init__(self, uid):
         unitclass = "Space Tank"
         damage = 500
         speed = .5
@@ -12,4 +12,5 @@ class Tank(Unit):
         buildtime = 5
         attackrate = 5
         unitrange = 2
+        Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange)
 
