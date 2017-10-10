@@ -12,7 +12,13 @@ from UnitManagement.Turret import Turret
 class UnitLoader():
 
     def __init__(self):
-        self.UnitList = [Plane(), HorseRifleBlaster(), RifleBlaster(), SpaceRaider(), Tank(), Turret()]
+        self.UnitList = []
+        self.UnitList.append(HorseRifleBlaster())
+        self.UnitList.append(Plane())
+        self.UnitList.append(RifleBlaster())
+        self.UnitList.append(SpaceRaider())
+        self.UnitList.append(Tank())
+        self.UnitList.append(Turret())
         self.CreatedUnits = []
 
     # Searches through all the units and returns an instance of the unit by class
