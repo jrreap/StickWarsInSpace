@@ -11,7 +11,30 @@ from UnitManagement.Turret import Turret
 class UnitLoader():
 
     global CreatedUnits
+    global QueuedUnits
+    currentunit = None
+    buildcount = 0
+    unitgen = 0
     CreatedUnits = []
+    QueuedUnits = []
+
+    # Method that is called every frame to check if a unit needs to be constructed
+    # If so it starts constructing it each frame until the queue is empty
+    @classmethod
+    def BuildUnitsInQueue(cls, statbar):
+
+        if QueuedUnits.count() > 0:
+            if cls.currentunit == None:
+                cls.currentunit == QueuedUnits.pop()
+
+            if cls.currentunit.buildtime == cls.buildcount:
+                cls.unitgen += 1
+                cls.InstantiateUnit(cls.currentunit, cls.unitgen)
+            else:
+                cls.buildcount += 1
+                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime)
+
+
 
     # Searches through all the created units and returns a created unit by it's ID
     @staticmethod
@@ -33,6 +56,7 @@ class UnitLoader():
                 return x
 
         return None
+
 
     # Instantiates a Unit and displays it to the screen
     @staticmethod
