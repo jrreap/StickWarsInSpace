@@ -34,15 +34,6 @@ class GameScene(SceneBase):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 self.SwitchToScene(None)
 
-            # Rough unit movement
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                if self.x < 1175:
-                    self.x = self.x + 5
-
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-                if self.x > 15:
-                    self.x = self.x - 5
-
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 if self.attackbutton.IsClicked(mousepos):
