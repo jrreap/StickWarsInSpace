@@ -22,7 +22,7 @@ class UnitLoader():
 
         return None
 
-    # Searches through all the units and returns an instance of the unit by class
+    # Searches through all the units types and returns an instance of the unit by class
     @staticmethod
     def GetUnitByUnitClass(unitclass):
         UnitList = [Plane(0), HorseRifleBlaster(0), RifleBlaster(0), SpaceRaider(0), Tank(0), Turret(0)]
