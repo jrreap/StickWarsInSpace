@@ -13,6 +13,15 @@ class UnitLoader():
     global CreatedUnits
     CreatedUnits = []
 
+    # Searches through all the created units and returns a created unit by it's ID
+    @staticmethod
+    def GetCreatedUnitByUnitID(unitid):
+        for x in CreatedUnits:
+            if x.unitid == unitid:
+                return x
+
+        return None
+
     # Searches through all the units and returns an instance of the unit by class
     @staticmethod
     def GetUnitByUnitClass(unitclass):
