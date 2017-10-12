@@ -1,4 +1,3 @@
-import pygame
 from SceneBase import SceneBase
 from ImageCache.ImageLoader import GetImage
 from UnitManagement.UnitLoader import UnitLoader
@@ -6,6 +5,7 @@ from UnitManagement.UnitMovement import UnitMovement
 from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
+from UI.StatBar import StatBar
 import pygame
 
 class GameScene(SceneBase):
@@ -19,10 +19,13 @@ class GameScene(SceneBase):
 
         self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
 
-        self.attackbutton = Button("Defend", (60,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
+        self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.defendbutton = Button("Attack", (310,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
+        self.attackbutton = Button("Attack", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
+
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
+
+        self.buildqueue = StatBar(" ", (990, 635), size=(200, 20), bg=(176,185,186), fg=(109,177,255))
 
         self.buildhorserifleblaster = Button("RB", (1140, 635), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
 
@@ -34,19 +37,22 @@ class GameScene(SceneBase):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 self.SwitchToScene(None)
 
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+                self.buildqueue.SetFillPercentage(10, 100)
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 if self.attackbutton.IsClicked(mousepos):
-                    self.Attack()
+                    self.attackbutton.call_back_()
 
                 if self.defendbutton.IsClicked(mousepos):
-                    self.DefendPosition()
+                    self.defendbutton.call_back_()
 
                 if self.holdbutton.IsClicked(mousepos):
-                    self.HoldPosition()
+                    self.holdbutton.call_back_()
 
                 if self.buildhorserifleblaster.IsClicked(mousepos):
-                    self.BRB()
+                    self.buildhorserifleblaster.call_back_()
 
     def Update(self):
 
@@ -71,6 +77,7 @@ class GameScene(SceneBase):
         self.resourcebar.Draw(screen)
         self.buildhorserifleblaster.Draw(screen)
         self.text.Draw(screen)
+        self.buildqueue.Draw(screen)
 
     # Button functions
 
