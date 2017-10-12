@@ -19,9 +19,9 @@ class GameScene(SceneBase):
 
         self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
 
-        self.attackbutton = Button("Attack", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
+        self.attackbutton = Button("Defend", (60,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.defendbutton = Button("Defend", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
+        self.defendbutton = Button("Attack", (310,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
         self.buildhorserifleblaster = Button("RB", (1140, 635), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
@@ -74,13 +74,13 @@ class GameScene(SceneBase):
 
     # Button functions
 
-    def Attack(self):
+    def DefendPosition(self):
         self.UnitMovement.SetMovementMode("A")
 
     def HoldPosition(self):
         self.UnitMovement.SetMovementMode("H")
 
-    def DefendPosition(self):
+    def Attack(self):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
