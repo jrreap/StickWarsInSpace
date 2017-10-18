@@ -13,8 +13,6 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
 
-        self.unitidgen = 0
-
         self.UnitMovement = UnitMovement()
 
         self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
@@ -60,6 +58,7 @@ class GameScene(SceneBase):
 
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
+        UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
@@ -94,6 +93,4 @@ class GameScene(SceneBase):
         unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
         unit.laneid = 1
 
-        self.unitidgen += 1
-
-        UnitLoader.InstantiateUnit(unit, self.unitidgen)
+        UnitLoader.EnqueueUnit(unit)

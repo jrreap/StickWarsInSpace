@@ -7,11 +7,11 @@ from UnitManagement.Turret import Turret
 
 # Utility class that manages the loading of Unit information and the various components
 # to be used in the rendering of the unit on screen and the various functionality behind it
+# PLEASE NOTE that all build times are in multiples of 100 frames. So a build time of 2
+# will take 200 frames to finish... this generally makes the times work out
 
 class UnitLoader():
 
-    global CreatedUnits
-    global QueuedUnits
     currentunit = None
     buildcount = 0
     unitgen = 0
@@ -23,23 +23,32 @@ class UnitLoader():
     @classmethod
     def BuildUnitsInQueue(cls, statbar):
 
-        if QueuedUnits.count() > 0:
-            if cls.currentunit == None:
-                cls.currentunit == QueuedUnits.pop()
+        print(cls.buildcount)
 
-            if cls.currentunit.buildtime == cls.buildcount:
-                cls.unitgen += 1
+        if len(cls.QueuedUnits) > 0:
+            if cls.currentunit is None:
+                cls.currentunit = cls.QueuedUnits[0]
+
+            elif cls.currentunit.buildtime * 100 == cls.buildcount:
+                cls.unitgen = cls.unitgen + 1
                 cls.InstantiateUnit(cls.currentunit, cls.unitgen)
+
+                # Reset working variables
+                cls.buildcount = 0
+                cls.currentunit = None
+                cls.QueuedUnits.pop()
+                statbar.SetFillPercentage(0, 100)
+
             else:
-                cls.buildcount += 1
-                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime)
+                cls.buildcount = cls.buildcount + 1
+                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime * 100)
 
 
 
     # Searches through all the created units and returns a created unit by it's ID
-    @staticmethod
-    def GetCreatedUnitByUnitID(unitid):
-        for x in CreatedUnits:
+    @classmethod
+    def GetCreatedUnitByUnitID(cls, unitid):
+        for x in cls.CreatedUnits:
             if x.unitid == unitid:
                 return x
 
@@ -57,10 +66,14 @@ class UnitLoader():
 
         return None
 
+    # Enqueues the designated unit into the build system to be built
+    @classmethod
+    def EnqueueUnit(cls, unit):
+        cls.QueuedUnits.append(unit)
 
     # Instantiates a Unit and displays it to the screen
-    @staticmethod
-    def InstantiateUnit(unit, uid):
+    @classmethod
+    def InstantiateUnit(cls, unit, uid):
 
         unit.unitid = uid
 
@@ -68,17 +81,17 @@ class UnitLoader():
         unit.xpos = 15
         unit.ypos = 500
 
-        CreatedUnits.append(unit)
+        cls.CreatedUnits.append(unit)
 
     # Removes a Unit from the array of currently created units
-    @staticmethod
-    def DeleteUnit(unit):
+    @classmethod
+    def DeleteUnit(cls, unit):
 
-         for x in CreatedUnits:
+         for x in cls.CreatedUnits:
              if unit.unitid == x.unitid:
-                 CreatedUnits.remove(x)
+                 cls.CreatedUnits.remove(x)
 
     # Returns the list of all currently existing units
-    @staticmethod
-    def GetCreatedUnits():
-        return CreatedUnits
+    @classmethod
+    def GetCreatedUnits(cls):
+        return cls.CreatedUnits
