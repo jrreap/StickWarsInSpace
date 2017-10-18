@@ -23,8 +23,6 @@ class UnitLoader():
     @classmethod
     def BuildUnitsInQueue(cls, statbar):
 
-        print(cls.buildcount)
-
         if len(cls.QueuedUnits) > 0:
             if cls.currentunit is None:
                 cls.currentunit = cls.QueuedUnits[0]
