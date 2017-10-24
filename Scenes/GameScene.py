@@ -25,11 +25,14 @@ class GameScene(SceneBase):
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
-
-        self.buildqueue = StatBar(" ", (990, 635), size=(200, 20), bg=(176,185,186), fg=(109,177,255))
-
-        self.buildhorserifleblaster = Button("RB", (1140, 635), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
         self.buildmenutoggle = False
+
+        self.buildqueue = StatBar(" ", (990, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
+
+        self.buildmenu.AddButton(self.buildhorserifleblaster)
+        self.buildmenu.AddButton(self.buildrifleblaster)
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -60,6 +63,9 @@ class GameScene(SceneBase):
                 if self.buildhorserifleblaster.IsClicked(mousepos):
                     self.buildhorserifleblaster.call_back_()
 
+                if self.buildrifleblaster.IsClicked(mousepos):
+                    self.buildrifleblaster.call_back_()
+
     def Update(self):
 
         self.cu = UnitLoader.GetCreatedUnits()
@@ -82,7 +88,6 @@ class GameScene(SceneBase):
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
         self.resourcebar.Draw(screen)
-        self.buildhorserifleblaster.Draw(screen)
         self.text.Draw(screen)
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
@@ -99,6 +104,12 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
+        unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+    def BHRB(self):
         unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
         unit.laneid = 1
 

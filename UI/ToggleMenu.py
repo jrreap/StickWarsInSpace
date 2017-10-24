@@ -17,16 +17,24 @@ class ToggleMenu():
         self.size = size
         self.shown = shown
 
+        self.buttons = []
+
         self.surface = pygame.surface.Surface(size)
         self.rect = self.surface.get_rect(center=location)
 
     def ToggleMenu(self, toggle):
         self.shown = toggle
 
+    def AddButton(self, button):
+        self.buttons.append(button)
+
     def Draw(self, screen):
 
         if self.shown:
             self.surface.fill(self.bg)
             screen.blit(self.surface, self.rect)
+
+            for button in self.buttons:
+                button.Draw(screen)
         else:
             pass
