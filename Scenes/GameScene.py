@@ -29,7 +29,7 @@ class GameScene(SceneBase):
         self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
         self.buildmenutoggle = False
 
-        self.buildqueue = StatBar(" ", (990, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
+        self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
 
         self.buildmenu.AddButton(self.buildhorserifleblaster)
         self.buildmenu.AddButton(self.buildrifleblaster)
