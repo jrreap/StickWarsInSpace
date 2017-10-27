@@ -6,6 +6,7 @@ from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
+from UI.ToggleMenu import ToggleMenu
 import pygame
 
 class GameScene(SceneBase):
@@ -23,9 +24,15 @@ class GameScene(SceneBase):
 
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
-        self.buildqueue = StatBar(" ", (990, 635), size=(200, 20), bg=(176,185,186), fg=(109,177,255))
+        self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
+        self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
+        self.buildmenutoggle = False
 
-        self.buildhorserifleblaster = Button("RB", (1140, 635), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
+
+        self.buildmenu.AddButton(self.buildhorserifleblaster)
+        self.buildmenu.AddButton(self.buildrifleblaster)
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -37,6 +44,10 @@ class GameScene(SceneBase):
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
                 self.buildqueue.SetFillPercentage(10, 100)
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_b:
+                self.buildmenutoggle = not self.buildmenutoggle
+                self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -51,6 +62,9 @@ class GameScene(SceneBase):
 
                 if self.buildhorserifleblaster.IsClicked(mousepos):
                     self.buildhorserifleblaster.call_back_()
+
+                if self.buildrifleblaster.IsClicked(mousepos):
+                    self.buildrifleblaster.call_back_()
 
     def Update(self):
 
@@ -74,9 +88,9 @@ class GameScene(SceneBase):
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
         self.resourcebar.Draw(screen)
-        self.buildhorserifleblaster.Draw(screen)
         self.text.Draw(screen)
         self.buildqueue.Draw(screen)
+        self.buildmenu.Draw(screen)
 
     # Button functions
 
@@ -90,6 +104,12 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
+        unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+    def BHRB(self):
         unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
         unit.laneid = 1
 

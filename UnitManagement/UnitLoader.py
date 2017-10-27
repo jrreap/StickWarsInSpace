@@ -7,7 +7,7 @@ from UnitManagement.Turret import Turret
 
 # Utility class that manages the loading of Unit information and the various components
 # to be used in the rendering of the unit on screen and the various functionality behind it
-# PLEASE NOTE that all build times are in multiples of 100 frames. So a build time of 2
+# PLEASE NOTE that all build times are in multiples of 50 frames. So a build time of 2
 # will take 200 frames to finish... this generally makes the times work out
 
 class UnitLoader():
@@ -25,21 +25,19 @@ class UnitLoader():
 
         if len(cls.QueuedUnits) > 0:
             if cls.currentunit is None:
-                cls.currentunit = cls.QueuedUnits[0]
+                cls.currentunit = cls.QueuedUnits.pop()
 
-            elif cls.currentunit.buildtime * 100 == cls.buildcount:
-                cls.unitgen = cls.unitgen + 1
+            elif cls.currentunit.buildtime * 50 == cls.buildcount:
                 cls.InstantiateUnit(cls.currentunit, cls.unitgen)
 
                 # Reset working variables
                 cls.buildcount = 0
                 cls.currentunit = None
-                cls.QueuedUnits.pop()
                 statbar.SetFillPercentage(0, 100)
 
             else:
                 cls.buildcount = cls.buildcount + 1
-                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime * 100)
+                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime * 50)
 
 
 
@@ -53,9 +51,10 @@ class UnitLoader():
         return None
 
     # Searches through all the units types and returns an instance of the unit by class
-    @staticmethod
-    def GetUnitByUnitClass(unitclass):
-        UnitList = [Plane(0), HorseRifleBlaster(0), RifleBlaster(0), SpaceRaider(0), Tank(0), Turret(0)]
+    @classmethod
+    def GetUnitByUnitClass(cls, unitclass):
+
+        UnitList = cls.FetchUnitClasses()
 
         for x in UnitList:
             print("Searching for " + unitclass + " against " + x.unitclass)
@@ -88,6 +87,23 @@ class UnitLoader():
          for x in cls.CreatedUnits:
              if unit.unitid == x.unitid:
                  cls.CreatedUnits.remove(x)
+
+    # Fetches new copies of all the class units
+    @classmethod
+    def FetchUnitClasses(cls):
+
+        cls.unitgen = cls.unitgen + 1
+
+        p = Plane(cls.unitgen)
+        h = HorseRifleBlaster(cls.unitgen)
+        r = RifleBlaster(cls.unitgen)
+        s = SpaceRaider(cls.unitgen)
+        t = Tank(cls.unitgen)
+        tu = Turret(cls.unitgen)
+
+        UnitList = [p, h, r, s, t, tu]
+
+        return UnitList
 
     # Returns the list of all currently existing units
     @classmethod
