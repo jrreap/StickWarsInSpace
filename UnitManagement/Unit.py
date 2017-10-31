@@ -25,7 +25,7 @@ class Unit():
     imagepath = "Empty"
     
     
-    def __init__(self, uclass, uid, udamage, uspeed, uhealth, upcost, umbt, urate, urange):
+    def __init__(self, uclass, uid, udamage, uspeed, uhealth, upcost, umbt, urate, urange, img):
         self.unitclass = uclass
         self.unitid = uid
         self.damage = udamage
@@ -35,6 +35,7 @@ class Unit():
         self.buildtime = umbt
         self.attackrate = urate
         self.unitrange = urange
+        self.imagepath = img
 
         self.xpos = 0
         self.ypos = 0
