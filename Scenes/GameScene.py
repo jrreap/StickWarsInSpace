@@ -81,7 +81,7 @@ class GameScene(SceneBase):
 
         # Draw all created units on screen
         for unit in self.cu:
-           screen.blit(GetImage("Images/StickSoldier.jpg"), (unit.xpos, unit.ypos))
+           screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
             
         # Draw the GUI
         self.attackbutton.Draw(screen)
