@@ -27,6 +27,14 @@ class GameScene(SceneBase):
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
         self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
         self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
+        self.buildspaceraider = Button("SR", (1140, 425), self.SR, size = (60,30), font_size  = 15, bg = (109, 177, 255))
+
+
+        self.buildtank = Button("TANK", (1140, 275), self.TANK, size =(60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildplane = Button("PLANE", (1140, 325), self.PLANE, size = (60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildturret = Button("TRT", (1140, 375), self.TRT, size = (60,30), font_size = 15, bg = (109, 177, 255))
+
+        
         self.buildmenutoggle = False
 
         self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
