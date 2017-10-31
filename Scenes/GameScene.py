@@ -21,6 +21,7 @@ class GameScene(SceneBase):
         self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.attackbutton = Button("Attack", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
+        self.openmenu = Button("Menu", (1130, 600), self.Menu, size=(120,30), font_size=20, bg=(109, 177, 255))
 
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
@@ -66,6 +67,10 @@ class GameScene(SceneBase):
                 if self.buildrifleblaster.IsClicked(mousepos):
                     self.buildrifleblaster.call_back_()
 
+                if self.openmenu.IsClicked(mousepos):
+                    self.buildmenutoggle = not self.buildmenutoggle
+                    self.buildmenu.ToggleMenu(self.buildmenutoggle)
+
     def Update(self):
 
         self.cu = UnitLoader.GetCreatedUnits()
@@ -91,11 +96,16 @@ class GameScene(SceneBase):
         self.text.Draw(screen)
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
+        self.openmenu.Draw(screen)
 
     # Button functions
 
     def DefendPosition(self):
         self.UnitMovement.SetMovementMode("A")
+
+    def Menu(self):
+        self.buildmenutoggle = not self.buildmenutoggle
+        self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
     def HoldPosition(self):
         self.UnitMovement.SetMovementMode("H")
