@@ -25,13 +25,14 @@ class UnitLoader():
 
         if len(cls.QueuedUnits) > 0:
             if cls.currentunit is None:
-                cls.currentunit = cls.QueuedUnits.pop()
+                cls.currentunit = cls.QueuedUnits[0]
 
             elif cls.currentunit.buildtime * 50 == cls.buildcount:
                 cls.InstantiateUnit(cls.currentunit, cls.unitgen)
 
                 # Reset working variables
                 cls.buildcount = 0
+                cls.QueuedUnits.pop()
                 cls.currentunit = None
                 statbar.SetFillPercentage(0, 100)
 
