@@ -81,8 +81,8 @@ class GameScene(SceneBase):
 
         # Draw all created units on screen
         for unit in self.cu:
-            screen.blit(GetImage("Images/StickSoldier.jpg"), (unit.xpos, unit.ypos))
-
+           screen.blit(GetImage("Images/StickSoldier.jpg"), (unit.xpos, unit.ypos))
+            
         # Draw the GUI
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
@@ -110,7 +110,7 @@ class GameScene(SceneBase):
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        unit = UnitLoader.GetUnitByUnitClass("Horse Rifle Blaster")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
