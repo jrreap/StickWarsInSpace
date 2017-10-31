@@ -14,5 +14,5 @@ class HorseRifleBlaster (Unit):
         unitrange = 4
         imagepath = "Images/MongolCav1.jpg"
 
-        Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange)
+        Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange, imagepath)
 
