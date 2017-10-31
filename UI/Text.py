@@ -8,7 +8,7 @@ pygame.init()
 # text is the actual text... can be whatever you want it to be as long as its a string
 class Text():
     
-    def __init__(self, height, width, text, color=(255,255,255), bold=False, font="Segoe Print", fontSize = 35):
+    def __init__(self, height, width, text, color=(255,255,255), bold=False, font="Arial", fontSize = 35):
 
         self.x = width
         self.y = height

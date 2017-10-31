@@ -15,7 +15,7 @@ class MenuScene(SceneBase):
                 
         self.text = Text(225, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
 
-        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (0,0,0), font = "Segoe Print", fontSize = 35 )
+        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (0,0,0), font = "Arial", fontSize = 35 )
 
 
     def ProcessInput(self, events, pressed_keys):
