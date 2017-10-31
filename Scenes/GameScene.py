@@ -8,11 +8,14 @@ from UI.Bar import Bar
 from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
 import pygame
+from Camera import Camera
 
 class GameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
+
+        #self.camera = Camera(nugget, 1200, 650)
 
         self.UnitMovement = UnitMovement()
 
@@ -78,6 +81,8 @@ class GameScene(SceneBase):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
+
+        #self.camera.update(self.text)
 
         # Draw all created units on screen
         for unit in self.cu:
