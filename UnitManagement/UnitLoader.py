@@ -8,7 +8,7 @@ from UnitManagement.Turret import Turret
 # Utility class that manages the loading of Unit information and the various components
 # to be used in the rendering of the unit on screen and the various functionality behind it
 # PLEASE NOTE that all build times are in multiples of 50 frames. So a build time of 2
-# will take 200 frames to finish... this generally makes the times work out
+# will take 100 frames to finish... this generally makes the times work out
 
 class UnitLoader():
 

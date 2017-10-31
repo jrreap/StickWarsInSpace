@@ -1,4 +1,5 @@
 import pygame
+from Scenes.Camera import Camera
 
 pygame.init()
 
@@ -23,7 +24,7 @@ class Button():
         self.txt_rect = self.txt_surf.get_rect(center=[s//2 for s in self.size])
         
         self.surface = pygame.surface.Surface(size)
-        self.rect = self.surface.get_rect(center=location)
+        self.rect = self.surface.get_rect(center=Camera.RenderPosition(location[0], location[1]))
         
         self.call_back_ = action
         
