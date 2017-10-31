@@ -52,6 +52,10 @@ class GameScene(SceneBase):
                 self.buildmenutoggle = not self.buildmenutoggle
                 self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                print("Hi")
+                Camera.SetCameraOffset(100, 0)
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 if self.attackbutton.IsClicked(mousepos):
