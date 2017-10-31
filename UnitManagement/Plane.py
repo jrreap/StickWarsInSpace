@@ -12,6 +12,7 @@ class Plane (Unit):
         buildtime = 5
         attackrate = 1
         unitrange = 7
+        imagepath = "Images/StickSoldier.jpg"
         Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange)
 
 
