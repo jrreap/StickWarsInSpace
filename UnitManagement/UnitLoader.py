@@ -23,19 +23,18 @@ class UnitLoader():
     @classmethod
     def BuildUnitsInQueue(cls, statbar):
 
-        if len(cls.QueuedUnits) > 0:
-            if cls.currentunit is None:
-                cls.currentunit = cls.QueuedUnits[0]
 
-            elif cls.currentunit.buildtime * 50 == cls.buildcount:
+        if cls.currentunit is None:
+            if len(cls.QueuedUnits) > 0:
+                cls.currentunit = cls.QueuedUnits.pop()
+        else:
+            if cls.currentunit.buildtime * 50 == cls.buildcount:
                 cls.InstantiateUnit(cls.currentunit, cls.unitgen)
 
                 # Reset working variables
                 cls.buildcount = 0
-                cls.QueuedUnits.pop()
                 cls.currentunit = None
                 statbar.SetFillPercentage(0, 100)
-
             else:
                 cls.buildcount = cls.buildcount + 1
                 statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime * 50)
