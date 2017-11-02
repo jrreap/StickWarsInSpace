@@ -2,6 +2,7 @@ from SceneBase import SceneBase
 from ImageCache.ImageLoader import GetImage
 from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
+from UnitManagement.UnitSpawner import UnitSpawner
 from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
@@ -9,12 +10,15 @@ from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
 from Camera import Camera
 import pygame
+import random
 
 
 class GameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
+
+        self.counter = 0
 
         self.UnitMovement = UnitMovement()
 
@@ -80,10 +84,25 @@ class GameScene(SceneBase):
     def Update(self):
 
         self.cu = UnitLoader.GetCreatedUnits()
+        self.ce = UnitSpawner.GetCreatedUnits()
 
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
+
+        # Move all spawned enemy units
+        if(self.counter == 25):
+            self.UnitMovement.MoveEnemyUnits()
+
+            if (random.randint(0, 500) <= 15):
+                UnitSpawner.EnqueueUnit(UnitSpawner.GetUnitByUnitClass("Rifle Blaster"))
+
+            self.counter = 0
+        else:
+            self.counter = self.counter + 1
+
+
+        UnitSpawner.BuildUnitsInQueue()
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
@@ -93,6 +112,9 @@ class GameScene(SceneBase):
         # Draw all created units on screen
         for unit in self.cu:
            screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
+
+        for unit in self.ce:
+            screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
             
         # Draw the GUI
         self.attackbutton.Draw(screen)
