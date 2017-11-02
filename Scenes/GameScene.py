@@ -94,7 +94,7 @@ class GameScene(SceneBase):
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
 
-            if (random.randint(0, 100) <= 15):
+            if (random.randint(0, 500) <= 15):
                 UnitSpawner.EnqueueUnit(UnitSpawner.GetUnitByUnitClass("Rifle Blaster"))
 
             self.counter = 0
