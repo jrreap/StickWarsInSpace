@@ -23,12 +23,12 @@ class UnitMovement:
             for unit in self.cu:
 
                 if(unit.xpos < 1175):
-                    unit.SetPosition(unit.xpos + 5, unit.ypos)
+                    unit.SetPosition((unit.xpos) + (.75*unit.speed), unit.ypos)
 
         elif self.movementmode == "D":
             for unit in self.cu:
                 if (unit.xpos > 15):
-                    unit.SetPosition(unit.xpos - 5, unit.ypos)
+                    unit.SetPosition((unit.xpos) - (.75 * unit.speed), unit.ypos)
 
         else:
             print("[ERROR] Movement mode code didn't match any of the known values!")
