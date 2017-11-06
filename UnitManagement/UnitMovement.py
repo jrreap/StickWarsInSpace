@@ -1,4 +1,5 @@
 from UnitManagement.UnitLoader import UnitLoader
+from UnitManagement.UnitSpawner import UnitSpawner
 
 # Main class that handles all Unit movement within the game
 
@@ -23,16 +24,28 @@ class UnitMovement:
             for unit in self.cu:
 
                 if(unit.xpos < 1175):
-                    unit.SetPosition(unit.xpos + 5, unit.ypos)
+                    unit.SetPosition((unit.xpos) + (.75*unit.speed), unit.ypos)
 
         elif self.movementmode == "D":
             for unit in self.cu:
                 if (unit.xpos > 15):
-                    unit.SetPosition(unit.xpos - 5, unit.ypos)
+                    unit.SetPosition((unit.xpos) - (.75 * unit.speed), unit.ypos)
 
         else:
             print("[ERROR] Movement mode code didn't match any of the known values!")
             print("Skipped frame movement")
+
+    # Speical move method that moves all ENEMY units
+    def MoveEnemyUnits(self):
+
+        # Fetch the latest updated CreatedEnemies Database
+        self.ce = UnitSpawner.GetCreatedUnits()
+
+        for unit in self.ce:
+            if (unit.xpos > 15):
+                unit.SetPosition(unit.xpos - 5, unit.ypos)
+
+
 
 
 

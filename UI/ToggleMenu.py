@@ -1,4 +1,5 @@
 import pygame
+from Scenes.Camera import Camera
 
 pygame.init()
 
@@ -20,7 +21,7 @@ class ToggleMenu():
         self.buttons = []
 
         self.surface = pygame.surface.Surface(size)
-        self.rect = self.surface.get_rect(center=location)
+        self.rect = self.surface.get_rect(center=Camera.RenderPosition(location[0], location[1]))
 
     def ToggleMenu(self, toggle):
         self.shown = toggle

@@ -1,4 +1,5 @@
 import pygame
+from Scenes.Camera import Camera
 
 pygame.init()
 
@@ -22,10 +23,10 @@ class StatBar():
         self.txt_rect = self.txt_surf.get_rect(center=[s // 2 for s in self.size])
 
         self.surfacebg = pygame.surface.Surface(size)
-        self.rectbg = self.surfacebg.get_rect(center=location)
+        self.rectbg = self.surfacebg.get_rect(center=Camera.RenderPosition(location[0], location[1]))
 
         self.surfacefg = pygame.surface.Surface(size)
-        self.rectfg = self.surfacefg.get_rect(center=location)
+        self.rectfg = self.surfacefg.get_rect(center=Camera.RenderPosition(location[0], location[1]))
 
         self.SetFillPercentage(0,100)
 

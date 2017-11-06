@@ -10,18 +10,18 @@ from UnitManagement.Turret import Turret
 # PLEASE NOTE that all build times are in multiples of 50 frames. So a build time of 2
 # will take 100 frames to finish... this generally makes the times work out
 
-class UnitLoader():
+class UnitSpawner():
 
     currentunit = None
     buildcount = 0
     unitgen = 0
-    CreatedUnits = []
+    BuiltUnits = []
     QueuedUnits = []
 
     # Method that is called every frame to check if a unit needs to be constructed
     # If so it starts constructing it each frame until the queue is empty
     @classmethod
-    def BuildUnitsInQueue(cls, statbar):
+    def BuildUnitsInQueue(cls):
 
 
         if cls.currentunit is None:
@@ -34,21 +34,8 @@ class UnitLoader():
                 # Reset working variables
                 cls.buildcount = 0
                 cls.currentunit = None
-                statbar.SetFillPercentage(0, 100)
             else:
                 cls.buildcount = cls.buildcount + 1
-                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime * 50)
-
-
-
-    # Searches through all the created units and returns a created unit by it's ID
-    @classmethod
-    def GetCreatedUnitByUnitID(cls, unitid):
-        for x in cls.CreatedUnits:
-            if x.unitid == unitid:
-                return x
-
-        return None
 
     # Searches through all the units types and returns an instance of the unit by class
     @classmethod
@@ -75,18 +62,18 @@ class UnitLoader():
         unit.unitid = uid
 
         # Set starting position to be in the main lane
-        unit.xpos = 15
+        unit.xpos = 1000
         unit.ypos = 500
 
-        cls.CreatedUnits.append(unit)
+        cls.BuiltUnits.append(unit)
 
     # Removes a Unit from the array of currently created units
     @classmethod
     def DeleteUnit(cls, unit):
 
-         for x in cls.CreatedUnits:
+         for x in cls.BuiltUnits:
              if unit.unitid == x.unitid:
-                 cls.CreatedUnits.remove(x)
+                 cls.BuiltUnits.remove(x)
 
     # Fetches new copies of all the class units
     @classmethod
@@ -108,4 +95,4 @@ class UnitLoader():
     # Returns the list of all currently existing units
     @classmethod
     def GetCreatedUnits(cls):
-        return cls.CreatedUnits
+        return cls.BuiltUnits
