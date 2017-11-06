@@ -12,11 +12,12 @@ BLACK = (0,0,0)
 # Main class that handles the creation of buttons. Also manages the tracking of if the button has been clicked
 # and then calling the call back function (aka the action)
 class Button():
-    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80,30), font_name="Segoe Print", font_size=16):
+    def __init__(self, txt, location, action, bg=WHITE, fg=BLACK, size=(80,30), font_name="Arial", font_size=16):
         self.color = bg
         self.bg = bg
         self.fg = fg
         self.size = size
+        self.location = location
         
         self.font = pygame.font.SysFont(font_name, font_size, True, False)
         self.txt = txt
@@ -24,7 +25,7 @@ class Button():
         self.txt_rect = self.txt_surf.get_rect(center=[s//2 for s in self.size])
         
         self.surface = pygame.surface.Surface(size)
-        self.rect = self.surface.get_rect(center=Camera.RenderPosition(location[0], location[1]))
+        self.rect = self.surface.get_rect(center=location)
         
         self.call_back_ = action
         
@@ -33,6 +34,9 @@ class Button():
         
         self.surface.fill(self.bg)
         self.surface.blit(self.txt_surf, self.txt_rect)
+
+        self.rect = self.surface.get_rect(center=Camera.RenderUIPosition(self.location[0], self.location[1]))
+
         screen.blit(self.surface, self.rect)
 
     # Determines if the cursor is over the current button

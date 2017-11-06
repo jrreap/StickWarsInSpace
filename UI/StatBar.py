@@ -16,6 +16,7 @@ class StatBar():
         self.bg = bg
         self.fg = fg
         self.size = size
+        self.location = location
 
         self.font = pygame.font.SysFont(font_name, font_size, True, False)
         self.txt = txt
@@ -23,10 +24,10 @@ class StatBar():
         self.txt_rect = self.txt_surf.get_rect(center=[s // 2 for s in self.size])
 
         self.surfacebg = pygame.surface.Surface(size)
-        self.rectbg = self.surfacebg.get_rect(center=Camera.RenderPosition(location[0], location[1]))
+        self.rectbg = self.surfacebg.get_rect(center=location)
 
         self.surfacefg = pygame.surface.Surface(size)
-        self.rectfg = self.surfacefg.get_rect(center=Camera.RenderPosition(location[0], location[1]))
+        self.rectfg = self.surfacefg.get_rect(center=location)
 
         self.SetFillPercentage(0,100)
 
@@ -46,6 +47,9 @@ class StatBar():
 
         self.surfacefg.fill(self.fg)
         self.surfacefg.blit(self.txt_surf, self.txt_rect)
+
+        self.rectbg = self.surfacebg.get_rect(center=Camera.RenderUIPosition(self.location[0], self.location[1]))
+        self.rectfg = self.surfacefg.get_rect(center=Camera.RenderUIPosition(self.location[0], self.location[1]))
 
         screen.blit(self.surfacebg, self.rectbg)
         screen.blit(self.surfacefg, self.rectfg)
