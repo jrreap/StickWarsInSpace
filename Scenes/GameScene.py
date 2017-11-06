@@ -32,14 +32,25 @@ class GameScene(SceneBase):
         self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
 
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
-        self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
-        self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
+        
+        self.buildrifleblaster = Button("RB", (1140, 225), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("HRB", (1140, 425), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
+        self.buildspaceraider = Button("SR", (1140, 175), self.BSR, size = (60,30), font_size  = 15, bg = (109, 177, 255))
+        self.buildtank = Button("TANK", (1140, 275), self.BTANK, size =(60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildplane = Button("PLANE", (1140, 325), self.BPLANE, size = (60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildturret = Button("TRT", (1140, 375), self.BTRT, size = (60,30), font_size = 15, bg = (109, 177, 255))
+
+        
         self.buildmenutoggle = False
 
         self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
 
         self.buildmenu.AddButton(self.buildhorserifleblaster)
         self.buildmenu.AddButton(self.buildrifleblaster)
+        self.buildmenu.AddButton(self.buildspaceraider)
+        self.buildmenu.AddButton(self.buildtank)
+        self.buildmenu.AddButton(self.buildplane)
+        self.buildmenu.AddButton(self.buildturret)
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -74,12 +85,26 @@ class GameScene(SceneBase):
                 if self.buildhorserifleblaster.IsClicked(mousepos):
                     self.buildhorserifleblaster.call_back_()
 
+                if self.buildspaceraider.IsClicked(mousepos):
+                    self.buildspaceraider.call_back_()
+
+                if self.buildtank.IsClicked(mousepos):
+                    self.buildtank.call_back_()
+
+                if self.buildplane.IsClicked(mousepos):
+                    self.buildplane.call_back_()
+
+                if self.buildturret.IsClicked(mousepos):
+                    self.buildturret.call_back_()
+
                 if self.buildrifleblaster.IsClicked(mousepos):
                     self.buildrifleblaster.call_back_()
 
                 if self.openmenu.IsClicked(mousepos):
                     self.buildmenutoggle = not self.buildmenutoggle
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
+
+                
 
     def Update(self):
 
@@ -152,3 +177,30 @@ class GameScene(SceneBase):
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
+
+
+    def BSR(self):
+        unit = UnitLoader.GetUnitByUnitClass("Space Raider")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+    def BTANK(self):
+        unit = UnitLoader.GetUnitByUnitClass("Tank")
+        unit.laneid = 1
+
+        UnitLoader = EnqueueUnit(unit)
+
+    def BPLANE(self):
+        unit = UnitLoader.GetUnitByUnitClass("Plane")
+        unit.laneid = 1
+
+        UnitLoader = EnqueueUnit(unit)
+
+    def BTRT(self):
+        unit = UnitLoader.GetUnitByUnitClass("Turret")
+        unit.laneid = 1
+
+        UnitLoader = EnqueueUnit(unit)
+
+        
