@@ -3,7 +3,6 @@ from ImageCache.ImageLoader import GetImage
 from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
-from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
@@ -20,9 +19,9 @@ class GameScene(SceneBase):
 
         self.counter = 0
 
-        self.UnitMovement = UnitMovement()
+        self.offset = 0
 
-        self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
+        self.UnitMovement = UnitMovement()
 
         self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
@@ -68,8 +67,12 @@ class GameScene(SceneBase):
                 self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                print("Hi")
-                Camera.SetCameraOffset(100, 0)
+                self.offset = self.offset + 5
+                Camera.SetCameraOffset(self.offset, 0)
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+                self.offset = self.offset - 5
+                Camera.SetCameraOffset(self.offset, 0)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -136,17 +139,17 @@ class GameScene(SceneBase):
 
         # Draw all created units on screen
         for unit in self.cu:
-           screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
+           screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
 
         for unit in self.ce:
-            screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
+            screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
             
         # Draw the GUI
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
         self.resourcebar.Draw(screen)
-        self.text.Draw(screen)
+        self.resourcebar.Draw(screen)
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
         self.openmenu.Draw(screen)

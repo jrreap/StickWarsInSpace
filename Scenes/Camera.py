@@ -44,3 +44,11 @@ class Camera(object):
 
         return x, y
 
+    @classmethod
+    def GetXOffset(cls):
+        return cls.cx
+
+    @classmethod
+    def GetYOffset(cls):
+        return cls.cy
+

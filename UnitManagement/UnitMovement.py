@@ -1,5 +1,6 @@
 from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitSpawner import UnitSpawner
+from Scenes.Camera import Camera
 
 # Main class that handles all Unit movement within the game
 
@@ -23,7 +24,7 @@ class UnitMovement:
         elif self.movementmode == "A":
             for unit in self.cu:
 
-                if(unit.xpos < 1175):
+                if(unit.xpos < 3525):
                     unit.SetPosition((unit.xpos) + (.75*unit.speed), unit.ypos)
 
         elif self.movementmode == "D":

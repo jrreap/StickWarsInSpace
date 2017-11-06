@@ -49,7 +49,6 @@ class StatBar():
         self.surfacefg.blit(self.txt_surf, self.txt_rect)
 
         self.rectbg = self.surfacebg.get_rect(center=Camera.RenderUIPosition(self.location[0], self.location[1]))
-        self.rectfg = self.surfacefg.get_rect(center=Camera.RenderUIPosition(self.location[0], self.location[1]))
 
         screen.blit(self.surfacebg, self.rectbg)
         screen.blit(self.surfacefg, self.rectfg)
