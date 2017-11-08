@@ -189,19 +189,19 @@ class GameScene(SceneBase):
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = UnitLoader.GetUnitByUnitClass("Tank")
+        unit = UnitLoader.GetUnitByUnitClass("Space Tank")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = UnitLoader.GetUnitByUnitClass("Plane")
+        unit = UnitLoader.GetUnitByUnitClass("Space Plane")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = UnitLoader.GetUnitByUnitClass("Turret")
+        unit = UnitLoader.GetUnitByUnitClass("Space Turret")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
