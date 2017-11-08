@@ -67,11 +67,11 @@ class GameScene(SceneBase):
                 self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                self.offset = self.offset + 5
+                self.offset = self.offset + 50
                 Camera.SetCameraOffset(self.offset, 0)
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-                self.offset = self.offset - 5
+                self.offset = self.offset - 50
                 Camera.SetCameraOffset(self.offset, 0)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -192,18 +192,18 @@ class GameScene(SceneBase):
         unit = UnitLoader.GetUnitByUnitClass("Tank")
         unit.laneid = 1
 
-        UnitLoader = EnqueueUnit(unit)
+        UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
         unit = UnitLoader.GetUnitByUnitClass("Plane")
         unit.laneid = 1
 
-        UnitLoader = EnqueueUnit(unit)
+        UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
         unit = UnitLoader.GetUnitByUnitClass("Turret")
         unit.laneid = 1
 
-        UnitLoader = EnqueueUnit(unit)
+        UnitLoader.EnqueueUnit(unit)
 
         
