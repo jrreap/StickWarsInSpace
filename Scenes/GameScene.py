@@ -28,7 +28,7 @@ class GameScene(SceneBase):
         self.attackbutton = Button("Attack", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.openmenu = Button("Menu", (1130, 600), self.Menu, size=(120,30), font_size=20, bg=(109, 177, 255))
 
-        self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
+        self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240,30), font_size=20, bg=(176,185,186))
 
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
         
