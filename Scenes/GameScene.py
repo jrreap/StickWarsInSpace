@@ -7,6 +7,7 @@ from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
+from AI.BaseAI import BaseAI
 from Camera import Camera
 import pygame
 import random
@@ -22,6 +23,7 @@ class GameScene(SceneBase):
         self.offset = 0
 
         self.UnitMovement = UnitMovement()
+        self.AI = BaseAI(1)
 
         self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
@@ -117,6 +119,9 @@ class GameScene(SceneBase):
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
+
+        # Call the AI
+        self.AI.AIUpdate()
 
         # Move all spawned enemy units
         if(self.counter == 25):

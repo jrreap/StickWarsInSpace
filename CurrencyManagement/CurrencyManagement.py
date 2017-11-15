@@ -3,11 +3,9 @@ Currency System: start currency is the amount that you start with for level one
 each method that has 'cost' in it is how much the unit cost
 each method that has 'profit' in it is how much you gain when you kill one of those units
 """
+import random
 
 class Currency:
-    def StartCurrency():
-        currency = 200
-        return currency
     def HorseRifleBlastercost(unitcost, currency):
         currency = currency - unitcost
         return currency

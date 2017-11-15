@@ -10,14 +10,14 @@ class BaseAI():
     income = 5
 
     # Unit variables
-    UnlockedUnits = ["Space Rifle Blaster"]
+    UnlockedUnits = ["Rifle Blaster"]
 
     # Difficulty variables
     difficulty = 1
 
-    def __init__(self):
+    def __init__(self, difficulty):
+        self.difficulty = difficulty
         print("AI Instantiated Successfully")
-
 
     def AIUpdate(self):
         if random.randint(1, (1000 / self.difficulty)) <= 50:
@@ -29,7 +29,7 @@ class BaseAI():
     # Unit construction methods
 
     def BuildUnit(self):
-        randtemp = random.randint(0,len(self.UnlockedUnits))
+        randtemp = random.randint(0,len(self.UnlockedUnits)-1)
         unit = UnitSpawner.GetUnitByUnitClass(self.UnlockedUnits[randtemp])
 
         if (self.mooncrystals - unit.unitcost) >= 0:
