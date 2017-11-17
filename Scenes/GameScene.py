@@ -9,6 +9,7 @@ from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
 from AI.BaseAI import BaseAI
 from Camera import Camera
+from Music.Level1Music import Level1Music
 import pygame
 import random
 
@@ -52,6 +53,9 @@ class GameScene(SceneBase):
         self.buildmenu.AddButton(self.buildtank)
         self.buildmenu.AddButton(self.buildplane)
         self.buildmenu.AddButton(self.buildturret)
+
+        self.Level1Music = Level1Music()
+        self.Level1Music.playmusic()
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
