@@ -77,8 +77,9 @@ class GameScene(SceneBase):
                 Camera.SetCameraOffset(self.offset, 0)
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-                self.offset = self.offset - 50
-                Camera.SetCameraOffset(self.offset, 0)
+                if self.offset > 0:
+                    self.offset = self.offset - 50
+                    Camera.SetCameraOffset(self.offset, 0)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
