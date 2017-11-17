@@ -186,7 +186,6 @@ class GameScene(SceneBase):
 
         UnitLoader.EnqueueUnit(unit)
 
-
     def BSR(self):
         unit = UnitLoader.GetUnitByUnitClass("Space Raider")
         unit.laneid = 1
