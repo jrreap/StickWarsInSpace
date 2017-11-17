@@ -59,62 +59,69 @@ class GameScene(SceneBase):
         self.Level1Music.playmusic()
 
     def ProcessInput(self, events, pressed_keys):
+
         mousepos = pygame.mouse.get_pos()
+
         for event in events:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                self.SwitchToScene(None)
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                self.SwitchToScene(None)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
-                self.buildqueue.SetFillPercentage(10, 100)
+            # Keydown events
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    self.SwitchToScene(None)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_b:
-                self.buildmenutoggle = not self.buildmenutoggle
-                self.buildmenu.ToggleMenu(self.buildmenutoggle)
+                elif event.key == pygame.K_ESCAPE:
+                    self.SwitchToScene(None)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                self.offset = self.offset + 50
-                Camera.SetCameraOffset(self.offset, 0)
+                elif event.key == pygame.K_a:
+                    self.buildqueue.SetFillPercentage(10, 100)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
-                if self.offset > 0:
-                    self.offset = self.offset - 50
+                elif event.key == pygame.K_b:
+                    self.buildmenutoggle = not self.buildmenutoggle
+                    self.buildmenu.ToggleMenu(self.buildmenutoggle)
+
+                elif event.key == pygame.K_RIGHT:
+                    self.offset = self.offset + 50
                     Camera.SetCameraOffset(self.offset, 0)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_m:
-                CurrencyManagement.AddMoonCrystals(100)
+                elif event.key == pygame.K_LEFT:
+                    if self.offset > 0:
+                        self.offset = self.offset - 50
+                        Camera.SetCameraOffset(self.offset, 0)
 
+                elif event.key == pygame.K_m:
+                    CurrencyManagement.AddMoonCrystals(100)
+
+            # Mouse click events
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 if self.attackbutton.IsClicked(mousepos):
                     self.attackbutton.call_back_()
 
-                if self.defendbutton.IsClicked(mousepos):
+                elif self.defendbutton.IsClicked(mousepos):
                     self.defendbutton.call_back_()
 
-                if self.holdbutton.IsClicked(mousepos):
+                elif self.holdbutton.IsClicked(mousepos):
                     self.holdbutton.call_back_()
 
-                if self.buildhorserifleblaster.IsClicked(mousepos):
+                elif self.buildhorserifleblaster.IsClicked(mousepos):
                     self.buildhorserifleblaster.call_back_()
 
-                if self.buildspaceraider.IsClicked(mousepos):
+                elif self.buildspaceraider.IsClicked(mousepos):
                     self.buildspaceraider.call_back_()
 
-                if self.buildtank.IsClicked(mousepos):
+                elif self.buildtank.IsClicked(mousepos):
                     self.buildtank.call_back_()
 
-                if self.buildplane.IsClicked(mousepos):
+                elif self.buildplane.IsClicked(mousepos):
                     self.buildplane.call_back_()
 
-                if self.buildturret.IsClicked(mousepos):
+                elif self.buildturret.IsClicked(mousepos):
                     self.buildturret.call_back_()
 
-                if self.buildrifleblaster.IsClicked(mousepos):
+                elif self.buildrifleblaster.IsClicked(mousepos):
                     self.buildrifleblaster.call_back_()
 
-                if self.openmenu.IsClicked(mousepos):
+                elif self.openmenu.IsClicked(mousepos):
                     self.buildmenutoggle = not self.buildmenutoggle
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
@@ -163,8 +170,7 @@ class GameScene(SceneBase):
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
 
-
-
+        # Make sure not to update the text unless it has changed
         if "Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()) != self.resourcebar.txt:
             self.resourcebar.SetText("Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()))
 
