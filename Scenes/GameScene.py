@@ -10,6 +10,7 @@ from UI.ToggleMenu import ToggleMenu
 from AI.BaseAI import BaseAI
 from Camera import Camera
 from Music.Level1Music import Level1Music
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 import pygame
 import random
 
@@ -80,6 +81,9 @@ class GameScene(SceneBase):
                 if self.offset > 0:
                     self.offset = self.offset - 50
                     Camera.SetCameraOffset(self.offset, 0)
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_m:
+                CurrencyManagement.AddMoonCrystals(100)
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
@@ -158,8 +162,15 @@ class GameScene(SceneBase):
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
+
+
+
+        if "Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()) != self.resourcebar.txt:
+            self.resourcebar.SetText("Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()))
+
         self.resourcebar.Draw(screen)
-        self.resourcebar.Draw(screen)
+
+
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
         self.openmenu.Draw(screen)

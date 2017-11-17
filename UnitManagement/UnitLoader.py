@@ -4,6 +4,7 @@ from UnitManagement.RifleBlaster import RifleBlaster
 from UnitManagement.SpaceRaider import SpaceRaider
 from UnitManagement.Tank import Tank
 from UnitManagement.Turret import Turret
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 
 # Utility class that manages the loading of Unit information and the various components
 # to be used in the rendering of the unit on screen and the various functionality behind it
@@ -66,7 +67,10 @@ class UnitLoader():
     # Enqueues the designated unit into the build system to be built
     @classmethod
     def EnqueueUnit(cls, unit):
-        cls.QueuedUnits.append(unit)
+        if CurrencyManagement.PurchaseUnit(unit):
+            cls.QueuedUnits.append(unit)
+        else:
+            print("Not enough moon crystals to purchase " + unit.unitclass)
 
     # Instantiates a Unit and displays it to the screen
     @classmethod

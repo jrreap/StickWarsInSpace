@@ -1,44 +1,36 @@
-"""
-Currency System: start currency is the amount that you start with for level one
-each method that has 'cost' in it is how much the unit cost
-each method that has 'profit' in it is how much you gain when you kill one of those units
-"""
-import random
+# Main class to handle currency management for the player
+# All costs are based on unit costs and their unit profit values, respectively
 
-class Currency:
-    def HorseRifleBlastercost(unitcost, currency):
-        currency = currency - unitcost
-        return currency
-    def HorseRifleBlasterprofit(currency):
-        currency = currency + (random.randint(1,5) * 25)
-        return currency
-    def Planecost(unitcost, currency):
-        currency = currency - unitcost
-        return currency
-    def Planeprofit(currency):
-        currency = currency + (random.randint(1,5) * 100)
-        return currency
-    def RifleBlastercost(unitcost, currency):
-        currency = currency - unitcost
-        return currency
-    def RifleBlasterprofit(currency):
-        currency = currency + (random.randint(1,5) * 50)
-        return currency
-    def SpaceRaidercost(unitcost, currency):
-        currency = currency - unitcost
-        return currency
-    def SpaceRaiderprofit(currency):
-        currency = currency + (random.randint(1,5) * 25)
-        return currency
-    def Tankcost(unitcost, currency):
-        currency = currency - unitcost
-        return currency
-    def Tankprofit(currency):
-        currency = currency + (random.randint(1,5) * 100)
-        return currency
-    def Turretcost(unitcost, currency):
-        currency = currency - unitcost
-        return currency
-    def Turretprofit(currency):
-        currency = currency + (random.randint(1,5) * 100)
-        return currency
+class CurrencyManagement:
+
+    mooncrystals = 100
+
+    @classmethod
+    # Returns true if the purchase was a success, false if it failed
+    # Takes a unit as the input
+    def PurchaseUnit(cls, unit):
+        if cls.mooncrystals - unit.unitcost >= 0:
+            cls.mooncrystals = cls.mooncrystals - unit.unitcost
+            return True
+        else:
+            return False
+
+    @classmethod
+    # Added the specified amount of crystals to the player's bank
+    def AddMoonCrystals(cls, amount):
+        cls.mooncrystals = cls.mooncrystals + amount
+
+    @classmethod
+    # Removed the specified amount of crystals from the player's bank
+    def RemoveMoonCrystals(cls, amount):
+        cls.mooncrystals = cls.mooncrystals - amount
+
+    @classmethod
+    # Returns the current amount of moon crystals in the bank
+    def GetMoonCrystals(cls):
+        return cls.mooncrystals
+
+
+
+
+

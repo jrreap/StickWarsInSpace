@@ -26,11 +26,17 @@ class Bar():
         self.surface = pygame.surface.Surface(size)
         self.rect = self.surface.get_rect(center=location)
 
+    # Draws the UI element on screen
     def Draw(self, screen):
-
         self.surface.fill(self.bg)
         self.surface.blit(self.txt_surf, self.txt_rect)
 
         self.rect = self.surface.get_rect(center= Camera.RenderUIPosition(self.location[0], self.location[1]))
 
         screen.blit(self.surface, self.rect)
+
+    # Changes the text element of the UI object
+    def SetText(self, txt):
+        self.txt = txt
+        self.txt_surf = self.font.render(self.txt, 1, self.fg)
+        self.txt_rect = self.txt_surf.get_rect(center=[s // 2 for s in self.size])
