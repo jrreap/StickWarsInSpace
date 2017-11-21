@@ -140,15 +140,7 @@ class GameScene(SceneBase):
         self.AI.AIUpdate()
 
         # Move all spawned enemy units
-        if(self.counter == 25):
-            self.UnitMovement.MoveEnemyUnits()
-
-            if (random.randint(0, 500) <= 15):
-                UnitSpawner.EnqueueUnit(UnitSpawner.GetUnitByUnitClass("Rifle Blaster"))
-
-            self.counter = 0
-        else:
-            self.counter = self.counter + 1
+        self.UnitMovement.MoveEnemyUnits()
 
 
         UnitSpawner.BuildUnitsInQueue()

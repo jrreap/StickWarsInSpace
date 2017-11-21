@@ -7,14 +7,14 @@ class BaseAI():
 
     # Income variables
     mooncrystals = 100
-    income = 10
+    income = 1
 
     # Used to calculate the current "danger" posed to the AI and when it should drain its resources
     dangervalue = 0
 
     # Used to make sure the AI doesn't just build endless units
     cooldown = 0
-    pausetime = 500
+    pausetime = 1000
     x = 0
     isPaused = False
 
@@ -34,9 +34,9 @@ class BaseAI():
 
         self.CalculateDangerValue()
 
-        if self.cooldown >= 50:
+        if self.cooldown >= 3:
             self.isPaused = True
-            self.cooldown = self.cooldown - 50
+            self.cooldown = self.cooldown - 3
 
         if self.isPaused:
             if self.x == 0:
