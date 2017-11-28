@@ -30,7 +30,7 @@ class MenuScene(SceneBase):
                 self.SwitchToScene(None)
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
-                #Check if the buttons has been pressed
+                # Check if the buttons has been pressed
                 if self.startbutton.IsClicked(mousepos):
                     self.startbutton.call_back_()
 
