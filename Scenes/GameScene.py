@@ -175,16 +175,13 @@ class GameScene(SceneBase):
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
+        screen.blit(GetImage("Images/MARS BACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw all created units on screen
         for unit in self.cu:
            screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
 
         for unit in self.ce:
-
-            screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
-
 
             screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
             
