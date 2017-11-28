@@ -61,7 +61,7 @@ class UnitSpawner():
         unit.unitid = uid
 
         # Set starting position to be in the main lane
-        unit.xpos = 1000
+        unit.xpos = 3000
         unit.ypos = 500
 
         cls.BuiltUnits.append(unit)
