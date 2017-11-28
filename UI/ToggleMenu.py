@@ -17,6 +17,7 @@ class ToggleMenu():
         self.fg = fg
         self.size = size
         self.shown = shown
+        self.location = location
 
         self.buttons = []
 
@@ -33,6 +34,9 @@ class ToggleMenu():
 
         if self.shown:
             self.surface.fill(self.bg)
+
+            self.rect = self.surface.get_rect(center=Camera.RenderUIPosition(self.location[0], self.location[1]))
+
             screen.blit(self.surface, self.rect)
 
             for button in self.buttons:

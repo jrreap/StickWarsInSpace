@@ -1,4 +1,5 @@
 import pygame
+from Scenes.Camera import Camera
 
 pygame.init()
 
@@ -26,6 +27,8 @@ class Text():
         drawX = self.x - (self.size[0] / 2.)
         drawY = self.y - (self.size[1] / 2.)
         coords = (drawX, drawY)
+
+        coords = Camera.RenderUIPosition(coords[0], coords[1])
         screen.blit(self.txt, coords)
         
         

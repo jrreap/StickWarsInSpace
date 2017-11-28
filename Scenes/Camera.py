@@ -36,3 +36,19 @@ class Camera(object):
 
         return x, y
 
+    @classmethod
+    # Returns a position that is rendered for the UI
+    def RenderUIPosition(cls, width, height):
+        x = width
+        y = height
+
+        return x, y
+
+    @classmethod
+    def GetXOffset(cls):
+        return cls.cx
+
+    @classmethod
+    def GetYOffset(cls):
+        return cls.cy
+

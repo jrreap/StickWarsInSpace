@@ -8,7 +8,7 @@ class RifleBlaster (Unit):
         damage = 100
         speed = 1
         health = 200
-        unitcost = 200
+        unitcost = 50
         buildtime = 2
         attackrate = 1
         unitrange = 6

@@ -3,14 +3,23 @@ from ImageCache.ImageLoader import GetImage
 from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
-from UI.Text import Text
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
+<<<<<<< HEAD
 from Combat.Detect import Detect
 from Combat.AttackDefend import AttackDefend
+=======
+from AI.BaseAI import BaseAI
+>>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
 from Camera import Camera
+from Music.Level1Music import Level1Music
+from Music.MenuMusic import MenuMusic
+from Music.LevelVictoryMusic import LevelVictoryMusic
+from Music.LevelDefeatMusic import LevelDefeatMusic
+from Music.GameEndMusic import GameEndMusic
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 import pygame
 import random
 
@@ -23,67 +32,116 @@ class GameScene(SceneBase):
         self.counter = 0
         self.AttackRate = 0
 
-        self.UnitMovement = UnitMovement()
+        self.offset = 0
 
-        self.text = Text(20, 600, "GAME VIEW", bold=True, color=(45, 185, 255))
+        self.UnitMovement = UnitMovement()
+        self.AI = BaseAI(1)
 
         self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.attackbutton = Button("Attack", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
         self.openmenu = Button("Menu", (1130, 600), self.Menu, size=(120,30), font_size=20, bg=(109, 177, 255))
 
-        self.resourcebar = Bar("Moon Crystals: 100", (1120, 15), size=(160,30), font_size=20, bg=(176,185,186))
+        self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240,30), font_size=20, bg=(176,185,186))
 
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
+<<<<<<< HEAD
         self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
         self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
 
+=======
+        
+        self.buildrifleblaster = Button("RB", (1140, 225), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("HRB", (1140, 425), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
+        self.buildspaceraider = Button("SR", (1140, 175), self.BSR, size = (60,30), font_size  = 15, bg = (109, 177, 255))
+        self.buildtank = Button("TANK", (1140, 275), self.BTANK, size =(60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildplane = Button("PLANE", (1140, 325), self.BPLANE, size = (60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildturret = Button("TRT", (1140, 375), self.BTRT, size = (60,30), font_size = 15, bg = (109, 177, 255))
+
+        
+>>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
         self.buildmenutoggle = False
 
         self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
 
         self.buildmenu.AddButton(self.buildhorserifleblaster)
         self.buildmenu.AddButton(self.buildrifleblaster)
+        self.buildmenu.AddButton(self.buildspaceraider)
+        self.buildmenu.AddButton(self.buildtank)
+        self.buildmenu.AddButton(self.buildplane)
+        self.buildmenu.AddButton(self.buildturret)
+
+        self.Level1Music = Level1Music()
+        self.Level1Music.playmusic()
 
     def ProcessInput(self, events, pressed_keys):
+
         mousepos = pygame.mouse.get_pos()
+
         for event in events:
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                self.SwitchToScene(None)
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                self.SwitchToScene(None)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
-                self.buildqueue.SetFillPercentage(10, 100)
+            # Keydown events
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    self.SwitchToScene(None)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_b:
-                self.buildmenutoggle = not self.buildmenutoggle
-                self.buildmenu.ToggleMenu(self.buildmenutoggle)
+                elif event.key == pygame.K_ESCAPE:
+                    self.SwitchToScene(None)
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
-                print("Hi")
-                Camera.SetCameraOffset(100, 0)
+                elif event.key == pygame.K_a:
+                    self.buildqueue.SetFillPercentage(10, 100)
 
+                elif event.key == pygame.K_b:
+                    self.buildmenutoggle = not self.buildmenutoggle
+                    self.buildmenu.ToggleMenu(self.buildmenutoggle)
+
+                elif event.key == pygame.K_RIGHT:
+                    self.offset = self.offset + 50
+                    Camera.SetCameraOffset(self.offset, 0)
+
+                elif event.key == pygame.K_LEFT:
+                    if self.offset > 0:
+                        self.offset = self.offset - 50
+                        Camera.SetCameraOffset(self.offset, 0)
+
+                elif event.key == pygame.K_m:
+                    CurrencyManagement.AddMoonCrystals(100)
+
+            # Mouse click events
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 if self.attackbutton.IsClicked(mousepos):
                     self.attackbutton.call_back_()
 
-                if self.defendbutton.IsClicked(mousepos):
+                elif self.defendbutton.IsClicked(mousepos):
                     self.defendbutton.call_back_()
 
-                if self.holdbutton.IsClicked(mousepos):
+                elif self.holdbutton.IsClicked(mousepos):
                     self.holdbutton.call_back_()
 
-                if self.buildhorserifleblaster.IsClicked(mousepos):
+                elif self.buildhorserifleblaster.IsClicked(mousepos):
                     self.buildhorserifleblaster.call_back_()
 
-                if self.buildrifleblaster.IsClicked(mousepos):
+                elif self.buildspaceraider.IsClicked(mousepos):
+                    self.buildspaceraider.call_back_()
+
+                elif self.buildtank.IsClicked(mousepos):
+                    self.buildtank.call_back_()
+
+                elif self.buildplane.IsClicked(mousepos):
+                    self.buildplane.call_back_()
+
+                elif self.buildturret.IsClicked(mousepos):
+                    self.buildturret.call_back_()
+
+                elif self.buildrifleblaster.IsClicked(mousepos):
                     self.buildrifleblaster.call_back_()
 
-                if self.openmenu.IsClicked(mousepos):
+                elif self.openmenu.IsClicked(mousepos):
                     self.buildmenutoggle = not self.buildmenutoggle
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
+
+                
 
     def Update(self):
 
@@ -94,6 +152,7 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
+<<<<<<< HEAD
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
@@ -102,6 +161,13 @@ class GameScene(SceneBase):
             self.counter = 0
         else:
             self.counter = self.counter + 1
+=======
+        # Call the AI
+        self.AI.AIUpdate()
+
+        # Move all spawned enemy units
+        self.UnitMovement.MoveEnemyUnits()
+>>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
 
         UnitSpawner.BuildUnitsInQueue()
         if(self.AttackRate == 100):
@@ -117,17 +183,28 @@ class GameScene(SceneBase):
 
         # Draw all created units on screen
         for unit in self.cu:
-           screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
+           screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
 
         for unit in self.ce:
+<<<<<<< HEAD
             screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
 
+=======
+            screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
+            
+>>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
         # Draw the GUI
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
         self.defendbutton.Draw(screen)
+
+        # Make sure not to update the text unless it has changed
+        if "Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()) != self.resourcebar.txt:
+            self.resourcebar.SetText("Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()))
+
         self.resourcebar.Draw(screen)
-        self.text.Draw(screen)
+
+
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
         self.openmenu.Draw(screen)
@@ -158,3 +235,29 @@ class GameScene(SceneBase):
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
+
+    def BSR(self):
+        unit = UnitLoader.GetUnitByUnitClass("Space Raider")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+    def BTANK(self):
+        unit = UnitLoader.GetUnitByUnitClass("Space Tank")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+    def BPLANE(self):
+        unit = UnitLoader.GetUnitByUnitClass("Space Plane")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+    def BTRT(self):
+        unit = UnitLoader.GetUnitByUnitClass("Space Turret")
+        unit.laneid = 1
+
+        UnitLoader.EnqueueUnit(unit)
+
+        
