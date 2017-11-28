@@ -16,6 +16,7 @@ class UnitLoader():
     currentunit = None
     buildcount = 0
     unitgen = 0
+    unitcount = 0
     CreatedUnits = []
     QueuedUnits = []
 
@@ -66,10 +67,13 @@ class UnitLoader():
     # Enqueues the designated unit into the build system to be built
     @classmethod
     def EnqueueUnit(cls, unit):
-        if CurrencyManagement.PurchaseUnit(unit):
-            cls.QueuedUnits.append(unit)
+        if cls.unitcount <= 40:
+            if CurrencyManagement.PurchaseUnit(unit):
+                cls.QueuedUnits.append(unit)
+            else:
+                print("Not enough moon crystals to purchase " + unit.unitclass)
         else:
-            print("Not enough moon crystals to purchase " + unit.unitclass)
+            print("Max unit count reached!")
 
     # Instantiates a Unit and displays it to the screen
     @classmethod
@@ -112,3 +116,14 @@ class UnitLoader():
     @classmethod
     def GetCreatedUnits(cls):
         return cls.CreatedUnits
+
+    # Calculate and returns the total used supply
+    @classmethod
+    def GetUsedSupply(cls):
+        c = 0
+
+        for unit in cls.CreatedUnits:
+            c = c + 1
+
+        cls.unitcount = c
+        return cls.unitcount

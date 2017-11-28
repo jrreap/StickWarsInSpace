@@ -36,6 +36,7 @@ class GameScene(SceneBase):
         self.openmenu = Button("Menu", (1130, 600), self.Menu, size=(120,30), font_size=20, bg=(109, 177, 255))
 
         self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240,30), font_size=20, bg=(176,185,186))
+        self.supplybar = Bar("Units: 0/40", (1080, 45), size=(240, 30), font_size=20, bg=(176, 185, 186))
 
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
 
@@ -191,7 +192,11 @@ class GameScene(SceneBase):
         if "Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()) != self.resourcebar.txt:
             self.resourcebar.SetText("Moon Crystals: " + str(CurrencyManagement.GetMoonCrystals()))
 
+        if "Units: " + str(UnitLoader.GetUsedSupply()) + "/40" != self.supplybar.txt:
+            self.supplybar.SetText("Units: " + str(UnitLoader.GetUsedSupply()) + "/40")
+
         self.resourcebar.Draw(screen)
+        self.supplybar.Draw(screen)
 
 
         self.buildqueue.Draw(screen)
