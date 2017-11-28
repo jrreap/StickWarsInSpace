@@ -12,5 +12,5 @@ class SpaceRaider (Unit):
         buildtime = 1
         attackrate = 1
         unitrange = 1
-        imagepath = "Images/StickSoldier.jpg"
+        imagepath = "Images/RaiderMongol1.jpg"
         Unit.__init__(self, unitclass, uid, damage, speed, health, unitcost, buildtime, attackrate, unitrange, imagepath)
