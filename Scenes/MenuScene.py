@@ -12,7 +12,7 @@ class MenuScene(SceneBase):
         SceneBase.__init__(self)
         self.startbutton = Button("Start Game", (600,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
         self.exitbutton = Button("Exit Game", (600,425), self.ExitGame, size=(120,60), font_size=20, bg=(109,177,255))
-                
+        
         self.text = Text(225, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
 
         self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (0,0,0), font = "Arial", fontSize = 35 )
@@ -33,7 +33,6 @@ class MenuScene(SceneBase):
                     self.exitbutton.call_back_()
                 
                 
-                
     def Update(self):
         pass
     
@@ -45,8 +44,7 @@ class MenuScene(SceneBase):
         self.text.DrawCenter(screen)
         self.text1.DrawCenter(screen)
         self.startbutton.Draw(screen)
-        self.exitbutton.Draw(screen)
-        
+        self.exitbutton.Draw(screen)        
 
     #Button functions
     def ExitGame(self):
@@ -56,7 +54,7 @@ class MenuScene(SceneBase):
     def StartGame(self):
         print("Starting New Game...")
         self.SwitchToScene(GameScene())
-        
+
         
         
         
