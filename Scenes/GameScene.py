@@ -12,10 +12,6 @@ from Combat.AttackDefend import AttackDefend
 from AI.BaseAI import BaseAI
 from Camera import Camera
 from Music.Level1Music import Level1Music
-from Music.MenuMusic import MenuMusic
-from Music.LevelVictoryMusic import LevelVictoryMusic
-from Music.LevelDefeatMusic import LevelDefeatMusic
-from Music.GameEndMusic import GameEndMusic
 from CurrencyManagement.CurrencyManagement import CurrencyManagement
 import pygame
 import random
