@@ -7,12 +7,9 @@ from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
-<<<<<<< HEAD
 from Combat.Detect import Detect
 from Combat.AttackDefend import AttackDefend
-=======
 from AI.BaseAI import BaseAI
->>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
 from Camera import Camera
 from Music.Level1Music import Level1Music
 from Music.MenuMusic import MenuMusic
@@ -45,11 +42,11 @@ class GameScene(SceneBase):
         self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240,30), font_size=20, bg=(176,185,186))
 
         self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
-<<<<<<< HEAD
+
         self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
         self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
 
-=======
+
         
         self.buildrifleblaster = Button("RB", (1140, 225), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
         self.buildhorserifleblaster = Button("HRB", (1140, 425), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
@@ -59,7 +56,7 @@ class GameScene(SceneBase):
         self.buildturret = Button("TRT", (1140, 375), self.BTRT, size = (60,30), font_size = 15, bg = (109, 177, 255))
 
         
->>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
+
         self.buildmenutoggle = False
 
         self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
@@ -152,7 +149,7 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-<<<<<<< HEAD
+
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
@@ -161,13 +158,12 @@ class GameScene(SceneBase):
             self.counter = 0
         else:
             self.counter = self.counter + 1
-=======
+
         # Call the AI
         self.AI.AIUpdate()
 
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
->>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
 
         UnitSpawner.BuildUnitsInQueue()
         if(self.AttackRate == 100):
@@ -186,13 +182,13 @@ class GameScene(SceneBase):
            screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
 
         for unit in self.ce:
-<<<<<<< HEAD
+
             screen.blit(GetImage(unit.imagepath), (unit.xpos, unit.ypos))
 
-=======
+
             screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
             
->>>>>>> 9c93e5392f124b76a8327fd69e6dcc9a01864977
+
         # Draw the GUI
         self.attackbutton.Draw(screen)
         self.holdbutton.Draw(screen)
