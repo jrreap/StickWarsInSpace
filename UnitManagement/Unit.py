@@ -15,6 +15,7 @@ class Unit():
     buildtime = 0
     attackrate = 0
     unitrange = 0
+    attacking = False
 
     # Position information
     xpos = 15
@@ -25,7 +26,7 @@ class Unit():
     imagepath = "Empty"
     
     
-    def __init__(self, uclass, uid, udamage, uspeed, uhealth, upcost, umbt, urate, urange, img):
+    def __init__(self, uclass, uid, udamage, uspeed, uhealth, upcost, umbt, urate, urange, img, uattacking = False):
         self.unitclass = uclass
         self.unitid = uid
         self.damage = udamage
@@ -36,6 +37,7 @@ class Unit():
         self.attackrate = urate
         self.unitrange = urange
         self.imagepath = img
+        self.attacking = uattacking
 
         self.xpos = 0
         self.ypos = 0
@@ -55,6 +57,9 @@ class Unit():
 
     def GetPositionY(self):
         return self.ypos
+
+    def GetSpeed(self):
+        return self.speed
 
     def SetPosition(self, x, y):
         self.xpos = x
