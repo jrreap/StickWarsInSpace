@@ -58,7 +58,6 @@ class UnitLoader():
         UnitList = cls.FetchUnitClasses()
 
         for x in UnitList:
-            print("Searching for " + unitclass + " against " + x.unitclass)
             if x.unitclass == unitclass:
                 return x
 
