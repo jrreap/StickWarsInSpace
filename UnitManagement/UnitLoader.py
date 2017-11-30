@@ -121,5 +121,4 @@ class UnitLoader():
     # Calculate and returns the total used supply
     @classmethod
     def GetUsedSupply(cls):
-        print(cls.unitcount)
         return cls.unitcount
