@@ -67,9 +67,10 @@ class UnitLoader():
     # Enqueues the designated unit into the build system to be built
     @classmethod
     def EnqueueUnit(cls, unit):
-        if cls.unitcount <= 40:
+        if cls.unitcount < 40:
             if CurrencyManagement.PurchaseUnit(unit):
                 cls.QueuedUnits.append(unit)
+                cls.unitcount = cls.unitcount + 1
             else:
                 print("Not enough moon crystals to purchase " + unit.unitclass)
         else:
@@ -120,10 +121,5 @@ class UnitLoader():
     # Calculate and returns the total used supply
     @classmethod
     def GetUsedSupply(cls):
-        c = 0
-
-        for unit in cls.CreatedUnits:
-            c = c + 1
-
-        cls.unitcount = c
+        print(cls.unitcount)
         return cls.unitcount
