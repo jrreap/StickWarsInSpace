@@ -13,6 +13,8 @@ class Camera(object):
     @classmethod
     def SetCameraOffset(cls, xoff, yoff):
 
+        # 3600
+
         # Make sure these values are not below 0
         if xoff >= 0:
             cls.cx = xoff
