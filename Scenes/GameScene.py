@@ -28,6 +28,7 @@ class GameScene(SceneBase):
 
         self.counter = 0
         self.AttackRate = 0
+        self.EAttackRate = 0
 
         self.offset = 0
 
@@ -166,16 +167,28 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
 
         UnitSpawner.BuildUnitsInQueue()
-        if(self.AttackRate == 100):
-            AttackDefend.Attack(self.cu, self.ce)
+
+    
+        #You attack
+        if(self.AttackRate == 30):
+            AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
+            AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = self.AttackRate + 1
-
+            
+        #AI attacks
+        if(self.EAttackRate == 30):
+            AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
+            self.EAttackRate = 0
+        else:
+            AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
+            self.EAttackRate = self.EAttackRate + 1
+            
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
+        screen.blit(GetImage("./Images/MARSBACKGROUND.jpg"), (0, 0))
 
         # Draw all created units on screen
         for unit in self.cu:

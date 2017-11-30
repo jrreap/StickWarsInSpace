@@ -9,32 +9,65 @@ class AttackDefend():
     def InRange(cls, Unit1, Unit2):
         detect = False
         UnitRange = Unit1.unitrange
-        if Unit2.xpos-Unit1.xpos<=UnitRange/100:
+        if abs(Unit2.xpos-Unit1.xpos)<=UnitRange*10:
             detect = True
         else:
             detect = False
-        return True
+        return detect
 
     @classmethod
-    def Attack(cls, Friendlies, Enemies):
+    def Attack(cls, Friendlies, Enemies, AttackRate):
         x = 0
         y = 0
+        Rate = AttackRate
         while(x<len(Friendlies)):
               Unit1 = Friendlies[x]
               x = x+1
+              y = 0
               while(y<len(Enemies)):
                   Unit2 = Enemies[y]
                   y = y+1
                   detected = AttackDefend.InRange(Unit1,Unit2)
                   if(Unit2.health>0):
-                      Unit1.speed = 0
-                      print Unit2.health
-                      Unit2.DamageUnit(Unit1.damage)
-                      print Unit2.health
-                      if Unit2.health<1:
-                          UnitSpawner.DeleteUnit(Unit2)
+                      if(detected == True):
+                          Unit1.speed = 0
+                          if(Rate == 30):
+                              Unit1.speed = 0
+                              print Unit2.health
+                              Unit2.DamageUnit(Unit1.damage)                         
+                              print Unit2.health
+                              if Unit2.health<1:
+                                  UnitSpawner.DeleteUnit(Unit2)
+                                  Unit1.speed = 2
+                      if(Unit2.health<1):
                           Unit1.speed = 2
-                      
+
+    @classmethod
+    def EAttack(cls, Enemies, Friendlies, EAttackRate):
+        x = 0
+        y = 0
+        ERate = EAttackRate
+        while(x<len(Enemies)):
+              Unit1 = Enemies[x]
+              x = x+1
+              y = 0
+              while(y<len(Friendlies)):
+                  Unit2 = Friendlies[y]
+                  y = y+1
+                  detected = AttackDefend.InRange(Unit1,Unit2)
+                  if(Unit2.health>0):
+                      if(detected == True):
+                          Unit1.speed = 0
+                          if(ERate == 30):
+                              Unit1.speed = 0
+                              print Unit2.health
+                              Unit2.DamageUnit(Unit1.damage)                         
+                              print Unit2.health
+                              if Unit2.health<1:
+                                  UnitLoader.DeleteUnit(Unit2)
+                                  Unit1.speed = 2
+                      if(Unit2.health<1):
+                          Unit1.speed = 2
 
     
 """@classmethod
