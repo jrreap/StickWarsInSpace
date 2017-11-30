@@ -72,9 +72,9 @@ class UnitLoader():
                 cls.QueuedUnits.append(unit)
                 cls.unitcount = cls.unitcount + 1
             else:
-                print("Not enough moon crystals to purchase " + unit.unitclass)
+                print("[ERROR] Not enough moon crystals to purchase " + unit.unitclass)
         else:
-            print("Max unit count reached!")
+            print("[ERROR] Max unit count reached!")
 
     # Instantiates a Unit and displays it to the screen
     @classmethod
