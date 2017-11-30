@@ -1,6 +1,8 @@
 # Main class to handle currency management for the player
 # All costs are based on unit costs and their unit profit values, respectively
 
+# All costs and resources should be managed through this class
+
 class CurrencyManagement:
 
     mooncrystals = 100

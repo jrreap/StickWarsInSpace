@@ -6,7 +6,7 @@ from UnitManagement.UnitLoader import UnitLoader
 class BaseAI():
 
     # Income variables
-    mooncrystals = 100
+    mooncrystals = 500
     income = 1
 
     # Used to calculate the current "danger" posed to the AI and when it should drain its resources
@@ -48,7 +48,7 @@ class BaseAI():
         if self.mooncrystals > 0 and self.dangervalue >= 1 and not self.isPaused:
             self.BuildUnit()
 
-    # AI decison methods
+    # AI decision methods
 
     def CalculateDangerValue(self):
         count = 0

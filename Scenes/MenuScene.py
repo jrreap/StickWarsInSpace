@@ -2,6 +2,7 @@ import pygame
 from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
+from Music.MenuMusic import MenuMusic
 from UI.Button import Button
 from UI.Text import Text
 
@@ -13,9 +14,13 @@ class MenuScene(SceneBase):
         self.startbutton = Button("Start Game", (600,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
         self.exitbutton = Button("Exit Game", (600,425), self.ExitGame, size=(120,60), font_size=20, bg=(109,177,255))
         
-        self.text = Text(225, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
+        self.text = Text(227, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
 
-        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (0,0,0), font = "Arial", fontSize = 35 )
+        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 35 )
+
+        # Start music
+        mm = MenuMusic()
+        mm.playmusic()
 
 
     def ProcessInput(self, events, pressed_keys):
@@ -25,7 +30,7 @@ class MenuScene(SceneBase):
                 self.SwitchToScene(None)
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
-                #Check if the buttons has been pressed
+                # Check if the buttons has been pressed
                 if self.startbutton.IsClicked(mousepos):
                     self.startbutton.call_back_()
 
@@ -39,7 +44,7 @@ class MenuScene(SceneBase):
     def Render(self, screen):
         screen.fill((0, 0, 0))
             
-        screen.blit(GetImage("./Images/background.jpg"), (0,0))
+        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0,0))
         
         self.text.DrawCenter(screen)
         self.text1.DrawCenter(screen)
