@@ -3,7 +3,7 @@ from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import getImage
 
-class SpaceMongolianLoreAndrew (SceneBase):
+class SpaceMongolianLorePeter (SceneBase):
 
     def Update(self):
         pass
@@ -11,5 +11,5 @@ class SpaceMongolianLoreAndrew (SceneBase):
     def Render (self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/andrewlore.jpg"), (0,0))
+        screen.blit(GetImage("./Images/peterlore.jpg"), (0,0))
 
