@@ -13,8 +13,8 @@ class MenuScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         self.startbutton = Button("Start Game", (600,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
-        self.exitbutton = Button("Exit Game", (600,425), self.ExitGame, size=(120,60), font_size=20, bg=(109,177,255))
-        self.Lorebutton = Button("Read Lore", (600,525), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
+        self.Lorebutton = Button("Read Lore", (600,425), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
+        self.exitbutton = Button("Exit Game", (600, 525), self.ExitGame, size=(120, 60), font_size=20, bg=(109, 177, 255))
         self.text = Text(227, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
 
         self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 35 )
