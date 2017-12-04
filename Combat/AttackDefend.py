@@ -1,6 +1,7 @@
 from UnitManagement import*
 from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitSpawner import UnitSpawner
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 import pygame
 
 ##SOME KINKS NEED TO WORKED OUT. I (Addison) WILL DO IT SOON SO PLS DONT FUCK TOO MUCH UP
@@ -38,6 +39,7 @@ class AttackDefend():
                               print Unit2.health
                               if Unit2.health<1:
                                   UnitSpawner.DeleteUnit(Unit2)
+                                  CurrencyManagement.AddMoonCrystals(100)
                                   Unit1.speed = 2
                       if(Unit2.health<1):
                           Unit1.speed = 2

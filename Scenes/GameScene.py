@@ -185,7 +185,8 @@ class GameScene(SceneBase):
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
+
+        screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw all created units on screen
         for unit in self.cu:
