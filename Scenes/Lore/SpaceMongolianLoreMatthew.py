@@ -30,7 +30,7 @@ class SpaceMongolianLoreMatthew (SceneBase):
     def Render (self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/matthiaslore.jpg"), (0,0))
+        screen.blit(GetImage("./Images/Lore/matthiaslore.jpg"), (0,0))
 
         self.continuebutton.Draw(screen)
 

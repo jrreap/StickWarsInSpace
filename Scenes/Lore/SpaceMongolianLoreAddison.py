@@ -30,7 +30,7 @@ class SpaceMongolianLoreAddison (SceneBase):
     def Render (self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/addisonlore.jpg"), (0,0))
+        screen.blit(GetImage("./Images/Lore/addisonlore.jpg"), (0,0))
 
         self.continuebutton.Draw(screen)
 

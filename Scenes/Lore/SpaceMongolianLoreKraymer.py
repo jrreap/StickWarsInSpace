@@ -28,7 +28,7 @@ class SpaceMongolianLoreKraymer (SceneBase):
     def Render (self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/kramerlore.jpg"), (0,0))
+        screen.blit(GetImage("./Images/Lore/kramerlore.jpg"), (0,0))
 
         self.continuebutton.Draw(screen)
 

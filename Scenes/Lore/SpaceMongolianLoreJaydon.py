@@ -29,7 +29,7 @@ class SpaceMongolianLoreJaydon (SceneBase):
     def Render (self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/jaydonlore.jpg"), (0,0))
+        screen.blit(GetImage("./Images/Lore/jaydonlore.jpg"), (0,0))
 
         self.continuebutton.Draw(screen)
 
