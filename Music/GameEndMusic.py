@@ -1,11 +1,8 @@
 import pygame
 
-class GameEndMusic():
-
-    def playmusic(self):
-        file = './Music/gameendmusic.mp3'
-        pygame.init()
-        pygame.mixer.init()
+class Boombox():
+    def playmusic(self,path,repeat = -1):
+        pygame.mixer.music.stop()
+        file = ('Music/'+path+'.mp3')
         pygame.mixer.music.load(file)
-        pygame.mixer.music.play(-1)
-        
+        pygame.mixer.music.play(repeat)
