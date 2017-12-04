@@ -1,17 +1,19 @@
 import pygame
 from Scenes.SceneBase import SceneBase
+from Options.Options import Options
 from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
-from UI.Button import Button
 from UI.Text import Text
-from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
+from UI.ToggleBox import ToggleBox
 
 
-# This scene is responsible for rendering the menu "scene"
+# This scene is responsible for rendering the options "scene"
 class OptionsScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
-        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(60, 30), bg=(109, 177, 255))
+
+        self.hardcoremode = ToggleBox((600, 225), self.HardcoreMode, size=(30, 30), bg=(0, 170, 28))
+        self.hardcoretext = Text(225, 500, "Hardcore Mode", bold=True, font="Arial", fontSize=18)
 
         self.text1 = Text(100, 600, "Options Menu", bold=True,
                           color=(255, 255, 255), font="Arial", fontSize=35)
@@ -28,8 +30,9 @@ class OptionsScene(SceneBase):
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons have been pressed
-                if self.optionsbutton.IsClicked(mousepos):
-                    self.optionsbutton.call_back_()
+                if self.hardcoremode.IsClicked(mousepos):
+                    self.hardcoremode.ToggleBox()
+                    self.hardcoremode.call_back()
 
 
     def Update(self):
@@ -41,10 +44,11 @@ class OptionsScene(SceneBase):
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
         self.text1.Draw(screen)
+        self.hardcoretext.Draw(screen)
 
-        self.optionsbutton.Draw(screen)
+        self.hardcoremode.Draw(screen)
 
     # Button functions
-    def Options(self):
-        pass
+    def HardcoreMode(self):
+        Options.SetHardcoreMode(self.hardcoremode.IsToggled())
 
