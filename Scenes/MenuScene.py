@@ -2,7 +2,7 @@ import pygame
 from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
-from Music.MenuMusic import MenuMusic
+from Music.Boombox import Boombox
 from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
@@ -20,8 +20,8 @@ class MenuScene(SceneBase):
         self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 35 )
 
         # Start music
-        mm = MenuMusic()
-        mm.playmusic()
+        b = Boombox()
+        b.playmusic("menumusic")
 
 
     def ProcessInput(self, events, pressed_keys):
