@@ -11,7 +11,7 @@ from Combat.Detect import Detect
 from Combat.AttackDefend import AttackDefend
 from AI.BaseAI import BaseAI
 from Camera import Camera
-from Music.Level1Music import Level1Music
+from Music.Boombox import Boombox
 from CurrencyManagement.CurrencyManagement import CurrencyManagement
 import pygame
 import random
@@ -53,8 +53,6 @@ class GameScene(SceneBase):
         self.buildplane = Button("PLANE", (1140, 325), self.BPLANE, size = (60,30), font_size = 15, bg = (109, 177, 255))
         self.buildturret = Button("TRT", (1140, 375), self.BTRT, size = (60,30), font_size = 15, bg = (109, 177, 255))
 
-        
-
         self.buildmenutoggle = False
 
         self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
@@ -66,8 +64,9 @@ class GameScene(SceneBase):
         self.buildmenu.AddButton(self.buildplane)
         self.buildmenu.AddButton(self.buildturret)
 
-        self.Level1Music = Level1Music()
-        self.Level1Music.playmusic()
+        Boombox.playmusic("level1playmusic")
+
+
 
     def ProcessInput(self, events, pressed_keys):
 
