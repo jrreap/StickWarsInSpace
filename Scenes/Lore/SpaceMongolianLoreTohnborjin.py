@@ -29,7 +29,7 @@ class SpaceMongolianLoreTohnborjin (SceneBase):
     def Render (self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/tohnlore.jpg"), (0,0))
+        screen.blit(GetImage("./Images/Lore/tohnlore.jpg"), (0,0))
 
         self.continuebutton.Draw(screen)
 
