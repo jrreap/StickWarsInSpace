@@ -15,6 +15,7 @@ class MenuScene(SceneBase):
         self.startbutton = Button("Start Game", (600,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
         self.Lorebutton = Button("Read Lore", (600,425), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
         self.exitbutton = Button("Exit Game", (600, 525), self.ExitGame, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(60, 30), bg=(109,177,255))
         self.text = Text(227, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
 
         self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 35 )
@@ -55,6 +56,7 @@ class MenuScene(SceneBase):
         self.startbutton.Draw(screen)
         self.exitbutton.Draw(screen)
         self.Lorebutton.Draw(screen)
+        self.optionsbutton.Draw(screen)
 
     #Button functions
     def ExitGame(self):
@@ -68,6 +70,9 @@ class MenuScene(SceneBase):
     def Lore(self):
         print("Going to Lore...")
         self.SwitchToScene(SpaceMongolianLoreTohnborjin())
+
+    def Options(self):
+        pass
         
         
         
