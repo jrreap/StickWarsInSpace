@@ -44,7 +44,7 @@ class UnitMovement:
 
         for unit in self.ce:
             if (unit.xpos > 15):
-                unit.SetPosition(unit.xpos - 1, unit.ypos)
+                unit.SetPosition(unit.xpos - (.75 * unit.speed), unit.ypos)
 
 
 
