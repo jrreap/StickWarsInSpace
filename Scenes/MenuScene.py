@@ -1,6 +1,7 @@
 import pygame
 from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
+from Scenes.OptionsScene import OptionsScene
 from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from UI.Button import Button
@@ -41,6 +42,9 @@ class MenuScene(SceneBase):
 
                 if self.Lorebutton.IsClicked(mousepos):
                     self.Lorebutton.call_back_()
+
+                if self.optionsbutton.IsClicked(mousepos):
+                    self.optionsbutton.call_back_()
                 
                 
     def Update(self):
@@ -72,8 +76,8 @@ class MenuScene(SceneBase):
         self.SwitchToScene(SpaceMongolianLoreTohnborjin())
 
     def Options(self):
-        pass
-        
+        print("Going to Options...")
+        self.SwitchToScene(OptionsScene())
         
         
         
