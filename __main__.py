@@ -13,7 +13,7 @@ def Start(width, height, fps, starting_scene):
     
     #Main entry point for the game
     #DO NOT RENAME THE FILE OR ELSE PYTHON WILL NOT RUN IT
-    counter = 0
+    
     while active_scene != None:
             pressed_keys = pygame.key.get_pressed()
             
