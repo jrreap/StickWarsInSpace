@@ -49,7 +49,7 @@ def Start(width, height, fps, starting_scene):
             clock.tick(fps)
     
 #Start the game
-Start(1200, 650, 60, MenuScene())
+Start(1200, 650, 15, MenuScene())
 
 
 
