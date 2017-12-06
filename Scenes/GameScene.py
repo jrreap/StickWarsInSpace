@@ -275,7 +275,7 @@ class GameScene(SceneBase):
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = Unit(UnitLoader.units["Space Turret"])
+        unit = Unit(UnitLoader.units["Turret"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
