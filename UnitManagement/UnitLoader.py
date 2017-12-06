@@ -10,7 +10,7 @@ class UnitLoader():
     @classmethod
     def __init__(cls):
         file = open('UnitManagement/Units.txt')
-        for j in range(0,4):
+        for j in range(0,6):
             stats = []
             name = file.readline()[:-1]
             print name
