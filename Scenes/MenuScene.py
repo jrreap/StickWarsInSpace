@@ -1,20 +1,24 @@
 import pygame
 from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
+from Scenes.OptionsScene import OptionsScene
 from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
+from Scenes.Instructions import Instructions
 
 #This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
     
     def __init__(self):
         SceneBase.__init__(self)
-        self.startbutton = Button("Start Game", (600,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
-        self.exitbutton = Button("Exit Game", (600,425), self.ExitGame, size=(120,60), font_size=20, bg=(109,177,255))
-        self.Lorebutton = Button("Read Lore", (600,525), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
+        self.startbutton = Button("Start Game", (510,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
+        self.Instructionsbutton = Button("Instructions", (690,325), self.Instructions, size=(120,60), font_size=20, bg=(109,177,255))
+        self.Lorebutton = Button("Read Lore", (510,425), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
+        self.exitbutton = Button("Exit Game", (690, 425), self.ExitGame, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(60, 30), bg=(109,177,255))
         self.text = Text(227, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
 
         self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 35 )
@@ -40,6 +44,13 @@ class MenuScene(SceneBase):
 
                 if self.Lorebutton.IsClicked(mousepos):
                     self.Lorebutton.call_back_()
+
+                if self.optionsbutton.IsClicked(mousepos):
+                    self.optionsbutton.call_back_()
+
+                if self.Instructionsbutton.IsClicked(mousepos):
+                    self.Instructionsbutton.call_back_()
+                    
                 
                 
     def Update(self):
@@ -55,6 +66,8 @@ class MenuScene(SceneBase):
         self.startbutton.Draw(screen)
         self.exitbutton.Draw(screen)
         self.Lorebutton.Draw(screen)
+        self.optionsbutton.Draw(screen)
+        self.Instructionsbutton.Draw(screen)
 
     #Button functions
     def ExitGame(self):
@@ -68,7 +81,14 @@ class MenuScene(SceneBase):
     def Lore(self):
         print("Going to Lore...")
         self.SwitchToScene(SpaceMongolianLoreTohnborjin())
-        
+
+    def Options(self):
+        print("Going to Options...")
+        self.SwitchToScene(OptionsScene())
+
+    def Instructions(self):
+        print("Going to Instructions...")
+        self.SwitchToScene(Instructions())
         
         
         
