@@ -1,124 +1,68 @@
-from UnitManagement.HorseRifleBlaster import HorseRifleBlaster
-from UnitManagement.Plane import Plane
-from UnitManagement.RifleBlaster import RifleBlaster
-from UnitManagement.SpaceRaider import SpaceRaider
-from UnitManagement.Tank import Tank
-from UnitManagement.Turret import Turret
-from CurrencyManagement.CurrencyManagement import CurrencyManagement
-
-# Utility class that manages the loading of Unit information and the various components
-# to be used in the rendering of the unit on screen and the various functionality behind it
-# PLEASE NOTE that all build times are in multiples of 50 frames. So a build time of 2
-# will take 100 frames to finish... this generally makes the times work out
 
 class UnitLoader():
 
-    currentunit = None
-    buildcount = 0
-    unitgen = 0
-    unitcount = 0
-    CreatedUnits = []
-    QueuedUnits = []
-
-    # Method that is called every frame to check if a unit needs to be constructed
-    # If so it starts constructing it each frame until the queue is empty
+    units = {}
+    createdUnits = []
+    queuedUnits = []
+    currentUnit = None
+    buildCount = 0
+    
+    @classmethod
+    def __init__(cls):
+        file = open('UnitManagement/Units.txt')
+        for j in range(0,4):
+            stats = []
+            name = file.readline()[:-1]
+            print name
+            for i in [3,7,6,12,6,6,14]:
+                stats.append(float(file.readline()[i:-1]))
+            stats.append(file.readline()[13:-1])
+            cls.units[name] = stats
+            print stats
+            file.readline()
+    
     @classmethod
     def BuildUnitsInQueue(cls, statbar):
-
-
-        if cls.currentunit is None:
-            if len(cls.QueuedUnits) > 0:
-                cls.currentunit = cls.QueuedUnits.pop()
+        if cls.currentUnit is None:
+            if len(cls.queuedUnits) > 0:
+                cls.currentUnit = cls.queuedUnits.pop()
         else:
-            if cls.currentunit.buildtime * 50 == cls.buildcount:
-                cls.InstantiateUnit(cls.currentunit, cls.unitgen)
+            if cls.currentUnit.buildtime * 50 == cls.buildCount:
+                cls.InstantiateUnit(cls.currentUnit)
 
                 # Reset working variables
-                cls.buildcount = 0
-                cls.currentunit = None
+                cls.buildCount = 0
+                cls.currentUnit = None
                 statbar.SetFillPercentage(0, 100)
             else:
-                cls.buildcount = cls.buildcount + 1
-                statbar.SetFillPercentage(cls.buildcount, cls.currentunit.buildtime * 50)
+                cls.buildCount += 1
+                statbar.SetFillPercentage(cls.buildCount, cls.currentUnit.buildtime * 50)
 
-
-
-    # Searches through all the created units and returns a created unit by it's ID
-    @classmethod
-    def GetCreatedUnitByUnitID(cls, unitid):
-        for x in cls.CreatedUnits:
-            if x.unitid == unitid:
-                return x
-
-        return None
-
-    # Searches through all the units types and returns an instance of the unit by class
-    @classmethod
-    def GetUnitByUnitClass(cls, unitclass):
-
-        UnitList = cls.FetchUnitClasses()
-
-        for x in UnitList:
-            if x.unitclass == unitclass:
-                return x
-
-        return None
-
-    # Enqueues the designated unit into the build system to be built
     @classmethod
     def EnqueueUnit(cls, unit):
-        if cls.unitcount < 40:
-            if CurrencyManagement.PurchaseUnit(unit):
-                cls.QueuedUnits.append(unit)
-                cls.unitcount = cls.unitcount + 1
-            else:
-                print("[ERROR] Not enough moon crystals to purchase " + unit.unitclass)
+        if len(cls.createdUnits)+len(cls.queuedUnits) < 10:
+            cls.queuedUnits.append(unit)
         else:
-            print("[ERROR] Max unit count reached!")
-
-    # Instantiates a Unit and displays it to the screen
+            print("Max unit count reached!")
+   
     @classmethod
-    def InstantiateUnit(cls, unit, uid):
-
-        unit.unitid = uid
-
+    def InstantiateUnit(cls,unit,lane = 0):
         # Set starting position to be in the main lane
+        unit.laneid = lane
         unit.xpos = 15
         unit.ypos = 500
 
-        cls.CreatedUnits.append(unit)
+        cls.createdUnits.append(unit)
 
     # Removes a Unit from the array of currently created units
     @classmethod
     def DeleteUnit(cls, unit):
+        cls.createdUnits.remove(unit)
 
-         for x in cls.CreatedUnits:
-             if unit.unitid == x.unitid:
-                 cls.CreatedUnits.remove(x)
-
-    # Fetches new copies of all the class units
-    @classmethod
-    def FetchUnitClasses(cls):
-
-        cls.unitgen = cls.unitgen + 1
-
-        p = Plane(cls.unitgen)
-        h = HorseRifleBlaster(cls.unitgen)
-        r = RifleBlaster(cls.unitgen)
-        s = SpaceRaider(cls.unitgen)
-        t = Tank(cls.unitgen)
-        tu = Turret(cls.unitgen)
-
-        UnitList = [p, h, r, s, t, tu]
-
-        return UnitList
-
-    # Returns the list of all currently existing units
     @classmethod
     def GetCreatedUnits(cls):
-        return cls.CreatedUnits
+        return cls.createdUnits
 
-    # Calculate and returns the total used supply
     @classmethod
     def GetUsedSupply(cls):
-        return cls.unitcount
+        return 20

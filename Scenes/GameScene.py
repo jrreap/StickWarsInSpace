@@ -3,6 +3,7 @@ from ImageCache.ImageLoader import GetImage
 from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
+from UnitManagement.Unit import Unit
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
@@ -21,6 +22,8 @@ class GameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
+        UnitLoader.__init__()
+        UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0
@@ -152,7 +155,7 @@ class GameScene(SceneBase):
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
             if (random.randint(0, 100) <= 5):
-                UnitSpawner.EnqueueUnit(UnitSpawner.GetUnitByUnitClass("Rifle Blaster"))
+                UnitSpawner.EnqueueUnit(UnitSpawner.units["Rifle Blaster"])
             self.counter = 0
         else:
             self.counter = self.counter + 1
@@ -163,8 +166,7 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        UnitSpawner.BuildUnitsInQueue()
-
+        #UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
@@ -190,11 +192,16 @@ class GameScene(SceneBase):
 
         # Draw all created units on screen
         for unit in self.cu:
-           screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
+            unit.animate.update()
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
+            bottomRight = (unit.animate.frame,0,90,150)
+            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
 
         for unit in self.ce:
-
-            screen.blit(GetImage(unit.imagepath), (unit.xpos - Camera.GetXOffset(), unit.ypos))
+            unit.animate.update()
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
+            bottomRight = (unit.animate.frame,0,90,150)
+            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
             
 
         # Draw the GUI
@@ -233,37 +240,37 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
-        unit = UnitLoader.GetUnitByUnitClass("Rifle Blaster")
+        unit = Unit(UnitLoader.units["Rifle Blaster"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = UnitLoader.GetUnitByUnitClass("Horse Rifle Blaster")
+        unit = Unit(UnitLoader.units["Horse Rifle Blaster"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
-        unit = UnitLoader.GetUnitByUnitClass("Space Raider")
+        unit = Unit(UnitLoader.units["Space Raider"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = UnitLoader.GetUnitByUnitClass("Space Tank")
+        unit = Unit(UnitLoader.units["Space Tank"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = UnitLoader.GetUnitByUnitClass("Space Plane")
+        unit = UnitLoader.GetUnitByUnitClass(UnitLoader.units["Space Plane"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = UnitLoader.GetUnitByUnitClass("Space Turret")
+        unit = Unit(UnitLoader.units["Space Turret"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)

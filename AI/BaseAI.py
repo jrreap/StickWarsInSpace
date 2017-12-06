@@ -1,6 +1,7 @@
 import random
 from UnitManagement.UnitSpawner import UnitSpawner
 from UnitManagement.UnitLoader import UnitLoader
+from UnitManagement.Unit import Unit
 
 # The base AI class for all enemy "players"
 class BaseAI():
@@ -53,6 +54,8 @@ class BaseAI():
     def CalculateDangerValue(self):
         count = 0
         countai = 0
+        #JAYDEN COULDNT HAVE USED len(), NOOOOOOOO, HE'S TOO GOOD FOR THAT
+        #salt
         for unit in UnitLoader.GetCreatedUnits():
             count = count + 1
 
@@ -79,33 +82,13 @@ class BaseAI():
 
     def BuildUnit(self):
         randtemp = random.randint(0,len(self.UnlockedUnits)-1)
-        unit = UnitSpawner.GetUnitByUnitClass(self.UnlockedUnits[randtemp])
+        unit = Unit(UnitSpawner.units['Rifle Blaster'])
 
         self.cooldown = self.cooldown + 1
 
-        if self.dangervalue == 1:
-            if (self.mooncrystals - unit.unitcost) >= 0:
-                self.RemoveMoonCrystals(unit.unitcost)
-                UnitSpawner.EnqueueUnit(unit)
-
-        elif self.dangervalue == 2:
-            if (self.mooncrystals - unit.unitcost) >= 0:
-                self.RemoveMoonCrystals(unit.unitcost)
-                UnitSpawner.EnqueueUnit(unit)
-
-        elif self.dangervalue == 3:
-            if (self.mooncrystals - unit.unitcost) >= 0:
-                self.RemoveMoonCrystals(unit.unitcost)
-                UnitSpawner.EnqueueUnit(unit)
-
-        elif self.dangervalue == 4:
-            if (self.mooncrystals - unit.unitcost) >= 0:
-                self.RemoveMoonCrystals(unit.unitcost)
-                UnitSpawner.EnqueueUnit(unit)
-        else:
-            if (self.mooncrystals - unit.unitcost) >= 0:
-                self.RemoveMoonCrystals(unit.unitcost)
-                UnitSpawner.EnqueueUnit(unit)
+        if (self.mooncrystals - unit.unitcost) >= 0:
+            self.RemoveMoonCrystals(unit.unitcost)
+            UnitSpawner.EnqueueUnit(unit)
 
 
     # Income methods

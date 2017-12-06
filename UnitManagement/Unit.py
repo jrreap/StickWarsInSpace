@@ -1,3 +1,4 @@
+from UnitAnimations.Walk import Walk
 #Main class for managing and adjusting unit and unit information
 #Should be linked to every unit on the game screen
 
@@ -16,33 +17,25 @@ class Unit():
     attackrate = 0
     unitrange = 0
     attacking = False
-
-    # Position information
-    xpos = 15
-    ypos = 500
-    laneid = 0
+    xpos = 0
+    ypos = 0
 
     # Image and Graphic Information
     imagepath = "Empty"
     
     
-    def __init__(self, uclass, uid, udamage, uspeed, uhealth, upcost, umbt, urate, urange, img, uattacking = False):
-        self.unitclass = uclass
-        self.unitid = uid
-        self.damage = udamage
-        self.speed = uspeed
-        self.health = uhealth
-        self.unitcost = upcost
-        self.buildtime = umbt
-        self.attackrate = urate
-        self.unitrange = urange
-        self.imagepath = img
-        self.attacking = uattacking
+    def __init__(self,stats,lane = 0):
+        self.health = stats[0]
+        self.damage = stats[1]
+        self.speed = stats[2]
+        self.attackrate = stats[3]
+        self.unitrange = stats[4]
+        self.unitcost = stats[5]
+        self.buildtime = stats[6]
+        self.imagepath = "UnitAnimations/"+stats[7]+".png"
+        self.laneid = lane
 
-        self.xpos = 0
-        self.ypos = 0
-        self.laneid = 0
-        
+        self.animate = Walk()
     def DamageUnit(self, amount):
         self.health = self.health - amount
         
