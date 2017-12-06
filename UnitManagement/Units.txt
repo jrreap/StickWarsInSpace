@@ -1,40 +1,42 @@
 Space Raider
+HP=500
+Damage=100
+Speed=1
+Attack rate=1
+Range=1
+Price=50
+Training time=1
+Sprite sheet=walkall
+
+Horse Archer
+HP=300
+Damage=100
+Speed=2
+Attack rate=1
+Range=6
+Price=150
+Training time=2
+Sprite sheet=walkall
+
+Turret
+HP=1000
+Damage=25
+Speed=0
+Attack rate=1
+Range=10
+Price=100
+Training time=5
+Sprite sheet=walkall
+
+Archer
 HP=100
 Damage=50
 Speed=1.5
 Attack rate=1
-Range=1
-Price=100
+Range=4
+Price=50
 Training time=1
 Sprite sheet=walkall
 
-Horse Rifle Blaster
-HP=30
-Damage=50
-Speed=2
-Attack rate=1
-Range=4
-Price=200
-Training time=2
-Sprite sheet=walkall
 
-Tank
-HP=1600
-Damage=500
-Speed=0.5
-Attack rate=5
-Range=2
-Price=500
-Training time=5
-Sprite sheet=walkall
-
-Rifle Blaster
-HP=200
-Damage=100
-Speed=1.5
-Attack rate=1
-Range=6
-Price=200
-Training time=2
-Sprite sheet=walkall
 #add extra units above this line#
