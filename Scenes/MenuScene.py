@@ -8,6 +8,7 @@ from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
+from Scenes.Levels.Level1Opening import Level1Opening
 
 #This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
@@ -76,7 +77,7 @@ class MenuScene(SceneBase):
 
     def StartGame(self):
         print("Starting New Game...")
-        self.SwitchToScene(GameScene())
+        self.SwitchToScene(Level1Opening())
 
     def Lore(self):
         print("Going to Lore...")
