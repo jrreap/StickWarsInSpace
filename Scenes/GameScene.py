@@ -84,7 +84,7 @@ class GameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene(None)
+                    self.SwitchToScene("Scenes.MenuScene.MenuScene")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)

@@ -33,6 +33,10 @@ class MenuScene(SceneBase):
         for event in events:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 self.SwitchToScene(None)
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                self.SwitchToScene(None)
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons has been pressed
@@ -76,7 +80,7 @@ class MenuScene(SceneBase):
 
     def StartGame(self):
         print("Starting New Game...")
-        self.SwitchToScene(GameScene())
+        self.SwitchToScene("Scenes.GameScene.GameScene")
 
     def Lore(self):
         print("Going to Lore...")
