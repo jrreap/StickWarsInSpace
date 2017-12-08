@@ -1,7 +1,6 @@
 import pygame
 from Scenes.MenuScene import MenuScene
 
-
 #MAIN METHOD
 def Start(width, height, fps, starting_scene):
     pygame.init()
@@ -15,6 +14,7 @@ def Start(width, height, fps, starting_scene):
     #DO NOT RENAME THE FILE OR ELSE PYTHON WILL NOT RUN IT
     
     while active_scene != None:
+
             pressed_keys = pygame.key.get_pressed()
             
             filtered_events = []
@@ -26,9 +26,7 @@ def Start(width, height, fps, starting_scene):
                     quit_attempt = True
                 elif event.type == pygame.KEYDOWN:
                     alt_pressed = pressed_keys[pygame.K_LALT]
-                    if event.key == pygame.K_ESCAPE:
-                        quit_attempt = True
-                    elif event.key == pygame.K_F4 and alt_pressed:
+                    if event.key == pygame.K_F4 and alt_pressed:
                         quit_attempt = True                            
                 
                 #Check if we are quitting
@@ -40,8 +38,8 @@ def Start(width, height, fps, starting_scene):
             active_scene.ProcessInput(filtered_events, pressed_keys)
             active_scene.Update()
             active_scene.Render(screen)
-            
-            #Change the scene if the scene has changed
+
+            # Change the scene if the scene has changed
             active_scene = active_scene.next
             
             pygame.display.set_caption("Mongolian Space Stick Wars XD Special Day One Edition")

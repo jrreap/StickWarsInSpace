@@ -47,19 +47,14 @@ class GameScene(SceneBase):
         self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240,30), font_size=20, bg=(176,185,186))
         self.supplybar = Bar("Units: 0/40", (1080, 45), size=(240, 30), font_size=20, bg=(176, 185, 186))
 
-        self.buildmenu = ToggleMenu((1140, 350), size=(100, 400), bg=(176,185,186), shown=False)
+        self.buildmenu = ToggleMenu((1140, 350), size=(160, 400), bg=(176,185,186), shown=False)
 
-        self.buildrifleblaster = Button("RB", (1140, 175), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
-        self.buildhorserifleblaster = Button("HRB", (1140, 225), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
-
-
-        
-        self.buildrifleblaster = Button("RB", (1140, 225), self.BRB, size=(60,30), font_size=15, bg=(109,177,255))
-        self.buildhorserifleblaster = Button("HRB", (1140, 425), self.BHRB, size=(60,30), font_size=15, bg=(109, 177, 255))
-        self.buildspaceraider = Button("SR", (1140, 175), self.BSR, size = (60,30), font_size  = 15, bg = (109, 177, 255))
-        self.buildtank = Button("TANK", (1140, 275), self.BTANK, size =(60,30), font_size = 15, bg = (109, 177, 255))
-        self.buildplane = Button("PLANE", (1140, 325), self.BPLANE, size = (60,30), font_size = 15, bg = (109, 177, 255))
-        self.buildturret = Button("TRT", (1140, 375), self.BTRT, size = (60,30), font_size = 15, bg = (109, 177, 255))
+        self.buildrifleblaster = Button("Rifle Blaster", (1130, 225), self.BRB, size=(120,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("Horse Rifle Blaster", (1130, 425), self.BHRB, size=(120,30), font_size=15, bg=(109, 177, 255))
+        self.buildspaceraider = Button("Space Raider", (1130, 175), self.BSR, size = (120,30), font_size  = 15, bg = (109, 177, 255))
+        self.buildtank = Button("Tank", (1130, 275), self.BTANK, size =(120,30), font_size = 15, bg = (109, 177, 255))
+        self.buildplane = Button("Plane", (1130, 325), self.BPLANE, size = (120,30), font_size = 15, bg = (109, 177, 255))
+        self.buildturret = Button("Turret", (1130, 375), self.BTRT, size = (120,30), font_size = 15, bg = (109, 177, 255))
 
         self.buildmenutoggle = False
 
@@ -89,7 +84,7 @@ class GameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene(None)
+                    self.SwitchToScene("Scenes.MenuScene.MenuScene")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)
