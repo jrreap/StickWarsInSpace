@@ -7,12 +7,14 @@ from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreAddison import SpaceMongolianLoreAddison
 
 
+
 #renders Lore
 class SpaceMongolianLorePeter (SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
         self.continuebutton = Button("Continue", (900, 525), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
+        self.backbutton = Button("Back", (50, 625), self.GoBack, size=(60,30), bg=(109,177,255))
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -24,6 +26,10 @@ class SpaceMongolianLorePeter (SceneBase):
                 # Check if the buttons has been pressed
                 if self.continuebutton.IsClicked(mousepos):
                     self.continuebutton.call_back_()
+
+                if self.backbutton.IsClicked(mousepos):
+                    self.backbutton.call_back_()
+                    
     def Update(self):
         pass
 
@@ -33,7 +39,12 @@ class SpaceMongolianLorePeter (SceneBase):
         screen.blit(GetImage("./Images/Lore/peterlore.jpg"), (0,0))
 
         self.continuebutton.Draw(screen)
+        self.backbutton.Draw(screen)
 
     def Continue(self):
         print("Next Lore")
         self.SwitchToScene(SpaceMongolianLoreAddison())
+
+    def GoBack(self):
+        print("Returning to matthewlore...")
+        self.SwitchToScene("Scenes.Lore.SpaceMongolianLoreMatthew.SpaceMongolianLoreMatthew")
