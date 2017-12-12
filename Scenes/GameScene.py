@@ -4,7 +4,6 @@ from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
 from UnitManagement.Unit import Unit
-from UnitManagement.LaneManager import LaneManager
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
@@ -25,7 +24,7 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         UnitLoader.__init__()
-        UnitSpawner.__init__()
+        #UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0
@@ -150,24 +149,6 @@ class GameScene(SceneBase):
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
-
-
-        # Move all spawned enemy units
-        if(self.counter == 25):
-            self.UnitMovement.MoveEnemyUnits()
-            if (random.randint(0, 100) <= 5):
-                UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
-            self.counter = 0
-        else:
-            self.counter = self.counter + 1
-
-        # Call the AI
-        self.AI.AIUpdate()
-
-        # Move all spawned enemy units
-        self.UnitMovement.MoveEnemyUnits()
-
-        UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
@@ -192,29 +173,11 @@ class GameScene(SceneBase):
         screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw all created units on screen
-        for unit in LaneManager.lane1:
+        for unit in self.cu:
             unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
-
-        for unit in LaneManager.lane2:
-            unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
-
-        for unit in LaneManager.lane3:
-            unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
-
-        #for unit in self.cu:
-        #    unit.animate.update()
-        #    topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
-        #    bottomRight = (unit.animate.frame,0,90,150)
-        #    screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
+            bottomRight = (unit.animate.frame,0,90,150)
+            screen.blit(GetImage(unit.imagepath+"walk.png"),topLeft,bottomRight)
 
         for unit in self.ce:
             unit.animate.update()
