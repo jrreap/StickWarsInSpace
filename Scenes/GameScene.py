@@ -166,7 +166,7 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        #UnitSpawner.BuildUnitsInQueue()
+        UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
