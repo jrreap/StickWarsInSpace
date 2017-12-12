@@ -82,7 +82,7 @@ class BaseAI():
 
     def BuildUnit(self):
         randtemp = random.randint(0,len(self.UnlockedUnits)-1)
-        unit = Unit(UnitSpawner.units['Rifle Blaster'])
+        unit = Unit(UnitSpawner.units['RifleBlaster'])
 
         self.cooldown = self.cooldown + 1
 
