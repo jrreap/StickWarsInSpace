@@ -174,18 +174,14 @@ class GameScene(SceneBase):
 
         # Draw all created units on screen
         for unit in self.cu:
-            unit.animate.update()
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
             bottomRight = (unit.animate.frame,0,90,150)
             if(self.UnitMovement.movementmode == "A"):
+                unit.animate.nextFrame()
                 screen.blit(GetImage(unit.imagepath+"walk.png"),topLeft,bottomRight)
             else:
+                unit.animate.prevFrame()
                 screen.blit(pygame.transform.flip(GetImage(unit.imagepath+"walk.png"),True,False),topLeft,bottomRight)
-        for unit in self.ce:
-            unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
-            bottomRight = (unit.animate.frame,0,90,150)
-            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
             
 
         # Draw the GUI
