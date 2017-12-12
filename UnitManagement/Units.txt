@@ -38,5 +38,25 @@ Price=50
 Training time=1
 Sprite sheet=walkall
 
+Tank
+HP=2000
+Damage=500
+Speed=.5
+Attack rate=5
+Range=2
+Price=200
+Training time=5
+Sprite sheet=walkall
+
+Plane
+HP=200
+Damage=200
+Speed=2
+Attack rate=5
+Range=8
+Price=200
+Training time=5
+Sprite sheet=walkall
+
 
 #add extra units above this line#

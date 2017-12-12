@@ -171,7 +171,7 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        #UnitSpawner.BuildUnitsInQueue()
+        UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
@@ -263,13 +263,13 @@ class GameScene(SceneBase):
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = Unit(UnitLoader.units["Space Tank"])
+        unit = Unit(UnitLoader.units["Tank"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = UnitLoader.GetUnitByUnitClass(UnitLoader.units["Space Plane"])
+        unit = Unit(UnitLoader.units["Plane"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
