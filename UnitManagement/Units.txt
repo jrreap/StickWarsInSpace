@@ -28,7 +28,7 @@ Price=100
 Training time=5
 Sprite sheet=walkall
 
-Rifle Blaster
+RifleBlaster
 HP=100
 Damage=50
 Speed=1.5
