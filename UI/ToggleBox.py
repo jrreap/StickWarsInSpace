@@ -28,6 +28,9 @@ class ToggleBox():
     def ToggleBox(self):
         self.shown = not self.shown
 
+    def SetToggle(self, toggle):
+        self.shown = toggle
+
     def IsToggled(self):
         return self.shown
 

@@ -11,5 +11,5 @@ class Walk():
             if self.frame == 90*8:
                 self.frame = 0
         self.wait += 1
-        if self.wait == 6:
+        if self.wait == 4:
             self.wait = 0
