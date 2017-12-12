@@ -1,3 +1,4 @@
+from UnitManagement.LaneManager import LaneManager
 
 class UnitLoader():
 
@@ -48,16 +49,24 @@ class UnitLoader():
     @classmethod
     def InstantiateUnit(cls,unit,lane = 0):
         # Set starting position to be in the main lane
-        unit.laneid = lane
+        if unit.laneid >= 2:
+            lane = 0
+        unit.laneid = lane + 1
         unit.xpos = 15
         unit.ypos = 500
 
         cls.createdUnits.append(unit)
 
+        # Create in lane
+        LaneManager.AddUnitToLane(unit, lane)
+
     # Removes a Unit from the array of currently created units
     @classmethod
     def DeleteUnit(cls, unit):
         cls.createdUnits.remove(unit)
+
+        # Now remove it from the lane
+        LaneManager.RemoveUnitFromLane(unit)
 
     @classmethod
     def GetCreatedUnits(cls):
