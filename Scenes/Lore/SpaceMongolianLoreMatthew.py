@@ -13,7 +13,7 @@ class SpaceMongolianLoreMatthew (SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         self.continuebutton = Button("Continue", (900, 525), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
-        self.backbutton = Button("Back", (50,625), self.GoBack, size=(60,30), bg=(109,177,255))
+        self.backbutton = Button("Back", (900,605), self.GoBack, size=(120,60), font_size=20, bg=(109,177,255))
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
