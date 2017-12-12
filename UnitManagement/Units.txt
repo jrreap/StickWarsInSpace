@@ -51,6 +51,4 @@ Attack rate=5
 Range=8
 Price=200
 Training time=5
-
-
 #add extra units above this line#

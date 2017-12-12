@@ -24,7 +24,7 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         UnitLoader.__init__()
-        UnitSpawner.__init__()
+        #UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0
@@ -166,7 +166,7 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        UnitSpawner.BuildUnitsInQueue()
+        #UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
@@ -195,7 +195,7 @@ class GameScene(SceneBase):
             unit.animate.update()
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
             bottomRight = (unit.animate.frame,0,90,150)
-            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
+            screen.blit(GetImage(unit.imagepath+"walk.png"),topLeft,bottomRight)
 
         for unit in self.ce:
             unit.animate.update()
