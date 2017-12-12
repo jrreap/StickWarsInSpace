@@ -49,9 +49,9 @@ class GameScene(SceneBase):
 
         self.buildmenu = ToggleMenu((1140, 350), size=(160, 400), bg=(176,185,186), shown=False)
 
-        self.buildrifleblaster = Button("Rifle Blaster", (1130, 225), self.BRB, size=(120,30), font_size=15, bg=(109,177,255))
-        self.buildhorserifleblaster = Button("Horse Rifle Blaster", (1130, 425), self.BHRB, size=(120,30), font_size=15, bg=(109, 177, 255))
-        self.buildspaceraider = Button("Space Raider", (1130, 175), self.BSR, size = (120,30), font_size  = 15, bg = (109, 177, 255))
+        self.buildrifleblaster = Button("RifleBlaster", (1130, 225), self.BRB, size=(120,30), font_size=15, bg=(109,177,255))
+        self.buildhorserifleblaster = Button("HorseRifleBlaster", (1130, 425), self.BHRB, size=(120,30), font_size=15, bg=(109, 177, 255))
+        self.buildspaceraider = Button("SpaceRaider", (1130, 175), self.BSR, size = (120,30), font_size  = 15, bg = (109, 177, 255))
         self.buildtank = Button("Tank", (1130, 275), self.BTANK, size =(120,30), font_size = 15, bg = (109, 177, 255))
         self.buildplane = Button("Plane", (1130, 325), self.BPLANE, size = (120,30), font_size = 15, bg = (109, 177, 255))
         self.buildturret = Button("Turret", (1130, 375), self.BTRT, size = (120,30), font_size = 15, bg = (109, 177, 255))
@@ -155,7 +155,7 @@ class GameScene(SceneBase):
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
             if (random.randint(0, 100) <= 5):
-                UnitSpawner.EnqueueUnit(UnitSpawner.units["Rifle Blaster"])
+                UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
             self.counter = 0
         else:
             self.counter = self.counter + 1
@@ -240,19 +240,19 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
-        unit = Unit(UnitLoader.units["Rifle Blaster"])
+        unit = Unit(UnitLoader.units["RifleBlaster"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = Unit(UnitLoader.units["Horse Rifle Blaster"])
+        unit = Unit(UnitLoader.units["HorseRifleBlaster"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
-        unit = Unit(UnitLoader.units["Space Raider"])
+        unit = Unit(UnitLoader.units["SpaceRaider"])
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)

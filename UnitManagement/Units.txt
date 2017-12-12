@@ -1,4 +1,4 @@
-Space Raider
+SpaceRaider
 HP=500
 Damage=100
 Speed=1
@@ -8,7 +8,7 @@ Price=50
 Training time=1
 Sprite sheet=walkall
 
-Horse Rifle Blaster
+HorseRifleBlaster
 HP=300
 Damage=100
 Speed=2
