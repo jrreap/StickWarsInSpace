@@ -6,8 +6,8 @@
 class UnitSpawner():
 
     units = {}
-    currentunit = None
-    buildcount = 0
+    currentUnit = None
+    buildCount = 0
     createdUnits = []
     queuedUnits = []
 
@@ -29,19 +29,21 @@ class UnitSpawner():
     # If so it starts constructing it each frame until the queue is empty
     @classmethod
     def BuildUnitsInQueue(cls):
-
-        if cls.currentunit is None:
-            if len(cls.queuedUnits) > 0:
-                cls.currentunit = cls.queuedUnits.pop()
+        if cls.currentUnit is None:
+            if len(cls.queuedUnits) > 1:
+                cls.currentUnit = cls.queuedUnits.pop()
+                print "yes?"
+                print cls.currentUnit.buildtime
+                print len(cls.queuedUnits)
         else:
-            if cls.currentunit.buildtime * 50 == cls.buildcount:
-                cls.InstantiateUnit(cls.currentunit)
+            if cls.currentUnit.buildtime * 50 == cls.buildCount:
+                cls.InstantiateUnit(cls.currentUnit)
 
                 # Reset working variables
-                cls.buildcount = 0
-                cls.currentunit = None
+                cls.buildCount = 0
+                cls.currentUnit = None
             else:
-                cls.buildcount = cls.buildcount + 1
+                cls.buildCount += 1
 
     # Enqueues the designated unit into the build system to be built
     @classmethod
@@ -50,9 +52,10 @@ class UnitSpawner():
 
     # Instantiates a Unit and displays it to the screen
     @classmethod
-    def InstantiateUnit(cls, unit):
+    def InstantiateUnit(cls, unit, lane = 0):
 
         # Set starting position to be in the main lane
+        unit.laneid = lane
         unit.xpos = 3000
         unit.ypos = 500
 

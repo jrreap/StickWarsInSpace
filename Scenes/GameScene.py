@@ -166,7 +166,7 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        #UnitSpawner.BuildUnitsInQueue()
+        UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
@@ -240,37 +240,37 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
-        unit = Unit(UnitLoader.units["RifleBlaster"])
+        unit = Unit(UnitLoader.units["RifleBlaster"],"RifleBlaster")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = Unit(UnitLoader.units["HorseRifleBlaster"])
+        unit = Unit(UnitLoader.units["HorseRifleBlaster"],"HorseRifleBlaster")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
-        unit = Unit(UnitLoader.units["SpaceRaider"])
+        unit = Unit(UnitLoader.units["SpaceRaider"],"SpaceRaider")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = Unit(UnitLoader.units["Tank"])
+        unit = Unit(UnitLoader.units["Tank"],"Tank")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = Unit(UnitLoader.units["Plane"])
+        unit = Unit(UnitLoader.units["Plane"],"Plane")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = Unit(UnitLoader.units["Turret"])
+        unit = Unit(UnitLoader.units["Turret"],"Turret")
         unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
