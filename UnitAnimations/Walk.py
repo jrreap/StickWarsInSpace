@@ -8,7 +8,7 @@ class Walk():
     def update(self):
         if self.wait == 0:
             self.frame += 90
-            if self.frame == 90*8:
+            if self.frame == 90*7:
                 self.frame = 0
         self.wait += 1
         if self.wait == 4:
