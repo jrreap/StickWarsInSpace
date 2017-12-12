@@ -32,10 +32,9 @@ class Unit():
         self.unitrange = stats[4]
         self.unitcost = stats[5]
         self.buildtime = stats[6]
-        self.imagepath = "UnitAnimations/+"imagefolder+"/"
         self.laneid = lane
 
-        self.animate = Walk()
+        self.animate = Walk("UnitAnimations/"+imagefolder+"/")
         
     def DamageUnit(self, amount):
         self.health = self.health - amount
