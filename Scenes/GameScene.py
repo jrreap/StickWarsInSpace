@@ -177,8 +177,10 @@ class GameScene(SceneBase):
             unit.animate.update()
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
             bottomRight = (unit.animate.frame,0,90,150)
-            screen.blit(GetImage(unit.imagepath+"walk.png"),topLeft,bottomRight)
-
+            if(self.UnitMovement.movementmode == "A"):
+                screen.blit(GetImage(unit.imagepath+"walk.png"),topLeft,bottomRight)
+            else:
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath+"walk.png"),True,False),topLeft,bottomRight)
         for unit in self.ce:
             unit.animate.update()
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
