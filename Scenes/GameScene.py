@@ -4,6 +4,7 @@ from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
 from UnitManagement.Unit import Unit
+from UnitManagement.LaneManager import LaneManager
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
@@ -191,11 +192,29 @@ class GameScene(SceneBase):
         screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw all created units on screen
-        for unit in self.cu:
+        for unit in LaneManager.lane1:
             unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
-            bottomRight = (unit.animate.frame,0,90,150)
-            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
+
+        for unit in LaneManager.lane2:
+            unit.animate.update()
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
+
+        for unit in LaneManager.lane3:
+            unit.animate.update()
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
+
+        #for unit in self.cu:
+        #    unit.animate.update()
+        #    topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
+        #    bottomRight = (unit.animate.frame,0,90,150)
+        #    screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
 
         for unit in self.ce:
             unit.animate.update()
