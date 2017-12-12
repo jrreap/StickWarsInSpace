@@ -11,7 +11,7 @@ class Level1Opening (SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
-        self.startbutton = Button("Continue to game...", (900,500), self.StartGame, size=(160,60), font_size=20, bg=(109,177,255))
+        self.startbutton = Button("Continue", (900,500), self.StartGame, size=(160,60), font_size=20, bg=(109,177,255))
 
 
 
