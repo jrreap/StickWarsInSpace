@@ -43,7 +43,7 @@ class UnitLoader():
     @classmethod
     def EnqueueUnit(cls, unit):
         if CurrencyManagement.GetMoonCrystals() - unit.unitcost >= 0:
-            if len(cls.createdUnits)+len(cls.queuedUnits) < 10:
+            if len(cls.createdUnits)+len(cls.queuedUnits) < 40:
 
                 if cls.lane > 2:
                     cls.lane = 1
@@ -81,4 +81,4 @@ class UnitLoader():
 
     @classmethod
     def GetUsedSupply(cls):
-        return 20
+        return len(cls.createdUnits) + len(cls.queuedUnits)
