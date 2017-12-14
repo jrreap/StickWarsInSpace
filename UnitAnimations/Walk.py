@@ -8,7 +8,7 @@ class Walk():
     def nextFrame(self):
         if self.wait == 0:
             self.frame += 90
-            if self.frame >= 90*8:
+            if self.frame >= 90*7:
                 self.frame = 0
         self.wait += 1
         if self.wait == 4:
@@ -17,7 +17,7 @@ class Walk():
         if self.wait == 0:
             self.frame -= 90
             if self.frame <= 0:
-                self.frame = 90*7
+                self.frame = 90*6
         self.wait += 1
         if self.wait == 4:
             self.wait = 0
