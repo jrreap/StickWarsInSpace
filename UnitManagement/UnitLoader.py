@@ -1,3 +1,4 @@
+from UnitManagement.LaneManager import LaneManager
 
 class UnitLoader():
 
@@ -6,6 +7,7 @@ class UnitLoader():
     queuedUnits = []
     currentUnit = None
     buildCount = 0
+    lane = 0
     
     @classmethod
     def __init__(cls):
@@ -40,23 +42,35 @@ class UnitLoader():
     @classmethod
     def EnqueueUnit(cls, unit):
         if len(cls.createdUnits)+len(cls.queuedUnits) < 10:
+
+            if cls.lane > 2:
+                cls.lane = 1
+            else:
+                cls.lane = cls.lane + 1
+
+            unit.laneid = cls.lane
             cls.queuedUnits.append(unit)
         else:
             print("Max unit count reached!")
    
     @classmethod
-    def InstantiateUnit(cls,unit,lane = 0):
+    def InstantiateUnit(cls,unit):
         # Set starting position to be in the main lane
-        unit.laneid = lane
-        unit.xpos = 15
-        unit.ypos = 500
+        unit.xpos = 150 + (20*unit.laneid)
+        unit.ypos = 550 - (50*unit.laneid)
 
         cls.createdUnits.append(unit)
+
+        # Add to lane
+        LaneManager.AddUnitToLane(unit, unit.laneid)
 
     # Removes a Unit from the array of currently created units
     @classmethod
     def DeleteUnit(cls, unit):
         cls.createdUnits.remove(unit)
+
+        # Remove from lane
+        LaneManager.RemoveUnitFromLane(unit, unit.laneid)
 
     @classmethod
     def GetCreatedUnits(cls):

@@ -4,6 +4,7 @@ from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
 from UnitManagement.Unit import Unit
+from UnitManagement.LaneManager import LaneManager
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
@@ -34,10 +35,10 @@ class GameScene(SceneBase):
 
         self.UnitMovement = UnitMovement()
 
-        if Options.hardcoremode:
-            self.AI = BaseAI(6)
-        else:
-            self.AI = BaseAI(1)
+        #if Options.hardcoremode:
+            #self.AI = BaseAI(6)
+        #else:
+            #self.AI = BaseAI(1)
 
         self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
         self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
@@ -173,14 +174,36 @@ class GameScene(SceneBase):
         screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw all created units on screen
-        for unit in self.cu:
+        for unit in LaneManager.lane3:
             unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
-            bottomRight = (unit.animate.frame,0,90,150)
-            if(self.UnitMovement.movementmode == "A"):
-                screen.blit(GetImage(unit.imagepath+"walk.png"),topLeft,bottomRight)
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            if (self.UnitMovement.movementmode == "A"):
+                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
             else:
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath+"walk.png"),True,False),topLeft,bottomRight)
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
+                            bottomRight)
+
+        for unit in LaneManager.lane2:
+            unit.animate.update()
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            if (self.UnitMovement.movementmode == "A"):
+                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
+            else:
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
+                            bottomRight)
+
+        for unit in LaneManager.lane1:
+            unit.animate.update()
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            if (self.UnitMovement.movementmode == "A"):
+                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
+            else:
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
+                            bottomRight)
+
         for unit in self.ce:
             unit.animate.update()
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
@@ -225,37 +248,31 @@ class GameScene(SceneBase):
 
     def BRB(self):
         unit = Unit(UnitLoader.units["RifleBlaster"],"RifleBlaster")
-        unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
         unit = Unit(UnitLoader.units["HorseRifleBlaster"],"HorseRifleBlaster")
-        unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
         unit = Unit(UnitLoader.units["SpaceRaider"],"SpaceRaider")
-        unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
         unit = Unit(UnitLoader.units["Tank"],"Tank")
-        unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
         unit = Unit(UnitLoader.units["Plane"],"Plane")
-        unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
         unit = Unit(UnitLoader.units["Turret"],"Turret")
-        unit.laneid = 1
 
         UnitLoader.EnqueueUnit(unit)
 

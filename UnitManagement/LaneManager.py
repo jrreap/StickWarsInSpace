@@ -16,6 +16,7 @@ class LaneManager():
             cls.lane3.append(unit)
         else:
             print("[ERROR] That is not a valid lane id!")
+            print("[ERROR] unitlane = " + str(unitlane))
 
     @classmethod
     def RemoveUnitFromLane(cls, unit, unitlane):
