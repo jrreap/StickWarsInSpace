@@ -30,7 +30,7 @@ class Unit():
         self.speed = stats[2]
         self.attackrate = stats[3]
         self.unitrange = stats[4]
-        self.unitcost = stats[5]
+        self.unitcost = int(stats[5])
         self.buildtime = stats[6]
         self.imagepath = "UnitAnimations/"+imagefolder+"/"
         self.laneid = lane

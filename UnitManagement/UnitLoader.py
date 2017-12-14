@@ -1,4 +1,5 @@
 from UnitManagement.LaneManager import LaneManager
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 
 class UnitLoader():
 
@@ -41,17 +42,19 @@ class UnitLoader():
 
     @classmethod
     def EnqueueUnit(cls, unit):
-        if len(cls.createdUnits)+len(cls.queuedUnits) < 10:
+        if CurrencyManagement.GetMoonCrystals() - unit.unitcost >= 0:
+            if len(cls.createdUnits)+len(cls.queuedUnits) < 10:
 
-            if cls.lane > 2:
-                cls.lane = 1
+                if cls.lane > 2:
+                    cls.lane = 1
+                else:
+                    cls.lane = cls.lane + 1
+
+                unit.laneid = cls.lane
+                CurrencyManagement.PurchaseUnit(unit)
+                cls.queuedUnits.append(unit)
             else:
-                cls.lane = cls.lane + 1
-
-            unit.laneid = cls.lane
-            cls.queuedUnits.append(unit)
-        else:
-            print("Max unit count reached!")
+                print("Max unit count reached!")
    
     @classmethod
     def InstantiateUnit(cls,unit):
