@@ -19,10 +19,10 @@ class MenuScene(SceneBase):
         self.Instructionsbutton = Button("Instructions", (690,325), self.Instructions, size=(120,60), font_size=20, bg=(109,177,255))
         self.Lorebutton = Button("Read Lore", (510,425), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
         self.exitbutton = Button("Exit Game", (690, 425), self.ExitGame, size=(120, 60), font_size=20, bg=(109, 177, 255))
-        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(60, 30), bg=(109,177,255))
-        self.text = Text(227, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255))
+        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(90, 40), bg=(109,177,255))
+        self.text = Text(228, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255), fontSize= 45)
 
-        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 35 )
+        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 45 )
 
         # Start music
         b = Boombox()
