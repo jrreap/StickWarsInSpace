@@ -14,7 +14,6 @@ class Camera(object):
     def SetCameraOffset(cls, xoff, yoff):
 
         # 3600
-        print(cls.cx)
 
         # Make sure these values are not below 0
         if xoff >= 0 or xoff <= 2350:
