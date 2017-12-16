@@ -21,10 +21,6 @@ class OptionsScene(SceneBase):
         self.text1 = Text(100, 600, "Options Menu", bold=True,
                           color=(255, 255, 255), font="Arial", fontSize=35)
 
-        # Start music
-        b = Boombox()
-        b.playmusic("menumusic")
-
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
         for event in events:
