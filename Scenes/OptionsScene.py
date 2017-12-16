@@ -36,7 +36,6 @@ class OptionsScene(SceneBase):
                 if self.backbutton.IsClicked(mousepos):
                     self.backbutton.call_back_()
 
-
     def Update(self):
         pass
 
@@ -61,4 +60,3 @@ class OptionsScene(SceneBase):
 
     def GoBack(self):
         self.SwitchToScene("Scenes.MenuScene.MenuScene")
-

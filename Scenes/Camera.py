@@ -1,11 +1,11 @@
 import pygame
 
+
 # Main class utilized to manage "camera" position and screen rendering
 # Used by a lot of classes to correctly render objects on screen
 # DO NOT TOUCH WITHOUT CONSULTING JAYDON
 
 class Camera(object):
-
     cx = 0
     cy = 0
 
@@ -57,4 +57,3 @@ class Camera(object):
     @classmethod
     def GetYOffset(cls):
         return cls.cy
-

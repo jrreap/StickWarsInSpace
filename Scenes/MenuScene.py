@@ -10,26 +10,31 @@ from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborji
 from Scenes.Instructions import Instructions
 from Scenes.Levels.Level1Opening import Level1Opening
 
+
 # This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
-    
+
     def __init__(self):
         SceneBase.__init__(self)
-        self.startbutton = Button("Start Game", (510,325), self.StartGame, size=(120,60), font_size=20, bg=(109,177,255))
-        self.Instructionsbutton = Button("Instructions", (690,325), self.Instructions, size=(120,60), font_size=20, bg=(109,177,255))
-        self.Lorebutton = Button("Read Lore", (510,425), self.Lore, size=(120,60), font_size=20, bg=(109,177,255))
-        self.exitbutton = Button("Exit Game", (690, 425), self.ExitGame, size=(120, 60), font_size=20, bg=(109, 177, 255))
-        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(90, 40), bg=(109,177,255))
-        self.text = Text(228, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color=(109,177,255), fontSize= 45)
+        self.startbutton = Button("Start Game", (510, 325), self.StartGame, size=(120, 60), font_size=20,
+                                  bg=(109, 177, 255))
+        self.Instructionsbutton = Button("Instructions", (690, 325), self.Instructions, size=(120, 60), font_size=20,
+                                         bg=(109, 177, 255))
+        self.Lorebutton = Button("Read Lore", (510, 425), self.Lore, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.exitbutton = Button("Exit Game", (690, 425), self.ExitGame, size=(120, 60), font_size=20,
+                                 bg=(109, 177, 255))
+        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(90, 40), bg=(109, 177, 255))
+        self.text = Text(228, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True,
+                         color=(109, 177, 255), fontSize=45)
 
-        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True, color = (255,255,255), font = "Arial", fontSize = 45 )
+        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True,
+                          color=(255, 255, 255), font="Arial", fontSize=45)
 
         # Start music
         b = Boombox()
 
         if not b.MusicStatus():
             b.PlayMusic("menumusic")
-
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -57,17 +62,15 @@ class MenuScene(SceneBase):
 
                 if self.Instructionsbutton.IsClicked(mousepos):
                     self.Instructionsbutton.call_back_()
-                    
-                
-                
+
     def Update(self):
         pass
-    
+
     def Render(self, screen):
         screen.fill((0, 0, 0))
-            
-        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0,0))
-        
+
+        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
+
         self.text.DrawCenter(screen)
         self.text1.DrawCenter(screen)
         self.startbutton.Draw(screen)
@@ -76,7 +79,7 @@ class MenuScene(SceneBase):
         self.optionsbutton.Draw(screen)
         self.Instructionsbutton.Draw(screen)
 
-    #Button functions
+    # Button functions
     def ExitGame(self):
         print("Exiting Game...")
         self.next = None
@@ -96,6 +99,3 @@ class MenuScene(SceneBase):
     def Instructions(self):
         print("Going to Instructions...")
         self.SwitchToScene(Instructions())
-        
-        
-        
