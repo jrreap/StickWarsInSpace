@@ -1,6 +1,5 @@
 import pygame
 from Scenes.SceneBase import SceneBase
-from Scenes.GameScene import GameScene
 from Scenes.OptionsScene import OptionsScene
 from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
@@ -8,9 +7,8 @@ from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
-from Scenes.Levels.Level1Opening import Level1Opening
 
-#This scene is responsible for rendering the menu "scene"
+# This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
     
     def __init__(self):
