@@ -1,5 +1,6 @@
 import pygame
 from Scenes.SceneBase import SceneBase
+from Scenes.GameScene import GameScene
 from Scenes.OptionsScene import OptionsScene
 from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
@@ -7,6 +8,7 @@ from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
+from Scenes.Levels.Level1Opening import Level1Opening
 
 # This scene is responsible for rendering the menu "scene"
 class MenuScene(SceneBase):
@@ -24,7 +26,9 @@ class MenuScene(SceneBase):
 
         # Start music
         b = Boombox()
-        b.playmusic("menumusic")
+
+        if not b.MusicStatus():
+            b.PlayMusic("menumusic")
 
 
     def ProcessInput(self, events, pressed_keys):
