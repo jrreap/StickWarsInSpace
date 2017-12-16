@@ -69,7 +69,7 @@ class GameScene(SceneBase):
         self.buildmenu.AddButton(self.buildturret)
 
         b = Boombox()
-        b.playmusic("level1playmusic")
+        b.PlayMusic("level1playmusic")
 
 
 
