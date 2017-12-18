@@ -10,6 +10,7 @@ from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
 from Combat.Detect import Detect
 from Combat.AttackDefend import AttackDefend
+from Combat.WinCon import WinCon
 from AI.BaseAI import BaseAI
 from Camera import Camera
 from Music.Boombox import Boombox
@@ -29,6 +30,7 @@ class GameScene(SceneBase):
         self.counter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
+        self.Health = 5000
 
         self.offset = 0
 
@@ -166,7 +168,7 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        UnitSpawner.BuildUnitsInQueue()
+        #UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
@@ -175,6 +177,9 @@ class GameScene(SceneBase):
         else:
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = self.AttackRate + 1
+
+        #Attack Base
+        #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
             
         #AI attacks
         if(self.EAttackRate == 30):

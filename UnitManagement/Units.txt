@@ -11,7 +11,7 @@ Sprite sheet=walkall
 HorseRifleBlaster
 HP=300
 Damage=100
-Speed=2
+Speed=5
 Attack rate=1
 Range=6
 Price=150
