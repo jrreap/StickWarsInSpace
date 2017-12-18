@@ -4,6 +4,7 @@ from UnitManagement.UnitLoader import UnitLoader
 from UnitManagement.UnitMovement import UnitMovement
 from UnitManagement.UnitSpawner import UnitSpawner
 from UnitManagement.Unit import Unit
+from UnitManagement.LaneManager import LaneManager
 from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
@@ -25,7 +26,7 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         UnitLoader.__init__()
-        UnitSpawner.__init__()
+        # UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0
@@ -36,27 +37,32 @@ class GameScene(SceneBase):
 
         self.UnitMovement = UnitMovement()
 
-        if Options.hardcoremode:
-            self.AI = BaseAI(6)
-        else:
-            self.AI = BaseAI(1)
+        # if Options.hardcoremode:
+        # self.AI = BaseAI(6)
+        # else:
+        # self.AI = BaseAI(1)
 
-        self.defendbutton = Button("Defend", (60,635), self.Attack, size=(120,30), font_size=20, bg=(109,177,255))
-        self.holdbutton = Button("Hold", (185,635), self.HoldPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.attackbutton = Button("Attack", (310,635), self.DefendPosition, size=(120,30), font_size=20, bg=(109,177,255))
-        self.openmenu = Button("Build List", (1130, 600), self.Menu, size=(120,30), font_size=20, bg=(109, 177, 255))
+        self.defendbutton = Button("Defend", (60, 635), self.Attack, size=(120, 30), font_size=20, bg=(109, 177, 255))
+        self.holdbutton = Button("Hold", (185, 635), self.HoldPosition, size=(120, 30), font_size=20,
+                                 bg=(109, 177, 255))
+        self.attackbutton = Button("Attack", (310, 635), self.DefendPosition, size=(120, 30), font_size=20,
+                                   bg=(109, 177, 255))
+        self.openmenu = Button("Build List", (1130, 600), self.Menu, size=(120, 30), font_size=20, bg=(109, 177, 255))
 
-        self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240,30), font_size=20, bg=(176,185,186))
+        self.resourcebar = Bar("Moon Crystals: 100", (1080, 15), size=(240, 30), font_size=20, bg=(176, 185, 186))
         self.supplybar = Bar("Units: 0/40", (1080, 45), size=(240, 30), font_size=20, bg=(176, 185, 186))
 
-        self.buildmenu = ToggleMenu((1140, 350), size=(160, 400), bg=(176,185,186), shown=False)
+        self.buildmenu = ToggleMenu((1140, 350), size=(160, 400), bg=(176, 185, 186), shown=False)
 
-        self.buildrifleblaster = Button("RifleBlaster", (1130, 225), self.BRB, size=(120,30), font_size=15, bg=(109,177,255))
-        self.buildhorserifleblaster = Button("HorseRifleBlaster", (1130, 425), self.BHRB, size=(120,30), font_size=15, bg=(109, 177, 255))
-        self.buildspaceraider = Button("SpaceRaider", (1130, 175), self.BSR, size = (120,30), font_size  = 15, bg = (109, 177, 255))
-        self.buildtank = Button("Tank", (1130, 275), self.BTANK, size =(120,30), font_size = 15, bg = (109, 177, 255))
-        self.buildplane = Button("Plane", (1130, 325), self.BPLANE, size = (120,30), font_size = 15, bg = (109, 177, 255))
-        self.buildturret = Button("Turret", (1130, 375), self.BTRT, size = (120,30), font_size = 15, bg = (109, 177, 255))
+        self.buildrifleblaster = Button("RifleBlaster", (1130, 225), self.BRB, size=(120, 30), font_size=15,
+                                        bg=(109, 177, 255))
+        self.buildhorserifleblaster = Button("HorseRifleBlaster", (1130, 425), self.BHRB, size=(120, 30), font_size=15,
+                                             bg=(109, 177, 255))
+        self.buildspaceraider = Button("SpaceRaider", (1130, 175), self.BSR, size=(120, 30), font_size=15,
+                                       bg=(109, 177, 255))
+        self.buildtank = Button("Tank", (1130, 275), self.BTANK, size=(120, 30), font_size=15, bg=(109, 177, 255))
+        self.buildplane = Button("Plane", (1130, 325), self.BPLANE, size=(120, 30), font_size=15, bg=(109, 177, 255))
+        self.buildturret = Button("Turret", (1130, 375), self.BTRT, size=(120, 30), font_size=15, bg=(109, 177, 255))
 
         self.buildmenutoggle = False
 
@@ -70,9 +76,7 @@ class GameScene(SceneBase):
         self.buildmenu.AddButton(self.buildturret)
 
         b = Boombox()
-        b.playmusic("level1playmusic")
-
-
+        b.PlayMusic("level1playmusic")
 
     def ProcessInput(self, events, pressed_keys):
 
@@ -141,8 +145,6 @@ class GameScene(SceneBase):
                     self.buildmenutoggle = not self.buildmenutoggle
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
-                
-
     def Update(self):
 
         self.cu = UnitLoader.GetCreatedUnits()
@@ -152,6 +154,7 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
+<<<<<<< HEAD
 
         # Move all spawned enemy units
         if(self.counter == 25):
@@ -172,42 +175,76 @@ class GameScene(SceneBase):
     
         #You attack
         if(self.AttackRate == 30):
+=======
+        # You attack
+        if (self.AttackRate == 30):
+>>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = self.AttackRate + 1
 
+<<<<<<< HEAD
         #Attack Base
         #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
             
         #AI attacks
         if(self.EAttackRate == 30):
+=======
+        # AI attacks
+        if (self.EAttackRate == 30):
+>>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = 0
         else:
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = self.EAttackRate + 1
-            
+
     def Render(self, screen):
         screen.fill((0, 0, 0))
-
 
         screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw all created units on screen
-        for unit in self.cu:
-            unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
-            bottomRight = (unit.animate.frame,0,90,150)
-            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
+        for unit in LaneManager.lane3:
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            if (self.UnitMovement.movementmode == "A"):
+                unit.animate.nextFrame()
+                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
+            else:
+                unit.animate.prevFrame()
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
+                            bottomRight)
+
+        for unit in LaneManager.lane2:
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            if (self.UnitMovement.movementmode == "A"):
+                unit.animate.nextFrame()
+                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
+            else:
+                unit.animate.prevFrame()
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
+                            bottomRight)
+
+        for unit in LaneManager.lane1:
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            if (self.UnitMovement.movementmode == "A"):
+                unit.animate.nextFrame()
+                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
+            else:
+                unit.animate.prevFrame()
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
+                            bottomRight)
 
         for unit in self.ce:
-            unit.animate.update()
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos,90,150)
-            bottomRight = (unit.animate.frame,0,90,150)
-            screen.blit(GetImage(unit.imagepath),topLeft,bottomRight)
-            
+            unit.animate.frame
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
+            bottomRight = (unit.animate.frame, 0, 90, 150)
+            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
 
         # Draw the GUI
         self.attackbutton.Draw(screen)
@@ -223,7 +260,6 @@ class GameScene(SceneBase):
 
         self.resourcebar.Draw(screen)
         self.supplybar.Draw(screen)
-
 
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
@@ -245,39 +281,31 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
-        unit = Unit(UnitLoader.units["RifleBlaster"])
-        unit.laneid = 1
+        unit = Unit(UnitLoader.units["RifleBlaster"], "RifleBlaster")
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = Unit(UnitLoader.units["HorseRifleBlaster"])
-        unit.laneid = 1
+        unit = Unit(UnitLoader.units["HorseRifleBlaster"], "HorseRifleBlaster")
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
-        unit = Unit(UnitLoader.units["SpaceRaider"])
-        unit.laneid = 1
+        unit = Unit(UnitLoader.units["SpaceRaider"], "SpaceRaider")
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = Unit(UnitLoader.units["Tank"])
-        unit.laneid = 1
+        unit = Unit(UnitLoader.units["Tank"], "Tank")
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = Unit(UnitLoader.units["Plane"])
-        unit.laneid = 1
+        unit = Unit(UnitLoader.units["Plane"], "Plane")
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = Unit(UnitLoader.units["Turret"])
-        unit.laneid = 1
+        unit = Unit(UnitLoader.units["Turret"], "Turret")
 
         UnitLoader.EnqueueUnit(unit)
-
-        

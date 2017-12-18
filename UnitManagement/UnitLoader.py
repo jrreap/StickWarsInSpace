@@ -1,3 +1,5 @@
+from UnitManagement.LaneManager import LaneManager
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 
 class UnitLoader():
 
@@ -6,6 +8,7 @@ class UnitLoader():
     queuedUnits = []
     currentUnit = None
     buildCount = 0
+    lane = 0
     
     @classmethod
     def __init__(cls):
@@ -16,7 +19,6 @@ class UnitLoader():
             print name
             for i in [3,7,6,12,6,6,14]:
                 stats.append(float(file.readline()[i:-1]))
-            stats.append(file.readline()[13:-1])
             cls.units[name] = stats
             print stats
             file.readline()
@@ -40,24 +42,38 @@ class UnitLoader():
 
     @classmethod
     def EnqueueUnit(cls, unit):
-        if len(cls.createdUnits)+len(cls.queuedUnits) < 10:
-            cls.queuedUnits.append(unit)
-        else:
-            print("Max unit count reached!")
+        if CurrencyManagement.GetMoonCrystals() - unit.unitcost >= 0:
+            if len(cls.createdUnits)+len(cls.queuedUnits) < 40:
+
+                if cls.lane > 2:
+                    cls.lane = 1
+                else:
+                    cls.lane = cls.lane + 1
+
+                unit.laneid = cls.lane
+                CurrencyManagement.PurchaseUnit(unit)
+                cls.queuedUnits.append(unit)
+            else:
+                print("Max unit count reached!")
    
     @classmethod
-    def InstantiateUnit(cls,unit,lane = 0):
+    def InstantiateUnit(cls,unit):
         # Set starting position to be in the main lane
-        unit.laneid = lane
-        unit.xpos = 15
-        unit.ypos = 500
+        unit.xpos = 150 + (20*unit.laneid)
+        unit.ypos = 550 - (50*unit.laneid)
 
         cls.createdUnits.append(unit)
+
+        # Add to lane
+        LaneManager.AddUnitToLane(unit, unit.laneid)
 
     # Removes a Unit from the array of currently created units
     @classmethod
     def DeleteUnit(cls, unit):
         cls.createdUnits.remove(unit)
+
+        # Remove from lane
+        LaneManager.RemoveUnitFromLane(unit, unit.laneid)
 
     @classmethod
     def GetCreatedUnits(cls):
@@ -65,4 +81,4 @@ class UnitLoader():
 
     @classmethod
     def GetUsedSupply(cls):
-        return 20
+        return len(cls.createdUnits) + len(cls.queuedUnits)
