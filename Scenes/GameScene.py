@@ -195,8 +195,8 @@ class GameScene(SceneBase):
 
         # Draw your units on screen
         for unit in self.cu:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 500, 300)
+            bottomRight = (unit.animate.frame, 0, 500, 300)
             if (self.UnitMovement.movementmode == "A"):
                 unit.animate.nextFrame()
                 screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
