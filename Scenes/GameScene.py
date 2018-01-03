@@ -185,8 +185,8 @@ class GameScene(SceneBase):
 
         screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
-        # Draw all created units on screen
-        for unit in LaneManager.lane3:
+        # Draw your units on screen
+        for unit in self.cu:
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
             bottomRight = (unit.animate.frame, 0, 90, 150)
             if (self.UnitMovement.movementmode == "A"):
@@ -194,31 +194,8 @@ class GameScene(SceneBase):
                 screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
             else:
                 unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
-
-        for unit in LaneManager.lane2:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            if (self.UnitMovement.movementmode == "A"):
-                unit.animate.nextFrame()
-                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
-            else:
-                unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
-
-        for unit in LaneManager.lane1:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            if (self.UnitMovement.movementmode == "A"):
-                unit.animate.nextFrame()
-                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
-            else:
-                unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
-
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft, bottomRight)
+        # Draw enemy units on screen
         for unit in self.ce:
             unit.animate.frame
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
