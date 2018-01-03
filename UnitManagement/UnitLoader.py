@@ -10,8 +10,8 @@ class UnitLoader():
     buildCount = 0
     lane = 0
     
-    @classmethod
     def __init__(cls):
+        print "getting unit stats"
         file = open('UnitManagement/Units.txt')
         for j in range(0,6):
             stats = []
@@ -22,7 +22,7 @@ class UnitLoader():
             cls.units[name] = stats
             print stats
             file.readline()
-    
+
     @classmethod
     def BuildUnitsInQueue(cls, statbar):
         if cls.currentUnit is None:
