@@ -26,7 +26,7 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         UnitLoader.__init__()
-        UnitSpawner.__init__()
+        # UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0
@@ -37,10 +37,10 @@ class GameScene(SceneBase):
 
         self.UnitMovement = UnitMovement()
 
-        if Options.hardcoremode:
-            self.AI = BaseAI(6)
-        else:
-            self.AI = BaseAI(1)
+        # if Options.hardcoremode:
+        # self.AI = BaseAI(6)
+        # else:
+        # self.AI = BaseAI(1)
 
         self.defendbutton = Button("Defend", (60, 635), self.Attack, size=(120, 30), font_size=20, bg=(109, 177, 255))
         self.holdbutton = Button("Hold", (185, 635), self.HoldPosition, size=(120, 30), font_size=20,
@@ -154,6 +154,8 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
+<<<<<<< HEAD
+
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
@@ -169,25 +171,30 @@ class GameScene(SceneBase):
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        UnitSpawner.BuildUnitsInQueue()
-
+        #UnitSpawner.BuildUnitsInQueue()
+    
+        #You attack
+        if(self.AttackRate == 30):
+=======
         # You attack
         if (self.AttackRate == 30):
+>>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = self.AttackRate + 1
 
+<<<<<<< HEAD
         #Attack Base
         #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
             
         #AI attacks
         if(self.EAttackRate == 30):
-            pass
-
+=======
         # AI attacks
         if (self.EAttackRate == 30):
+>>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = 0
         else:
@@ -234,15 +241,10 @@ class GameScene(SceneBase):
                             bottomRight)
 
         for unit in self.ce:
+            unit.animate.frame
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
             bottomRight = (unit.animate.frame, 0, 90, 150)
-            if (self.UnitMovement.movementmode == "A"):
-                unit.animate.nextFrame()
-                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
-            else:
-                unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
+            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
 
         # Draw the GUI
         self.attackbutton.Draw(screen)

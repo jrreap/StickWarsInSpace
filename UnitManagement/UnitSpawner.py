@@ -14,12 +14,13 @@ class UnitSpawner():
     @classmethod
     def __init__(cls):
         file = open('UnitManagement/Units.txt')
-        for j in range(0, 6):
+        for j in range(0,4):
             stats = []
             name = file.readline()[:-1]
             print name
-            for i in [3, 7, 6, 12, 6, 6, 14]:
+            for i in [3,7,6,12,6,6,14]:
                 stats.append(float(file.readline()[i:-1]))
+            stats.append(file.readline()[13:-1])
             cls.units[name] = stats
             print stats
             file.readline()
@@ -31,6 +32,9 @@ class UnitSpawner():
         if cls.currentUnit is None:
             if len(cls.queuedUnits) > 1:
                 cls.currentUnit = cls.queuedUnits.pop()
+                print "yes?"
+                print cls.currentUnit.buildtime
+                print len(cls.queuedUnits)
         else:
             if cls.currentUnit.buildtime * 50 == cls.buildCount:
                 cls.InstantiateUnit(cls.currentUnit)
@@ -39,7 +43,7 @@ class UnitSpawner():
                 cls.buildCount = 0
                 cls.currentUnit = None
             else:
-                cls.buildCount = cls.buildCount + 1
+                cls.buildCount += 1
 
     # Enqueues the designated unit into the build system to be built
     @classmethod

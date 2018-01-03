@@ -20,7 +20,7 @@ class BaseAI():
     isPaused = False
 
     # Unit variables
-    UnlockedUnits = ["RifleBlaster"]
+    UnlockedUnits = ["Rifle Blaster"]
 
     # Difficulty variables
     difficulty = 1
@@ -54,6 +54,8 @@ class BaseAI():
     def CalculateDangerValue(self):
         count = 0
         countai = 0
+        #JAYDEN COULDNT HAVE USED len(), NOOOOOOOO, HE'S TOO GOOD FOR THAT
+        #salt
         for unit in UnitLoader.GetCreatedUnits():
             count = count + 1
 
@@ -80,7 +82,7 @@ class BaseAI():
 
     def BuildUnit(self):
         randtemp = random.randint(0,len(self.UnlockedUnits)-1)
-        unit = Unit(UnitSpawner.units['RifleBlaster'], "RifleBlaster")
+        unit = Unit(UnitSpawner.units['RifleBlaster'])
 
         self.cooldown = self.cooldown + 1
 
