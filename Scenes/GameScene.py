@@ -36,10 +36,10 @@ class GameScene(SceneBase):
 
         self.UnitMovement = UnitMovement()
 
-        # if Options.hardcoremode:
-        # self.AI = BaseAI(6)
-        # else:
-        # self.AI = BaseAI(1)
+        if Options.hardcoremode:
+            self.AI = BaseAI(6)
+        else:
+            self.AI = BaseAI(1)
 
         self.defendbutton = Button("Defend", (60, 635), self.Attack, size=(120, 30), font_size=20, bg=(109, 177, 255))
         self.holdbutton = Button("Hold", (185, 635), self.HoldPosition, size=(120, 30), font_size=20,
