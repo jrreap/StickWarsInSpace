@@ -9,17 +9,17 @@ class Walk():
         self.numframes = nf
     def nextFrame(self):
         if self.wait == 0:
-            self.frame += width
-            if self.frame >= width*(numframes):
+            self.frame += self.width
+            if self.frame >= self.width*(self.numframes):
                 self.frame = 0
         self.wait += 1
         if self.wait == 4:
             self.wait = 0
     def prevFrame(self):
         if self.wait == 0:
-            self.frame -= width
+            self.frame -= self.width
             if self.frame <= 0:
-                self.frame = width*(numframes-1)
+                self.frame = self.width*(self.numframes-1)
         self.wait += 1
         if self.wait == 4:
             self.wait = 0
