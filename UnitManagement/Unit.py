@@ -35,7 +35,7 @@ class Unit():
         self.imagepath = "UnitAnimations/"+imagefolder+"/"
         self.laneid = lane
 
-        self.animate = Walk()
+        self.animate = Walk(500,9)
         
     def DamageUnit(self, amount):
         self.health = self.health - amount
