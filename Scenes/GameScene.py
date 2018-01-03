@@ -26,7 +26,6 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         UnitLoader.__init__()
-        # UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0

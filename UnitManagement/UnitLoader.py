@@ -9,7 +9,8 @@ class UnitLoader():
     currentUnit = None
     buildCount = 0
     lane = 0
-    
+
+    @classmethod
     def __init__(cls):
         print "getting unit stats"
         file = open('UnitManagement/Units.txt')
