@@ -154,8 +154,6 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-<<<<<<< HEAD
-
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
@@ -172,29 +170,20 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
 
         #UnitSpawner.BuildUnitsInQueue()
-    
-        #You attack
-        if(self.AttackRate == 30):
-=======
+
         # You attack
         if (self.AttackRate == 30):
->>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = self.AttackRate + 1
 
-<<<<<<< HEAD
         #Attack Base
         #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
             
-        #AI attacks
-        if(self.EAttackRate == 30):
-=======
         # AI attacks
-        if (self.EAttackRate == 30):
->>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
+        if(self.EAttackRate == 30):
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = 0
         else:
