@@ -23,6 +23,7 @@ class Unit():
     # Image and Graphic Information
     imagepath = "Empty"
     
+    
     def __init__(self,stats,imagefolder,lane = 0):
         self.health = stats[0]
         self.damage = stats[1]
@@ -34,10 +35,8 @@ class Unit():
         self.imagepath = "UnitAnimations/"+imagefolder+"/"
         self.laneid = lane
 
-        self.animate = Walk(500,9)
-
-    def draw():
-        print "hi"
+        self.animate = Walk()
+        
     def DamageUnit(self, amount):
         self.health = self.health - amount
         
