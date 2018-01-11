@@ -187,8 +187,8 @@ class GameScene(SceneBase):
 
         # Draw your units on screen
         for unit in self.cu:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 500, 300)
-            bottomRight = (unit.animate.frame, 0, 500, 300)
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, unit.width, unit.hight)
+            bottomRight = (unit.animate.frame, 0, unit.width, unit.hight)
             if (self.UnitMovement.movementmode == "A"):
                 unit.animate.nextFrame()
                 screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
@@ -197,9 +197,9 @@ class GameScene(SceneBase):
                 screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft, bottomRight)
         # Draw enemy units on screen
         for unit in self.ce:
-            unit.animate.frame
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
+            unit.animate.nextFrame
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, unit.width, unit.hight)
+            bottomRight = (unit.animate.frame, 0, unit.width, unit.hight)
             screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
 
         # Draw the GUI
