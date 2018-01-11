@@ -8,28 +8,21 @@ from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
-from Scenes.LevelSelect import LevelSelect
+from Scenes.Levels.Level1Opening import Level1Opening
 
 
 # This scene is responsible for rendering the menu "scene"
-class MenuScene(SceneBase):
+class LevelSelect(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
-        self.startbutton = Button("New Game", (510, 325), self.StartGame, size=(120, 60), font_size=20,
+        self.startbutton = Button("Mars", (510, 325), self.StartGame, size=(120, 60), font_size=20,
                                   bg=(109, 177, 255))
-        self.Instructionsbutton = Button("Instructions", (690, 325), self.Instructions, size=(120, 60), font_size=20,
+        self.Instructionsbutton = Button("Moon", (690, 325), self.Instructions, size=(120, 60), font_size=20,
                                          bg=(109, 177, 255))
-        self.Lorebutton = Button("Read Lore", (510, 425), self.Lore, size=(120, 60), font_size=20, bg=(109, 177, 255))
-        self.exitbutton = Button("Exit Game", (690, 425), self.ExitGame, size=(120, 60), font_size=20,
+        self.Lorebutton = Button("Jupiter", (510, 425), self.Lore, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.exitbutton = Button("Other Planet", (690, 425), self.ExitGame, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
-        self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(90, 40), bg=(109, 177, 255))
-        self.text = Text(228, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True,
-                         color=(109, 177, 255), fontSize=45)
-
-        self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True,
-                          color=(255, 255, 255), font="Arial", fontSize=45)
-
         # Start music
         b = Boombox()
 
@@ -57,9 +50,6 @@ class MenuScene(SceneBase):
                 if self.Lorebutton.IsClicked(mousepos):
                     self.Lorebutton.call_back_()
 
-                if self.optionsbutton.IsClicked(mousepos):
-                    self.optionsbutton.call_back_()
-
                 if self.Instructionsbutton.IsClicked(mousepos):
                     self.Instructionsbutton.call_back_()
 
@@ -71,31 +61,23 @@ class MenuScene(SceneBase):
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
-        self.text.DrawCenter(screen)
-        self.text1.DrawCenter(screen)
         self.startbutton.Draw(screen)
         self.exitbutton.Draw(screen)
         self.Lorebutton.Draw(screen)
-        self.optionsbutton.Draw(screen)
         self.Instructionsbutton.Draw(screen)
 
     # Button functions
     def ExitGame(self):
-        print("Exiting Game...")
-        self.next = None
+        print("Other planet")
+
 
     def StartGame(self):
-        print("Starting New Game...")
-        self.SwitchToScene(LevelSelect())
+        print("Starting New Game : Mars...")
+        self.SwitchToScene("Scenes.Levels.Level1Opening.Level1Opening")
 
     def Lore(self):
-        print("Going to Lore...")
-        self.SwitchToScene(SpaceMongolianLoreTohnborjin())
+        print("Jupiter")
 
-    def Options(self):
-        print("Going to Options...")
-        self.SwitchToScene(OptionsScene())
 
     def Instructions(self):
-        print("Going to Instructions...")
-        self.SwitchToScene(Instructions())
+        print("Moon")
