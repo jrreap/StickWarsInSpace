@@ -28,7 +28,7 @@ class Unit():
 
         self.width = stats[8]
         self.hight = stats[9]
-        self.animate = Walk(width,stats[10])
+        self.animate = Walk(self.width,stats[10])
         
     def DamageUnit(self, amount):
         self.health = self.health - amount
