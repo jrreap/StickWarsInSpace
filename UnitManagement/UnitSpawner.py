@@ -32,9 +32,6 @@ class UnitSpawner():
         if cls.currentUnit is None:
             if len(cls.queuedUnits) > 0:
                 cls.currentUnit = cls.queuedUnits.pop()
-                print "yes?"
-                print cls.currentUnit.buildtime
-                print len(cls.queuedUnits)
         else:
             if cls.currentUnit.buildtime * 50 == cls.buildCount:
                 cls.InstantiateUnit(cls.currentUnit)
