@@ -157,7 +157,7 @@ class GameScene(SceneBase):
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
             if (random.randint(0, 100) <= 5):
-                UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
+                UnitSpawner.EnqueueUnit(Unit(UnitLoader.units["RifleBlaster"],"RifleBlaster"))
             self.counter = 0
         else:
             self.counter = self.counter + 1
@@ -195,8 +195,8 @@ class GameScene(SceneBase):
 
         # Draw your units on screen
         for unit in self.cu:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 500, 300)
+            bottomRight = (unit.animate.frame, 0, 500, 300)
             if (self.UnitMovement.movementmode == "A"):
                 unit.animate.nextFrame()
                 screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
