@@ -13,15 +13,16 @@ class UnitLoader():
     @classmethod
     def __init__(cls):
         file = open('UnitManagement/Units.txt')
-        for j in range(0,6):
+        while file.readline()[:1] != "#":
             stats = []
             name = file.readline()[:-1]
             print name
-            for i in [3,7,6,12,6,6,14]:
-                stats.append(float(file.readline()[i:-1]))
+            stats.append(file.readline()[17:-1])
+            for i in range(1,11):
+                line = file.readline()
+                stats.append(float(line[line.find("=")+1:-1]))
             cls.units[name] = stats
             print stats
-            file.readline()
     
     @classmethod
     def BuildUnitsInQueue(cls, statbar):

@@ -151,16 +151,8 @@ class GameScene(SceneBase):
 
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
+        self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
-
-        # Move all spawned enemy units
-        if(self.counter == 25):
-            self.UnitMovement.MoveEnemyUnits()
-            if (random.randint(0, 100) <= 5):
-                UnitSpawner.EnqueueUnit(Unit(UnitLoader.units["RifleBlaster"],"RifleBlaster"))
-            self.counter = 0
-        else:
-            self.counter = self.counter + 1
 
         # Call the AI
         self.AI.AIUpdate()
@@ -245,31 +237,31 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
-        unit = Unit(UnitLoader.units["RifleBlaster"], "RifleBlaster")
+        unit = Unit(UnitLoader.units["RifleBlaster"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = Unit(UnitLoader.units["HorseRifleBlaster"], "HorseRifleBlaster")
+        unit = Unit(UnitLoader.units["HorseRifleBlaster"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
-        unit = Unit(UnitLoader.units["SpaceRaider"], "SpaceRaider")
+        unit = Unit(UnitLoader.units["SpaceRaider"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = Unit(UnitLoader.units["Tank"], "Tank")
+        unit = Unit(UnitLoader.units["Tank"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = Unit(UnitLoader.units["Plane"], "Plane")
+        unit = Unit(UnitLoader.units["Plane"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = Unit(UnitLoader.units["Turret"], "Turret")
+        unit = Unit(UnitLoader.units["Turret"])
 
         UnitLoader.EnqueueUnit(unit)

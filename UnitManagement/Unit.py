@@ -24,18 +24,18 @@ class Unit():
     imagepath = "Empty"
     
     
-    def __init__(self,stats,imagefolder,lane = 0):
-        self.health = stats[0]
-        self.damage = stats[1]
-        self.speed = stats[2]
-        self.attackrate = stats[3]
-        self.unitrange = stats[4]
-        self.unitcost = int(stats[5])
-        self.buildtime = stats[6]
-        self.imagepath = "UnitAnimations/"+imagefolder+"/"
+    def __init__(self,stats,lane = 0):
+        self.health = stats[1]
+        self.damage = stats[2]
+        self.speed = stats[3]
+        self.attackrate = stats[4]
+        self.unitrange = stats[5]
+        self.unitcost = int(stats[6])
+        self.buildtime = stats[7]
+        self.imagepath = "UnitAnimations/"+stats[0]+"/"
         self.laneid = lane
 
-        self.animate = Walk(500,9)
+        self.animate = Walk(stats[8],stats[10])
         
     def DamageUnit(self, amount):
         self.health = self.health - amount
