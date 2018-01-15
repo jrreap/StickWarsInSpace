@@ -26,7 +26,6 @@ class GameScene(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
         UnitLoader.__init__()
-        # UnitSpawner.__init__()
 
         self.counter = 0
         self.AttackRate = 0
@@ -38,10 +37,10 @@ class GameScene(SceneBase):
 
         self.UnitMovement = UnitMovement()
 
-        # if Options.hardcoremode:
-        # self.AI = BaseAI(6)
-        # else:
-        # self.AI = BaseAI(1)
+        if Options.hardcoremode:
+            self.AI = BaseAI(6)
+        else:
+            self.AI = BaseAI(1)
 
         self.defendbutton = Button("Defend", (60, 635), self.Attack, size=(120, 30), font_size=20, bg=(109, 177, 255))
         self.holdbutton = Button("Hold", (185, 635), self.HoldPosition, size=(120, 30), font_size=20,
@@ -153,8 +152,10 @@ class GameScene(SceneBase):
 
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
+        self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
+<<<<<<< HEAD
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
@@ -165,11 +166,14 @@ class GameScene(SceneBase):
         else:
             self.counter = self.counter + 1
 
+=======
+>>>>>>> cb31bd5c91efd005a670dbc34f397620062c6382
         # Call the AI
         #self.AI.AIUpdate()
 
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
+<<<<<<< HEAD
 
         #UnitSpawner.BuildUnitsInQueue()
     
@@ -178,6 +182,12 @@ class GameScene(SceneBase):
             pass
         # You attack
         if(self.AttackRate == 30):
+=======
+        UnitSpawner.BuildUnitsInQueue()
+        
+        # You attack
+        if (self.AttackRate == 30):
+>>>>>>> cb31bd5c91efd005a670dbc34f397620062c6382
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
@@ -185,6 +195,7 @@ class GameScene(SceneBase):
             self.AttackRate = self.AttackRate + 1
 
         #Attack Base
+<<<<<<< HEAD
         if(self.Health!=5000):
             print(self.Health)
             if(len(self.cu)>0):
@@ -199,6 +210,12 @@ class GameScene(SceneBase):
         
         # AI attacks
         if(self.EAttackRate == 30):
+=======
+        #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+            
+        # AI attacks
+        if (self.EAttackRate == 30):
+>>>>>>> cb31bd5c91efd005a670dbc34f397620062c6382
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = 0
         else:
@@ -210,45 +227,22 @@ class GameScene(SceneBase):
 
         screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
 
-        # Draw all created units on screen
-        for unit in LaneManager.lane3:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
+        # Draw your units on screen
+        for unit in self.cu:
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, unit.width, unit.hight)
+            bottomRight = (unit.animate.frame, 0, unit.width, unit.hight)
             if (self.UnitMovement.movementmode == "A"):
                 unit.animate.nextFrame()
                 screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
             else:
                 unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
-
-        for unit in LaneManager.lane2:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            if (self.UnitMovement.movementmode == "A"):
-                unit.animate.nextFrame()
-                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
-            else:
-                unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
-
-        for unit in LaneManager.lane1:
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            if (self.UnitMovement.movementmode == "A"):
-                unit.animate.nextFrame()
-                screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
-            else:
-                unit.animate.prevFrame()
-                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft,
-                            bottomRight)
-
+                screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft, bottomRight)
+        # Draw enemy units on screen
         for unit in self.ce:
-            unit.animate.frame
-            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, 90, 150)
-            bottomRight = (unit.animate.frame, 0, 90, 150)
-            screen.blit(GetImage(unit.imagepath), topLeft, bottomRight)
+            unit.animate.nextFrame
+            topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, unit.width, unit.hight)
+            bottomRight = (unit.animate.frame, 0, unit.width, unit.hight)
+            screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
 
         # Draw the GUI
         self.attackbutton.Draw(screen)
@@ -285,31 +279,31 @@ class GameScene(SceneBase):
         self.UnitMovement.SetMovementMode("D")
 
     def BRB(self):
-        unit = Unit(UnitLoader.units["RifleBlaster"], "RifleBlaster")
+        unit = Unit(UnitLoader.units["RifleBlaster"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BHRB(self):
-        unit = Unit(UnitLoader.units["HorseRifleBlaster"], "HorseRifleBlaster")
+        unit = Unit(UnitLoader.units["HorseRifleBlaster"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BSR(self):
-        unit = Unit(UnitLoader.units["SpaceRaider"], "SpaceRaider")
+        unit = Unit(UnitLoader.units["SpaceRaider"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTANK(self):
-        unit = Unit(UnitLoader.units["Tank"], "Tank")
+        unit = Unit(UnitLoader.units["Tank"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BPLANE(self):
-        unit = Unit(UnitLoader.units["Plane"], "Plane")
+        unit = Unit(UnitLoader.units["Plane"])
 
         UnitLoader.EnqueueUnit(unit)
 
     def BTRT(self):
-        unit = Unit(UnitLoader.units["Turret"], "Turret")
+        unit = Unit(UnitLoader.units["Turret"])
 
         UnitLoader.EnqueueUnit(unit)
