@@ -155,7 +155,6 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-<<<<<<< HEAD
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
@@ -166,14 +165,11 @@ class GameScene(SceneBase):
         else:
             self.counter = self.counter + 1
 
-=======
->>>>>>> cb31bd5c91efd005a670dbc34f397620062c6382
         # Call the AI
         #self.AI.AIUpdate()
 
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
-<<<<<<< HEAD
 
         #UnitSpawner.BuildUnitsInQueue()
     
@@ -182,12 +178,10 @@ class GameScene(SceneBase):
             pass
         # You attack
         if(self.AttackRate == 30):
-=======
-        UnitSpawner.BuildUnitsInQueue()
+            UnitSpawner.BuildUnitsInQueue()
         
         # You attack
         if (self.AttackRate == 30):
->>>>>>> cb31bd5c91efd005a670dbc34f397620062c6382
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
@@ -195,7 +189,6 @@ class GameScene(SceneBase):
             self.AttackRate = self.AttackRate + 1
 
         #Attack Base
-<<<<<<< HEAD
         if(self.Health!=5000):
             print(self.Health)
             if(len(self.cu)>0):
@@ -209,13 +202,12 @@ class GameScene(SceneBase):
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
         # AI attacks
-        if(self.EAttackRate == 30):
-=======
+        #if(self.EAttackRate == 30):
+
         #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
             
         # AI attacks
         if (self.EAttackRate == 30):
->>>>>>> cb31bd5c91efd005a670dbc34f397620062c6382
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = 0
         else:
