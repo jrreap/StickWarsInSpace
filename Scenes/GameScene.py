@@ -31,7 +31,8 @@ class GameScene(SceneBase):
         self.counter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
-        self.Health = 5000
+        self.EHealth = 1000
+        self.Health = 1000
 
         self.offset = 0
 
@@ -154,19 +155,18 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-<<<<<<< HEAD
-
         # Move all spawned enemy units
         if(self.counter == 25):
             self.UnitMovement.MoveEnemyUnits()
             if (random.randint(0, 100) <= 5):
-                UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
+                #UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
+                pass
             self.counter = 0
         else:
             self.counter = self.counter + 1
 
         # Call the AI
-        self.AI.AIUpdate()
+        #self.AI.AIUpdate()
 
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
@@ -175,26 +175,30 @@ class GameScene(SceneBase):
     
         #You attack
         if(self.AttackRate == 30):
-=======
+            pass
         # You attack
-        if (self.AttackRate == 30):
->>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
+        if(self.AttackRate == 30):
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = 0
         else:
             AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
             self.AttackRate = self.AttackRate + 1
 
-<<<<<<< HEAD
         #Attack Base
-        #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
-            
-        #AI attacks
-        if(self.EAttackRate == 30):
-=======
+        if(self.Health!=5000):
+            print(self.Health)
+            if(len(self.cu)>0):
+                self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+        if(self.Health==5000):
+            if(len(self.cu)>0):
+                self.Health = WinCon.ReachedPlayer(self.cu, 0)
+        if(self.Health<=0):
+            print "Congrats you have won"
+            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+        #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
+        
         # AI attacks
-        if (self.EAttackRate == 30):
->>>>>>> 3d76ac9ee25ae90ff4bc245ac51049b2760e7822
+        if(self.EAttackRate == 30):
             AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
             self.EAttackRate = 0
         else:
