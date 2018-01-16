@@ -250,7 +250,7 @@ class GameScene(SceneBase):
             unit.animate.prevFrame()
             topLeft = (unit.xpos - Camera.GetXOffset(), unit.ypos, unit.width, unit.hight)
             bottomRight = (unit.animate.frame, 0, unit.width, unit.hight)
-            screen.blit(GetImage(unit.imagepath + "walk.png"), topLeft, bottomRight)
+            screen.blit(pygame.transform.flip(GetImage(unit.imagepath + "walk.png"), True, False), topLeft, bottomRight)
 
         # Draw the GUI
         self.attackbutton.Draw(screen)
