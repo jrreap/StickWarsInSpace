@@ -103,11 +103,13 @@ class GameScene(SceneBase):
                 
                 elif event.key == pygame.K_RIGHT:
                     print "downR"
-                    self.movecamera += self.scrollfactor
+                    if self.movecamera >= 0:
+                        self.movecamera += self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
                     print "downL"
-                    self.movecamera -= self.scrollfactor
+                    if self.movecamera <= 3600:
+                        self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_m:
                     CurrencyManagement.AddMoonCrystals(100)
@@ -115,10 +117,12 @@ class GameScene(SceneBase):
             elif event.type == pygame.KEYUP:
                 print "up"
                 if event.key == pygame.K_RIGHT:
-                    self.movecamera -= self.scrollfactor
+                    if self.movecamera >= 0:
+                        self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    self.movecamera += self.scrollfactor
+                    if self.movecamera <= 3600:
+                        self.movecamera += self.scrollfactor
 
             # Mouse click events
             elif event.type == pygame.MOUSEBUTTONDOWN:
