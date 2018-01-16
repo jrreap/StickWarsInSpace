@@ -30,7 +30,8 @@ class GameScene(SceneBase):
         self.counter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
-        self.Health = 5000
+        self.EHealth = 1000
+        self.Health = 1000
 
         self.offset = 0
 
@@ -154,12 +155,30 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
+        # Move all spawned enemy units
+        if(self.counter == 25):
+            self.UnitMovement.MoveEnemyUnits()
+            if (random.randint(0, 100) <= 5):
+                #UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
+                pass
+            self.counter = 0
+        else:
+            self.counter = self.counter + 1
+
         # Call the AI
-        self.AI.AIUpdate()
+        #self.AI.AIUpdate()
 
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
-        UnitSpawner.BuildUnitsInQueue()
+
+        #UnitSpawner.BuildUnitsInQueue()
+    
+        #You attack
+        if(self.AttackRate == 30):
+            pass
+        # You attack
+        if(self.AttackRate == 30):
+            UnitSpawner.BuildUnitsInQueue()
         
         # You attack
         if (self.AttackRate == 30):
@@ -170,6 +189,21 @@ class GameScene(SceneBase):
             self.AttackRate = self.AttackRate + 1
 
         #Attack Base
+        if(self.Health!=5000):
+            print(self.Health)
+            if(len(self.cu)>0):
+                self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+        if(self.Health==5000):
+            if(len(self.cu)>0):
+                self.Health = WinCon.ReachedPlayer(self.cu, 0)
+        if(self.Health<=0):
+            print "Congrats you have won"
+            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+        #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
+        
+        # AI attacks
+        #if(self.EAttackRate == 30):
+
         #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
             
         # AI attacks

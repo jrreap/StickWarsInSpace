@@ -42,7 +42,7 @@ RifleBlaster
 Animation Folder=RifleBlaster
 HP=100
 Damage=50
-Speed=1.5
+Speed=10
 Attack rate=1
 Range=4
 Price=50

@@ -4,7 +4,6 @@ from UnitManagement.UnitSpawner import UnitSpawner
 from CurrencyManagement.CurrencyManagement import CurrencyManagement
 import pygame
 
-##SOME KINKS NEED TO WORKED OUT. I (Addison) WILL DO IT SOON SO PLS DONT FUCK TOO MUCH UP
 class AttackDefend():
     @classmethod
     def InRange(cls, Unit1, Unit2):
