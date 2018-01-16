@@ -16,6 +16,8 @@ class LevelSelect(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
+        self.text = Text(228, 600, "Level Select", bold=True,
+                         color=(109, 177, 255), fontSize=45)
         self.startbutton = Button("Mars", (510, 325), self.StartGame, size=(120, 60), font_size=20,
                                   bg=(109, 177, 255))
         self.Instructionsbutton = Button("Moon", (690, 325), self.Instructions, size=(120, 60), font_size=20,
@@ -61,6 +63,7 @@ class LevelSelect(SceneBase):
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
+        self.text.Draw(screen)
         self.startbutton.Draw(screen)
         self.exitbutton.Draw(screen)
         self.Lorebutton.Draw(screen)

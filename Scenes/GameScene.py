@@ -178,12 +178,12 @@ class GameScene(SceneBase):
             self.counter = self.counter + 1
 
         # Call the AI
-        #self.AI.AIUpdate()
+        self.AI.AIUpdate()
 
         # Move all spawned enemy units
         self.UnitMovement.MoveEnemyUnits()
 
-        #UnitSpawner.BuildUnitsInQueue()
+        UnitSpawner.BuildUnitsInQueue()
     
         #You attack
         if(self.AttackRate == 30):
