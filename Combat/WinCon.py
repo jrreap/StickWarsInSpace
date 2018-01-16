@@ -7,8 +7,8 @@ class WinCon():
     @classmethod
     def AttackPlayer(cls, CurrentHealth, UnitHealth):
         PlayerHealth = CurrentHealth - UnitHealth
-        print PlayerHealth
-        print "playerhealth"
+        #print PlayerHealth
+        #print "playerhealth"
         if(PlayerHealth<=0):
             WinCon.WinLevel()
         variable = PlayerHealth

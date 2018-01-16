@@ -34,6 +34,8 @@ class GameScene(SceneBase):
         self.Health = 1000
 
         self.offset = 0
+        self.movecamera = 0
+        self.scrollfactor = 25
 
         self.UnitMovement = UnitMovement()
 
@@ -98,18 +100,25 @@ class GameScene(SceneBase):
                 elif event.key == pygame.K_b:
                     self.buildmenutoggle = not self.buildmenutoggle
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
-
+                
                 elif event.key == pygame.K_RIGHT:
-                    self.offset = self.offset + 50
-                    Camera.SetCameraOffset(self.offset, 0)
+                    print "downR"
+                    self.movecamera += self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    if self.offset > 0:
-                        self.offset = self.offset - 50
-                        Camera.SetCameraOffset(self.offset, 0)
+                    print "downL"
+                    self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_m:
                     CurrencyManagement.AddMoonCrystals(100)
+                    
+            elif event.type == pygame.KEYUP:
+                print "up"
+                if event.key == pygame.K_RIGHT:
+                    self.movecamera -= self.scrollfactor
+
+                elif event.key == pygame.K_LEFT:
+                    self.movecamera += self.scrollfactor
 
             # Mouse click events
             elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -146,7 +155,10 @@ class GameScene(SceneBase):
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
 
     def Update(self):
-
+        if self.movecamera != 0:
+                self.offset += self.movecamera
+                Camera.SetCameraOffset(self.offset, 0)
+                
         self.cu = UnitLoader.GetCreatedUnits()
         self.ce = UnitSpawner.GetCreatedUnits()
 
@@ -190,7 +202,7 @@ class GameScene(SceneBase):
 
         #Attack Base
         if(self.Health!=5000):
-            print(self.Health)
+            #print(self.Health)
             if(len(self.cu)>0):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
         if(self.Health==5000):
