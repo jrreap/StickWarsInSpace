@@ -205,16 +205,15 @@ class GameScene(SceneBase):
             self.AttackRate = self.AttackRate + 1
 
         #Attack Base
-        if(self.Health!=5000):
-            #print(self.Health)
+        if(self.Health!=1000):
             if(len(self.cu)>0):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
-        if(self.Health==5000):
+        if(self.Health==1000):
             if(len(self.cu)>0):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
-        #if(self.Health<=0):
-            #print "Congrats you have won"
-            #self.SwitchToScene("Scenes.MenuScene.MenuScene")
+        if(self.Health<=0):
+            print "Congrats you have won"
+            self.SwitchToScene("Scenes.MenuScene.MenuScene")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
         # AI attacks

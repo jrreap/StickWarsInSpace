@@ -14,7 +14,7 @@ class WinCon():
         variable = PlayerHealth
         return variable
     @classmethod
-    def ReachedPlayer(cls, units, base, CurrentHealth=5000):
+    def ReachedPlayer(cls, units, base, CurrentHealth=1000):
         x = 0
         BaseHealth = CurrentHealth
         if(base == 1):
@@ -25,11 +25,15 @@ class WinCon():
             CurrentUnit = units[x]
             x = x+1
             UnitRange = CurrentUnit.unitrange
-            #if (CurrentUnit.xpos-basePos)<10:
-                #Health = WinCon.AttackPlayer(BaseHealth, CurrentUnit.health)
-                #UnitLoader.DeleteUnit(CurrentUnit)
-                #x = len(units) + 1
-                #return Health
+            if abs(CurrentUnit.xpos-basePos)<10:
+                Health = WinCon.AttackPlayer(BaseHealth, CurrentUnit.health)
+                UnitLoader.DeleteUnit(CurrentUnit)
+                x = len(units) + 1
+                print Health
+                return Health
+            else:
+                return BaseHealth
+        
                 
     @classmethod
     def WinLevel(cls):

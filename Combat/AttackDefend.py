@@ -10,13 +10,16 @@ class AttackDefend():
         detect = False
         UnitRange = Unit1.unitrange
         if abs(Unit2.xpos-Unit1.xpos)<=UnitRange*10:
-            detect = True
+            if(Unit2.ypos == Unit1.ypos):
+                detect = True
+            else:
+                detect = False
         else:
             detect = False
         return detect
 
     @classmethod
-    def Attack(cls, Friendlies, Enemies, AttackRate):
+    def Attack(cls, Friendlies, Enemies, AttackRate, OGSpeed=0):
         x = 0
         y = 0
         Rate = AttackRate
@@ -28,23 +31,23 @@ class AttackDefend():
                   Unit2 = Enemies[y]
                   y = y+1
                   detected = AttackDefend.InRange(Unit1,Unit2)
+                  if(Unit1.speed!= 0):
+                      OGSpeed = Unit1.speed
                   if(Unit2.health>0):
                       if(detected == True):
                           Unit1.speed = 0
                           if(Rate == 30):
                               Unit1.speed = 0
-                              print Unit2.health
                               Unit2.DamageUnit(Unit1.damage)                         
-                              print Unit2.health
                               if Unit2.health<1:
                                   UnitSpawner.DeleteUnit(Unit2)
                                   CurrencyManagement.AddMoonCrystals(100)
-                                  Unit1.speed = 2
-                      if(Unit2.health<1):
-                          Unit1.speed = 2
+                                  Unit1.speed = OGSpeed
+                  if(Unit2.health<1):
+                      Unit1.speed = OGSpeed
 
     @classmethod
-    def EAttack(cls, Enemies, Friendlies, EAttackRate):
+    def EAttack(cls, Enemies, Friendlies, EAttackRate, OGSpeed=0):
         x = 0
         y = 0
         ERate = EAttackRate
@@ -56,19 +59,20 @@ class AttackDefend():
                   Unit2 = Friendlies[y]
                   y = y+1
                   detected = AttackDefend.InRange(Unit1,Unit2)
+                  if(Unit1.speed!= 0):
+                      OGSpeed = Unit1.speed
                   if(Unit2.health>0):
                       if(detected == True):
                           Unit1.speed = 0
                           if(ERate == 30):
                               Unit1.speed = 0
-                              print Unit2.health
                               Unit2.DamageUnit(Unit1.damage)                         
-                              print Unit2.health
                               if Unit2.health<1:
                                   UnitLoader.DeleteUnit(Unit2)
-                                  Unit1.speed = 2
-                      if(Unit2.health<1):
-                          Unit1.speed = 2
+                                  Unit1.speed = OGSpeed
+                  if(Unit2.health<1):
+                      Unit1.speed = OGSpeed
+                  
 
     
 """@classmethod
