@@ -9,6 +9,7 @@ from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
 from Scenes.Levels.Level1Opening import Level1Opening
+from Scenes.SaturnGameScene import SaturnGameScene
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -22,7 +23,7 @@ class LevelSelect(SceneBase):
                                   bg=(109, 177, 255))
         self.Instructionsbutton = Button("Moon", (690, 325), self.Instructions, size=(120, 60), font_size=20,
                                          bg=(109, 177, 255))
-        self.Lorebutton = Button("Jupiter", (510, 425), self.Lore, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.Lorebutton = Button("Saturn", (510, 425), self.Lore, size=(120, 60), font_size=20, bg=(109, 177, 255))
         self.exitbutton = Button("Other Planet", (690, 425), self.ExitGame, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
         # Start music
@@ -79,7 +80,8 @@ class LevelSelect(SceneBase):
         self.SwitchToScene("Scenes.Levels.Level1Opening.Level1Opening")
 
     def Lore(self):
-        print("Jupiter")
+        print("Starting New Game : Saturn...")
+        self.SwitchToScene(SaturnGameScene())
 
 
     def Instructions(self):
