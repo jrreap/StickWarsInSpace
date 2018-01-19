@@ -9,6 +9,7 @@ from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
 from Scenes.Levels.Level1Opening import Level1Opening
+from Scenes.Levels.Level3Opening import Level3Opening
 from Scenes.SaturnGameScene import SaturnGameScene
 
 
@@ -19,12 +20,12 @@ class LevelSelect(SceneBase):
         SceneBase.__init__(self)
         self.text = Text(228, 600, "Level Select", bold=True,
                          color=(109, 177, 255), fontSize=45)
-        self.startbutton = Button("Mars", (510, 325), self.StartGame, size=(120, 60), font_size=20,
+        self.marsbutton = Button("Mars", (510, 325), self.Mars, size=(120, 60), font_size=20,
                                   bg=(109, 177, 255))
-        self.Instructionsbutton = Button("Moon", (690, 325), self.Instructions, size=(120, 60), font_size=20,
+        self.moonbutton = Button("Moon", (690, 325), self.Moon, size=(120, 60), font_size=20,
                                          bg=(109, 177, 255))
-        self.Lorebutton = Button("Saturn", (510, 425), self.Lore, size=(120, 60), font_size=20, bg=(109, 177, 255))
-        self.exitbutton = Button("Other Planet", (690, 425), self.ExitGame, size=(120, 60), font_size=20,
+        self.saturnbutton = Button("Saturn", (510, 425), self.Saturn, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.otherbutton = Button("Other Planet", (690, 425), self.OtherPlanet, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
         # Start music
         b = Boombox()
@@ -44,17 +45,17 @@ class LevelSelect(SceneBase):
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons has been pressed
-                if self.startbutton.IsClicked(mousepos):
-                    self.startbutton.call_back_()
+                if self.marsbutton.IsClicked(mousepos):
+                    self.marsbutton.call_back_()
 
-                if self.exitbutton.IsClicked(mousepos):
+                if self.otherbutton.IsClicked(mousepos):
                     self.exitbutton.call_back_()
 
-                if self.Lorebutton.IsClicked(mousepos):
-                    self.Lorebutton.call_back_()
+                if self.saturnbutton.IsClicked(mousepos):
+                    self.saturnbutton.call_back_()
 
-                if self.Instructionsbutton.IsClicked(mousepos):
-                    self.Instructionsbutton.call_back_()
+                if self.moonbutton.IsClicked(mousepos):
+                    self.moonbutton.call_back_()
 
     def Update(self):
         pass
@@ -65,24 +66,24 @@ class LevelSelect(SceneBase):
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
         self.text.Draw(screen)
-        self.startbutton.Draw(screen)
-        self.exitbutton.Draw(screen)
-        self.Lorebutton.Draw(screen)
-        self.Instructionsbutton.Draw(screen)
+        self.marsbutton.Draw(screen)
+        self.otherbutton.Draw(screen)
+        self.saturnbutton.Draw(screen)
+        self.moonbutton.Draw(screen)
 
     # Button functions
-    def ExitGame(self):
+    def OtherPlanet(self):
         print("Other planet")
 
 
-    def StartGame(self):
+    def Mars(self):
         print("Starting New Game : Mars...")
         self.SwitchToScene("Scenes.Levels.Level1Opening.Level1Opening")
 
-    def Lore(self):
+    def Saturn(self):
         print("Starting New Game : Saturn...")
-        self.SwitchToScene(SaturnGameScene())
+        self.SwitchToScene("Scenes.Levels.Level3Opening.Level3Opening")
 
 
-    def Instructions(self):
+    def Moon(self):
         print("Moon")
