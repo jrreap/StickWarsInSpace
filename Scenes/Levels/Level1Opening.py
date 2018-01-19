@@ -1,10 +1,9 @@
 import pygame
 from Scenes.SceneBase import SceneBase
-from Scenes.GameScene import GameScene
+from Scenes.MoonGameScene import MoonGameScene
 from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
 from UI.Text import Text
-#from Scenes.GameScene import GameScene
 
 
 class Level1Opening (SceneBase):
@@ -39,7 +38,7 @@ class Level1Opening (SceneBase):
 
     def StartGame(self):
         print("Going to game...")
-        self.SwitchToScene(GameScene())
+        self.SwitchToScene(MoonGameScene())
 
     
 

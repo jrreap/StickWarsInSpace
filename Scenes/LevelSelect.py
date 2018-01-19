@@ -49,7 +49,7 @@ class LevelSelect(SceneBase):
                     self.marsbutton.call_back_()
 
                 if self.otherbutton.IsClicked(mousepos):
-                    self.exitbutton.call_back_()
+                    self.otherbutton.call_back_()
 
                 if self.saturnbutton.IsClicked(mousepos):
                     self.saturnbutton.call_back_()
@@ -78,7 +78,7 @@ class LevelSelect(SceneBase):
 
     def Mars(self):
         print("Starting New Game : Mars...")
-        self.SwitchToScene("Scenes.Levels.Level1Opening.Level1Opening")
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Leve2Opening")
 
     def Saturn(self):
         print("Starting New Game : Saturn...")
@@ -86,4 +86,5 @@ class LevelSelect(SceneBase):
 
 
     def Moon(self):
-        print("Moon")
+        print("Starting New Game : Moon...")
+        self.SwitchToScene("Scenes.Levels.Level1Opening.Level1Opening")
