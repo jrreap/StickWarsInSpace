@@ -270,6 +270,12 @@ class GameScene(SceneBase):
         self.buildmenu.Draw(screen)
         self.openmenu.Draw(screen)
 
+    # Cleanup function
+    def Terminate(self):
+        UnitLoader.createdUnits = []
+        UnitLoader.buildCount = 0
+        UnitLoader.lane = 0
+
     # Button functions
 
     def DefendPosition(self):

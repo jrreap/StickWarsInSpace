@@ -24,6 +24,8 @@ class SceneBase:
     # This is called to switch to the next scene... usually this won't need to be changed
     def SwitchToScene(self, next_scene):
 
+        self.Terminate()
+
         if type(next_scene) == type(" "):
             components = next_scene.split('.')
             mod = __import__(components[0])
@@ -37,4 +39,4 @@ class SceneBase:
     # Called right before the scene is killed to clean up leftovers
     # If there are any high memory using variables, make sure to kill them in this method
     def Terminate(self):
-        self.SwitchToScene(None)
+        pass
