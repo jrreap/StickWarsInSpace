@@ -33,8 +33,7 @@ class MenuScene(SceneBase):
         # Start music
         b = Boombox()
 
-        if not b.MusicStatus():
-            b.PlayMusic("menumusic")
+        b.PlayMusic("menumusic")
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
