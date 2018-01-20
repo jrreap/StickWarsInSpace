@@ -6,6 +6,7 @@ from Music.Boombox import Boombox
 from UI.Button import Button
 from UI.Text import Text
 from UpgradeDataBullshit.EconomyUpgrade import EconomyUpgrade
+from Scenes.Levels.Level4Opening import Level4Opening
 
 
 class SaturnUpgrade(SceneBase):
@@ -94,6 +95,7 @@ class SaturnUpgrade(SceneBase):
         
     def Next(self):
         print("moving onwards...")
+        self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
         
     
     
