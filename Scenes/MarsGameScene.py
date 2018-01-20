@@ -19,9 +19,10 @@ from CurrencyManagement.CurrencyManagement import CurrencyManagement
 from Options.Options import Options
 import pygame
 import random
+from Scenes.Levels.Level2Victory import Level2Victory
 
 
-class GameScene(SceneBase):
+class MarsGameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
@@ -78,7 +79,7 @@ class GameScene(SceneBase):
         self.buildmenu.AddButton(self.buildturret)
 
         b = Boombox()
-        b.PlayMusic("level1playmusic")
+        b.PlayMusic("level2playmusic")
 
     def ProcessInput(self, events, pressed_keys):
 
@@ -213,7 +214,7 @@ class GameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
         # AI attacks
