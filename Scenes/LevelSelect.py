@@ -78,7 +78,7 @@ class LevelSelect(SceneBase):
 
     def Mars(self):
         print("Starting New Game : Mars...")
-        self.SwitchToScene("Scenes.Levels.Level2Opening.Leve2Opening")
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
     def Saturn(self):
         print("Starting New Game : Saturn...")
