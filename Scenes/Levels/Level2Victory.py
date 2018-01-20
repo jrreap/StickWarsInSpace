@@ -4,6 +4,7 @@ from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
 from Scenes.MarsUpgrade import MarsUpgrade
+from Music.Boombox import Boombox
 
 
 class Level2Victory (SceneBase):
@@ -12,6 +13,10 @@ class Level2Victory (SceneBase):
         SceneBase.__init__(self)
         self.continuebutton = Button("Continue", (900,500), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
 
+        b = Boombox()
+
+        b.PlayMusic("levelvictorymusic")
+        
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
         for event in events:

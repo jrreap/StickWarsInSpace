@@ -3,6 +3,7 @@ from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
+from Scenes.MercuryGameScene import MercuryGameScene
 
 
 class Level4Opening (SceneBase):
@@ -35,6 +36,7 @@ class Level4Opening (SceneBase):
 
     def Continue(self):
         print("going to game...")
+        self.SwitchToScene(MercuryGameScene())
         
 
       

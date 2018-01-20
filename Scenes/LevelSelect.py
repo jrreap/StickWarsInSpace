@@ -11,6 +11,8 @@ from Scenes.Instructions import Instructions
 from Scenes.Levels.Level1Opening import Level1Opening
 from Scenes.Levels.Level3Opening import Level3Opening
 from Scenes.SaturnGameScene import SaturnGameScene
+from Scenes.Levels.Level2Opening import Level2Opening
+from Scenes.Levels.Level4Opening import Level4Opening
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -25,7 +27,7 @@ class LevelSelect(SceneBase):
         self.moonbutton = Button("Moon", (690, 325), self.Moon, size=(120, 60), font_size=20,
                                          bg=(109, 177, 255))
         self.saturnbutton = Button("Saturn", (510, 425), self.Saturn, size=(120, 60), font_size=20, bg=(109, 177, 255))
-        self.otherbutton = Button("Other Planet", (690, 425), self.OtherPlanet, size=(120, 60), font_size=20,
+        self.mercurybutton = Button("Mercury", (690, 425), self.Mercury, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
         # Start music
         b = Boombox()
@@ -48,8 +50,8 @@ class LevelSelect(SceneBase):
                 if self.marsbutton.IsClicked(mousepos):
                     self.marsbutton.call_back_()
 
-                if self.otherbutton.IsClicked(mousepos):
-                    self.otherbutton.call_back_()
+                if self.mercurybutton.IsClicked(mousepos):
+                    self.mercurybutton.call_back_()
 
                 if self.saturnbutton.IsClicked(mousepos):
                     self.saturnbutton.call_back_()
@@ -67,13 +69,14 @@ class LevelSelect(SceneBase):
 
         self.text.Draw(screen)
         self.marsbutton.Draw(screen)
-        self.otherbutton.Draw(screen)
+        self.mercurybutton.Draw(screen)
         self.saturnbutton.Draw(screen)
         self.moonbutton.Draw(screen)
 
     # Button functions
-    def OtherPlanet(self):
-        print("Other planet")
+    def Mercury(self):
+        print("Starting New Game : Mercury...")
+        self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
 
 
     def Mars(self):
