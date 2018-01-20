@@ -15,6 +15,9 @@ class Level3Victory (SceneBase):
         SceneBase.__init__(self)
 
         self.continuebutton = Button("Continue", (900,500), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
+
+        b = Boombox()
+        b.PlayMusic("levelvictorymusic")
         
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -26,8 +29,6 @@ class Level3Victory (SceneBase):
                 if self.continuebutton.IsClicked(mousepos):
                     self.continuebutton.call_back_()
 
-        b = Boombox()
-        b.PlayMusic("levelvictorymusic")
                     
     def Update(self):
         pass

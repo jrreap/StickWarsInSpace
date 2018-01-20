@@ -5,18 +5,32 @@ from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from UI.Button import Button
 from UI.Text import Text
-from Scenes.UpgradeData import UpgradeData
+from UpgradeDataBullshit.EconomyUpgrade import EconomyUpgrade
+from Scenes.Levels.Level2Opening import Level2Opening
 
-class SaturnUpgrade(SceneBase):
 
+
+class MoonUpgrade(SceneBase):
+    
     def __init__(self):
         SceneBase.__init__(self)
-        self.economybutton = Button("+20% Economy", (300,200), self.Economy, size=(120,60), font_size=20, bg=(109,177,255))
-        self.defensebutton = Button("+20% Mothership HP", (300, 300), self.Defense, size=(120,60), font_size=20, bg=(109,177,255))
-        self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(120,60), font_size=20, bg=(109,177,255))
-        self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(120,60), font_size=20, bg=(109,177,255))
 
-        self.nextbutton = Button("Continue...", (500, 600), self.Next, size=(120,60), font_size=20, bg=(109,177,255))
+        a = EconomyUpgrade()
+        
+        
+        a.seteconomy(0)
+        if a.returneconomy() == 0:
+            self.economybutton = Button("+20% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
+
+        self.defensebutton = Button("+20% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
+
+
+        self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(200,60), font_size=20, bg=(109,177,255))
+
+        self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(200,60), font_size=20, bg=(109,177,255))
+
+
+        self.nextbutton = Button("Continue...", (500, 600), self.Next, size=(200,60), font_size=20, bg=(109,177,255))
 
 
         b = Boombox()
@@ -58,8 +72,6 @@ class SaturnUpgrade(SceneBase):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
-        self.text.DrawCenter(screen)
-        self.text1.DrawCenter(screen)
         self.economybutton.Draw(screen)
         self.defensebutton.Draw(screen)
         self.speedbutton.Draw(screen)
@@ -68,22 +80,23 @@ class SaturnUpgrade(SceneBase):
 
     def Economy(self):
         print("Economy upgraded")
-        EconomyUpgrade(1);
+
 
     def Defense(self):
         print("Defense upgraded")
-        DefenseUpgrade(1);
+
 
     def Speed(self):
         print("Speed Spell gotten")
-        SpeedSpell(1);
+
 
     def Rage(self):
         print("Rage Spell gotten")
-        RageSpell(1);
 
+        
     def Next(self):
         print("moving onwards...")
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
         
     
     

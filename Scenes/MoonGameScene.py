@@ -19,6 +19,7 @@ from CurrencyManagement.CurrencyManagement import CurrencyManagement
 from Options.Options import Options
 import pygame
 import random
+from Scenes.Levels.Level1Victory import Level1Victory
 
 
 class MoonGameScene(SceneBase):
@@ -213,7 +214,7 @@ class MoonGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level1Victory.Level1Victory")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
         # AI attacks
