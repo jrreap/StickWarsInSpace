@@ -19,6 +19,9 @@ from CurrencyManagement.CurrencyManagement import CurrencyManagement
 from Options.Options import Options
 import pygame
 import random
+from Scenes.SaturnUpgrade import SaturnUpgrade
+from Scenes.Levels.Level3Victory import Level3Victory
+
 
 
 class SaturnGameScene(SceneBase):
@@ -78,7 +81,7 @@ class SaturnGameScene(SceneBase):
         self.buildmenu.AddButton(self.buildturret)
 
         b = Boombox()
-        b.PlayMusic("level1playmusic")
+        b.PlayMusic("level3playmusic")
 
     def ProcessInput(self, events, pressed_keys):
 
@@ -213,7 +216,7 @@ class SaturnGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level3Victory.Level3Victory")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
         # AI attacks
