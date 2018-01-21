@@ -2,23 +2,23 @@ import pygame
 import random
 from UpgradeDataBullshit.UpgradeData import UpgradeData
 
-class EconomyUpgrade():
+class DefenseUpgrade():
 
     def __init__(self):
         print("fuck the upgrade system")
-        global economy
-        economy = 1
+        global defense
+        defense = 1
         
-    def seteconomy(self):#setter
+    def setdefense(self):#setter
         
         print("over here")
-        print(economy)
+        print(defense)
         
         
-    def returneconomy(self): # getter
-        global economy
+    def returndefense(self): # getter
+        global defenese
         print("and here")
-        return economy
+        return defense
 
 
     

@@ -18,9 +18,10 @@ class SaturnUpgrade(SceneBase):
         global x
         x = 0
         
-        if a.returneconomy() is not 1.1:
+        if a.returneconomy() is 1:
             self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
             x = 1
+            print("success")
         self.defensebutton = Button("+10% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
 
 
@@ -48,7 +49,7 @@ class SaturnUpgrade(SceneBase):
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons has been pressed
-                if self.economybutton.IsClicked(mousepos) and x is not 1:
+                if self.economybutton.IsClicked(mousepos) and x is 1:
                     self.economybutton.call_back_()
 
                 if self.defensebutton.IsClicked(mousepos):
@@ -69,7 +70,7 @@ class SaturnUpgrade(SceneBase):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
-        if x is not 1:
+        if x is 1:
             self.economybutton.Draw(screen)
         self.defensebutton.Draw(screen)
         self.speedbutton.Draw(screen)
