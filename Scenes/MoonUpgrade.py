@@ -14,15 +14,11 @@ class MoonUpgrade(SceneBase):
     
     def __init__(self):
         SceneBase.__init__(self)
-
-        a = EconomyUpgrade()
         
         
-        a.seteconomy(0)
-        if a.returneconomy() == 0:
-            self.economybutton = Button("+20% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
+        self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
 
-        self.defensebutton = Button("+20% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
+        self.defensebutton = Button("+10% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
 
 
         self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(200,60), font_size=20, bg=(109,177,255))
@@ -30,13 +26,12 @@ class MoonUpgrade(SceneBase):
         self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(200,60), font_size=20, bg=(109,177,255))
 
 
-        self.nextbutton = Button("Continue...", (500, 600), self.Next, size=(200,60), font_size=20, bg=(109,177,255))
+       
 
 
         b = Boombox()
 
-        if not b.MusicStatus():
-            b.PlayMusic("menumusic")
+        b.PlayMusic("menumusic")
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -62,8 +57,6 @@ class MoonUpgrade(SceneBase):
                 if self.ragebutton.IsClicked(mousepos):
                     self.ragebutton.call_back_()
 
-                if self.nextbutton.IsClicked(mousepos):
-                    self.nextbutton.call_back_()
 
     def Update(self):
         pass
@@ -76,27 +69,27 @@ class MoonUpgrade(SceneBase):
         self.defensebutton.Draw(screen)
         self.speedbutton.Draw(screen)
         self.ragebutton.Draw(screen)
-        self.nextbutton.Draw(screen)
 
     def Economy(self):
         print("Economy upgraded")
-
+        a = EconomyUpgrade()
+        a.seteconomy()
+        a.returneconomy()
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
     def Defense(self):
         print("Defense upgraded")
-
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
     def Speed(self):
         print("Speed Spell gotten")
-
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
     def Rage(self):
         print("Rage Spell gotten")
+        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
         
-    def Next(self):
-        print("moving onwards...")
-        self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
         
     
     

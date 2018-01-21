@@ -93,7 +93,7 @@ class MercuryGameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.MenuScene.MenuScene")
+                    self.SwitchToScene("Scenes.Levels.Level4Victory.Level4Victory")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)

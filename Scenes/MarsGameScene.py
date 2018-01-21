@@ -93,7 +93,7 @@ class MarsGameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.MenuScene.MenuScene")
+                    self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)

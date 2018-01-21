@@ -15,21 +15,19 @@ class SaturnUpgrade(SceneBase):
         SceneBase.__init__(self)
 
         a = EconomyUpgrade()
+        global x
+        x = 0
         
-        
-        a.seteconomy(0)
-        if a.returneconomy() == 0:
-            self.economybutton = Button("+20% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
-
-        self.defensebutton = Button("+20% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
+        if a.returneconomy() is not 1.1:
+            self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
+            x = 1
+        self.defensebutton = Button("+10% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
 
 
         self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(200,60), font_size=20, bg=(109,177,255))
 
         self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(200,60), font_size=20, bg=(109,177,255))
 
-
-        self.nextbutton = Button("Continue...", (500, 600), self.Next, size=(200,60), font_size=20, bg=(109,177,255))
 
 
         b = Boombox()
@@ -49,7 +47,7 @@ class SaturnUpgrade(SceneBase):
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons has been pressed
-                if self.economybutton.IsClicked(mousepos):
+                if self.economybutton.IsClicked(mousepos) and x is not 1:
                     self.economybutton.call_back_()
 
                 if self.defensebutton.IsClicked(mousepos):
@@ -61,8 +59,6 @@ class SaturnUpgrade(SceneBase):
                 if self.ragebutton.IsClicked(mousepos):
                     self.ragebutton.call_back_()
 
-                if self.nextbutton.IsClicked(mousepos):
-                    self.nextbutton.call_back_()
 
     def Update(self):
         pass
@@ -71,32 +67,29 @@ class SaturnUpgrade(SceneBase):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
-        self.economybutton.Draw(screen)
+        if x is not 1:
+            self.economybutton.Draw(screen)
         self.defensebutton.Draw(screen)
         self.speedbutton.Draw(screen)
         self.ragebutton.Draw(screen)
-        self.nextbutton.Draw(screen)
 
     def Economy(self):
         print("Economy upgraded")
-
+        a = EconomyUpgrade()
+        a.seteconomy()
+        self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
 
     def Defense(self):
         print("Defense upgraded")
-
+        self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
 
     def Speed(self):
         print("Speed Spell gotten")
-
+        self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
 
     def Rage(self):
         print("Rage Spell gotten")
-
-        
-    def Next(self):
-        print("moving onwards...")
         self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
-        
-    
+            
     
         

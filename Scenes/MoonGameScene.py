@@ -93,7 +93,7 @@ class MoonGameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.MenuScene.MenuScene")
+                    self.SwitchToScene("Scenes.Levels.Level1Victory.Level1Victory")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)

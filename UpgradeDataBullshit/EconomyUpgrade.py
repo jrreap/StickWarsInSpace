@@ -1,20 +1,25 @@
 import pygame
 import random
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 class EconomyUpgrade():
-    global placeholder
+
     def __init__(self):
-        print("hopefully this works")
-        global placeholder
-        placeholder = 0
+        print("fuck the upgrade system")
+        global economy
+        economy = 1
+        global economy
 
-    def seteconomy(self, value):
-        placeholder = value
-        print("economy value set")
-
-    def returneconomy(self):
-        return 0
-    print("returning economy")
+    def seteconomy(self):#setter
+        global economy
+        economy = economy + .1
+        print("over here")
+        print(economy)
+        
+        
+    def returneconomy(self): # getter
+        print("and here")
+        return economy
 
 
     
