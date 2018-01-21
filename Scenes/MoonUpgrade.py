@@ -30,8 +30,8 @@ class MoonUpgrade(SceneBase):
 
 
         b = Boombox()
-
-        b.PlayMusic("menumusic")
+        if not b.MusicStatus():
+            b.PlayMusic("menumusic")
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()

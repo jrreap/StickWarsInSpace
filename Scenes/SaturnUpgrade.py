@@ -36,6 +36,7 @@ class SaturnUpgrade(SceneBase):
             b.PlayMusic("menumusic")
 
     def ProcessInput(self, events, pressed_keys):
+        global x 
         mousepos = pygame.mouse.get_pos()
         for event in events:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
@@ -64,6 +65,7 @@ class SaturnUpgrade(SceneBase):
         pass
 
     def Render(self, screen):
+        global x
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
