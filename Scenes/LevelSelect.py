@@ -13,6 +13,7 @@ from Scenes.Levels.Level3Opening import Level3Opening
 from Scenes.SaturnGameScene import SaturnGameScene
 from Scenes.Levels.Level2Opening import Level2Opening
 from Scenes.Levels.Level4Opening import Level4Opening
+from Scenes.Levels.Level5Opening import Level5Opening
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -29,6 +30,8 @@ class LevelSelect(SceneBase):
         self.saturnbutton = Button("Saturn", (510, 425), self.Saturn, size=(120, 60), font_size=20, bg=(109, 177, 255))
         self.mercurybutton = Button("Mercury", (690, 425), self.Mercury, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
+
+        self.uranusbutton = Button("Uranus", (510, 525), self.Uranus, size=(120,60), font_size=20, bg=(109,177,255))
         # Start music
         b = Boombox()
 
@@ -59,6 +62,9 @@ class LevelSelect(SceneBase):
                 if self.moonbutton.IsClicked(mousepos):
                     self.moonbutton.call_back_()
 
+                if self.uranusbutton.IsClicked(mousepos):
+                    self.uranusbutton.call_back_()
+
     def Update(self):
         pass
 
@@ -72,6 +78,7 @@ class LevelSelect(SceneBase):
         self.mercurybutton.Draw(screen)
         self.saturnbutton.Draw(screen)
         self.moonbutton.Draw(screen)
+        self.uranusbutton.Draw(screen)
 
     # Button functions
     def Mercury(self):
@@ -91,3 +98,7 @@ class LevelSelect(SceneBase):
     def Moon(self):
         print("Starting New Game : Moon...")
         self.SwitchToScene("Scenes.Levels.Level1Opening.Level1Opening")
+
+    def Uranus(self):
+        print("Starting New Game : Ur ANUS...")
+        self.SwitchToScene("Scenes.Levels.Level5Opening.Level5Opening")
