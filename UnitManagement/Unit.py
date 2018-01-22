@@ -20,7 +20,7 @@ class Unit():
         self.damage = stats[2]
         self.speed = stats[3]
         self.attackrate = stats[4]
-        self.unitrange = stats[5]
+        self.unitrange = (stats[5])
         self.unitcost = int(stats[6])
         self.buildtime = stats[7]
         self.imagepath = "UnitAnimations/"+stats[0]+"/"

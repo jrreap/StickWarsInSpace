@@ -200,13 +200,15 @@ class SaturnGameScene(SceneBase):
             UnitSpawner.BuildUnitsInQueue()
         
         # You attack
-        if (self.AttackRate == 30):
-            AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
-            self.AttackRate = 0
+        AttackDefend.UnitsAttack(self.cu, self.ce, self.AttackRate, self.EAttackRate)
+        if(self.AttackRate>50):
+            self.AttackRate=0
         else:
-            AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
-            self.AttackRate = self.AttackRate + 1
-
+            self.AttackRate += 1
+        if(self.EAttackRate>50):
+            self.EAttackRate=0
+        else:
+            self.EAttackRate += 1
         #Attack Base
         if(self.Health!=1000):
             if(len(self.cu)>0):
@@ -216,21 +218,21 @@ class SaturnGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.Levels.Level3Victory.Level3Victory")
+            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+
+         #Enemies Attack Base
+        if(self.EHealth!=1000):
+            if(len(self.ce)>0):
+                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
+        if(self.EHealth==1000):
+            if(len(self.ce)>0):
+                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
+        if(self.EHealth<=0):
+            print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
+            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
-        # AI attacks
-        #if(self.EAttackRate == 30):
-
-        #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
-            
-        # AI attacks
-        if (self.EAttackRate == 30):
-            AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
-            self.EAttackRate = 0
-        else:
-            AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
-            self.EAttackRate = self.EAttackRate + 1
 
     def Render(self, screen):
         screen.fill((0, 0, 0))

@@ -191,11 +191,11 @@ class MarsGameScene(SceneBase):
         UnitSpawner.BuildUnitsInQueue()
         #You attack
         AttackDefend.UnitsAttack(self.cu, self.ce, self.AttackRate, self.EAttackRate)
-        if(self.AttackRate>30):
+        if(self.AttackRate>50):
             self.AttackRate=0
         else:
             self.AttackRate += 1
-        if(self.EAttackRate>30):
+        if(self.EAttackRate>50):
             self.EAttackRate=0
         else:
             self.EAttackRate += 1

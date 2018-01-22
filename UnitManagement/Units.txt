@@ -45,15 +45,15 @@ RifleBlaster
 Animation Folder=RifleBlaster
 HP=100
 Damage=50
-Speed=10
+Speed=1
 Attack rate=1
-Range=4
+Range=10
 Price=50
 Training time=1
 Width=90
 Hight=150
 Frames=7
-OGSpeed=10
+OGSpeed=1
 
 Tank
 Animation Folder=RifleBlaster

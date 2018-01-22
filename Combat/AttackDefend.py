@@ -9,7 +9,7 @@ class AttackDefend():
     def InRange(cls, Unit1, Unit2):
         detect = False
         UnitRange = Unit1.unitrange
-        if abs(Unit2.xpos-Unit1.xpos)<=UnitRange*10:
+        if abs(Unit2.xpos-Unit1.xpos)<=UnitRange*50:
             if(Unit2.ypos == Unit1.ypos):
                 detect = True
             else:
@@ -23,7 +23,7 @@ class AttackDefend():
         if(Friendlies.speed!=0):
             OGSpeed = Friendlies.speed
         Friendlies.speed = 0
-        if((Rate)>29):
+        if((Rate*(Friendlies.attackrate))>50):
             Enemies.DamageUnit(Friendlies.damage)
             if(Enemies.health<1):
                 UnitSpawner.DeleteUnit(Enemies)
@@ -34,7 +34,7 @@ class AttackDefend():
         if(Friendlies.speed!=0):
             OGSpeed = Friendlies.speed
         Friendlies.speed = 0
-        if((Rate)>29):
+        if((Rate*(Friendlies.attackrate))>50):
             Enemies.DamageUnit(Friendlies.damage)
             if(Enemies.health<1):
                 UnitLoader.DeleteUnit(Enemies)
@@ -51,11 +51,8 @@ class AttackDefend():
                 if(detect==True):
                     AttackDefend.Attack(Units[fu], Enemies[fe], Enemies, AttackRate)
                 fe = fe + 1
+            fe = 0
             fu = fu + 1
-        #if AttackRate>30:
-         #   AttackRate=0
-        #else:
-         #   AttackRate += 1
 
         # AI attacks
         ee = 0
@@ -66,11 +63,8 @@ class AttackDefend():
                 if(detect):
                     AttackDefend.EAttack(Enemies[ee], Units[eu], Units, EAttackRate)
                 eu = eu + 1
+            eu = 0
             ee = ee + 1
-      #  if (EAttackRate > 30):
-       #     EAttackRate=0
-        #else:
-         #   EAttackRate += 1
 
         #Make units move again
         a=0
@@ -79,7 +73,8 @@ class AttackDefend():
         while(a<len(Enemies)):
             while(b<len(Units)):
                 detect = AttackDefend.InRange(Enemies[a], Units[b])
-                if(detect):
+                if(detect==True):
+                    Enemies[a].speed = 0
                     break
                 b += 1
             if(detect==False):
@@ -91,7 +86,8 @@ class AttackDefend():
         while(a<len(Units)):
             while(b<len(Enemies)):
                 detect = AttackDefend.InRange(Units[a], Enemies[b])
-                if(detect):
+                if(detect==True):
+                    Units[a].speed=0
                     break
                 b += 1
             if(detect==False):
