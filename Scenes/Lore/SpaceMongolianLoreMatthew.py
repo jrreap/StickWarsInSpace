@@ -5,7 +5,7 @@ from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
 from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLorePeter import SpaceMongolianLorePeter
-
+from Music.Boombox import Boombox
 
 #renders lore
 class SpaceMongolianLoreMatthew (SceneBase):
@@ -15,6 +15,10 @@ class SpaceMongolianLoreMatthew (SceneBase):
         self.continuebutton = Button("Continue", (900, 525), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
         self.backbutton = Button("Back", (900,605), self.GoBack, size=(120,60), font_size=20, bg=(109,177,255))
 
+        b = Boombox()
+        if not b.MusicStatus():
+            b.PlayMusic("loremusic")
+            
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
         for event in events:

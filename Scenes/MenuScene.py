@@ -24,17 +24,20 @@ class MenuScene(SceneBase):
         self.exitbutton = Button("Exit Game", (690, 425), self.ExitGame, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
         self.optionsbutton = Button("Options", (1150, 625), self.Options, size=(90, 40), bg=(109, 177, 255))
+        self.creditsbutton = Button("Credits", (600,525), self.Credits, size=(120,60), font_size=20, bg=(109,177,255))
+
+        
         self.text = Text(228, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True,
                          color=(109, 177, 255), fontSize=45)
 
         self.text1 = Text(224, 600, "Mongolian Space Stick Wars XD Special Day One Edition", bold=True,
                           color=(255, 255, 255), font="Arial", fontSize=45)
+    
 
         # Start music
         b = Boombox()
 
-        if not b.MusicStatus():
-            b.PlayMusic("menumusic")
+        b.PlayMusic("menumusic")
 
     def ProcessInput(self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
@@ -63,6 +66,8 @@ class MenuScene(SceneBase):
                 if self.Instructionsbutton.IsClicked(mousepos):
                     self.Instructionsbutton.call_back_()
 
+                if self.creditsbutton.IsClicked(mousepos):
+                    self.creditsbutton.call_back_()
     def Update(self):
         pass
 
@@ -78,6 +83,7 @@ class MenuScene(SceneBase):
         self.Lorebutton.Draw(screen)
         self.optionsbutton.Draw(screen)
         self.Instructionsbutton.Draw(screen)
+        self.creditsbutton.Draw(screen)
 
     # Button functions
     def ExitGame(self):
@@ -99,3 +105,7 @@ class MenuScene(SceneBase):
     def Instructions(self):
         print("Going to Instructions...")
         self.SwitchToScene(Instructions())
+
+    def Credits(self):
+        print("going to credits...")
+        

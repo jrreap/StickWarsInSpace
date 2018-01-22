@@ -7,7 +7,9 @@ pygame.init()
 WHITE = (255, 255, 255)
 GREY = (200, 200, 200)
 BLACK = (0, 0, 0)
-
+RED = (229,9,9)
+YELLOW = (245,249,2)
+GREEN = (2,249,84)
 
 # Main class tat handles creation and rendering of StatBar objects (like healthbars)
 class StatBar():

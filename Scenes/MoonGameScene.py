@@ -19,9 +19,10 @@ from CurrencyManagement.CurrencyManagement import CurrencyManagement
 from Options.Options import Options
 import pygame
 import random
+from Scenes.Levels.Level1Victory import Level1Victory
 
 
-class GameScene(SceneBase):
+class MoonGameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
@@ -92,7 +93,7 @@ class GameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.MenuScene.MenuScene")
+                    self.SwitchToScene("Scenes.Levels.Level1Victory.Level1Victory")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)
@@ -102,12 +103,12 @@ class GameScene(SceneBase):
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
                 
                 elif event.key == pygame.K_RIGHT:
-                    #print "downR"
+                    print "downR"
                     if self.movecamera >= 0:
                         self.movecamera += self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    #print "downL"
+                    print "downL"
                     if self.movecamera <= 3600:
                         self.movecamera -= self.scrollfactor
 
@@ -115,7 +116,7 @@ class GameScene(SceneBase):
                     CurrencyManagement.AddMoonCrystals(100)
                     
             elif event.type == pygame.KEYUP:
-                #print "up"
+                print "up"
                 if event.key == pygame.K_RIGHT:
                     if self.movecamera >= 0:
                         self.movecamera -= self.scrollfactor
@@ -188,16 +189,22 @@ class GameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
 
         UnitSpawner.BuildUnitsInQueue()
+    
         #You attack
-        AttackDefend.UnitsAttack(self.cu, self.ce, self.AttackRate, self.EAttackRate)
-        if(self.AttackRate>30):
-            self.AttackRate=0
+        if(self.AttackRate == 30):
+            pass
+        # You attack
+        if(self.AttackRate == 30):
+            UnitSpawner.BuildUnitsInQueue()
+        
+        # You attack
+        if (self.AttackRate == 30):
+            AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
+            self.AttackRate = 0
         else:
-            self.AttackRate += 1
-        if(self.EAttackRate>30):
-            self.EAttackRate=0
-        else:
-            self.EAttackRate += 1
+            AttackDefend.Attack(self.cu, self.ce, self.AttackRate)
+            self.AttackRate = self.AttackRate + 1
+
         #Attack Base
         if(self.Health!=1000):
             if(len(self.cu)>0):
@@ -207,24 +214,26 @@ class GameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
-
-         #Enemies Attack Base
-        if(self.EHealth!=1000):
-            if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
-        if(self.EHealth==1000):
-            if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
-        if(self.EHealth<=0):
-            print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level1Victory.Level1Victory")
+        #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
+        # AI attacks
+        #if(self.EAttackRate == 30):
+
+        #self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+            
+        # AI attacks
+        if (self.EAttackRate == 30):
+            AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
+            self.EAttackRate = 0
+        else:
+            AttackDefend.EAttack(self.ce, self.cu, self.EAttackRate)
+            self.EAttackRate = self.EAttackRate + 1
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("Images/MARSBACKGROUND.jpg"), (0 - Camera.GetXOffset(), 0))
+        screen.blit(GetImage("Images/MOON BG 2.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw your units on screen
         for unit in self.cu:
@@ -261,6 +270,12 @@ class GameScene(SceneBase):
         self.buildqueue.Draw(screen)
         self.buildmenu.Draw(screen)
         self.openmenu.Draw(screen)
+
+    # Cleanup function
+    def Terminate(self):
+        UnitLoader.createdUnits = []
+        UnitLoader.buildCount = 0
+        UnitLoader.lane = 0
 
     # Button functions
 
