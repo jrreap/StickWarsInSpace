@@ -208,7 +208,6 @@ class MarsGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-<<<<<<< HEAD:Scenes/GameScene.py
             self.SwitchToScene("Scenes.MenuScene.MenuScene")
 
          #Enemies Attack Base
@@ -221,10 +220,8 @@ class MarsGameScene(SceneBase):
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.MenuScene.MenuScene")
-=======
             self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
->>>>>>> ff99ef909a059541911e5ee3a6d4a72e6eb11e39:Scenes/MarsGameScene.py
         
 
     def Render(self, screen):
