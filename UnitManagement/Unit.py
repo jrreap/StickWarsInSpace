@@ -25,6 +25,7 @@ class Unit():
         self.buildtime = stats[7]
         self.imagepath = "UnitAnimations/"+stats[0]+"/"
         self.laneid = lane
+        self.OGSpeed=stats[11]
 
         self.width = stats[8]
         self.hight = stats[9]

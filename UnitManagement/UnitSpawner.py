@@ -2,6 +2,8 @@
 # to be used in the rendering of the units on screen and the various functionality behind it
 # PLEASE NOTE that all build times are in multiples of 50 frames. So a build time of 2
 # will take 100 frames to finish... this generally makes the times work out
+from UnitManagement.LaneManager import LaneManager
+from CurrencyManagement.CurrencyManagement import CurrencyManagement
 
 class UnitSpawner():
 
@@ -10,6 +12,7 @@ class UnitSpawner():
     buildCount = 0
     createdUnits = []
     queuedUnits = []
+    lane = 0
 
     @classmethod
     def __init__(cls):
@@ -45,23 +48,30 @@ class UnitSpawner():
     # Enqueues the designated unit into the build system to be built
     @classmethod
     def EnqueueUnit(cls, unit):
+        if cls.lane > 2:
+            cls.lane = 1
+        else:
+            cls.lane = cls.lane + 1
+        unit.laneid = cls.lane        
         cls.queuedUnits.append(unit)
 
     # Instantiates a Unit and displays it to the screen
     @classmethod
-    def InstantiateUnit(cls, unit, lane = 0):
+    def InstantiateUnit(cls, unit):
 
         # Set starting position to be in the main lane
-        unit.laneid = lane
-        unit.xpos = 3000
-        unit.ypos = 500
+        unit.xpos = 3000 - (20*unit.laneid)
+        unit.ypos = 550 - (50*unit.laneid)
 
         cls.createdUnits.append(unit)
+
+        LaneManager.AddUnitToLane(unit, unit.laneid)
 
     # Removes a Unit from the array of currently created units
     @classmethod
     def DeleteUnit(cls, unit):
         cls.createdUnits.remove(unit)
+        LaneManager.RemoveUnitFromLane(unit, unit.laneid)
 
     @classmethod
     def GetCreatedUnits(cls):

@@ -18,7 +18,7 @@ class UnitLoader():
             name = file.readline()[:-1]
             print name
             stats.append(file.readline()[17:-1])
-            for i in range(1,11):
+            for i in range(1,12):
                 line = file.readline()
                 stats.append(float(line[line.find("=")+1:-1]))
             cls.units[name] = stats

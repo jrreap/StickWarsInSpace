@@ -11,6 +11,7 @@ Training time=1
 Width=90
 Hight=150
 Frames=7
+OGSpeed=1
 
 HorseRifleBlaster
 Animation Folder=HorseRifleBlaster
@@ -24,6 +25,7 @@ Training time=2
 Width=500
 Hight=300
 Frames=7
+OGSpeed=5
 
 Turret
 Animation Folder=RifleBlaster
@@ -37,6 +39,7 @@ Training time=5
 Width=90
 Hight=150
 Frames=7
+OGSpeed=0
 
 RifleBlaster
 Animation Folder=RifleBlaster
@@ -50,6 +53,7 @@ Training time=1
 Width=90
 Hight=150
 Frames=7
+OGSpeed=10
 
 Tank
 Animation Folder=RifleBlaster
@@ -63,6 +67,7 @@ Training time=5
 Width=90
 Hight=150
 Frames=7
+OGSpeed=.5
 
 Plane
 Animation Folder=RifleBlaster
@@ -76,4 +81,5 @@ Training time=5
 Width=90
 Hight=150
 Frames=7
+OGSpeed=2
 #add extra units above this line#
