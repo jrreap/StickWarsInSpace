@@ -21,6 +21,7 @@ import pygame
 import random
 from Scenes.SaturnUpgrade import SaturnUpgrade
 from Scenes.Levels.Level3Victory import Level3Victory
+from Scenes.Levels.Level3Defeat import Level3Defeat
 
 
 
@@ -229,7 +230,7 @@ class SaturnGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level3Defeat.Level3Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 

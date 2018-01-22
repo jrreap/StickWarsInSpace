@@ -20,6 +20,7 @@ from Options.Options import Options
 import pygame
 import random
 from Scenes.Levels.Level1Victory import Level1Victory
+from Scenes.Levels.Level1Defeat import Level1Defeat
 
 
 class MoonGameScene(SceneBase):
@@ -227,7 +228,7 @@ class MoonGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level1Defeat.Level1Defeat")
 
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
 

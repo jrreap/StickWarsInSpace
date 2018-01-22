@@ -20,6 +20,7 @@ from Options.Options import Options
 import pygame
 import random
 from Scenes.Levels.Level5Victory import Level5Victory
+from Scenes.Levels.Level5Defeat import Level5Defeat
 
 
 class UranusGameScene(SceneBase):
@@ -227,7 +228,7 @@ class UranusGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level5Defeat.Level5Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 

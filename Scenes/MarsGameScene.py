@@ -20,6 +20,7 @@ from Options.Options import Options
 import pygame
 import random
 from Scenes.Levels.Level2Victory import Level2Victory
+from Scenes.Levels.Level2Defeat import Level2Defeat
 
 
 class MarsGameScene(SceneBase):
@@ -219,7 +220,7 @@ class MarsGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.MenuScene.MenuScene")
+            self.SwitchToScene("Scenes.Levels.Level2Defeat.Level2Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 
