@@ -27,7 +27,7 @@ class Camera(object):
         if 0 <= xoff <= 2375:
             cls.cx = xoff
         else:
-            print("[ERROR] Offset values can't be less than 0 or greater than 3600!")
+            print("[ERROR] Offset values can't be less than 0 or greater than 2375!")
             print("[INFO] Resetting ")
 
             if xoff < 0:
