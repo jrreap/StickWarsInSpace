@@ -168,12 +168,12 @@ class MercuryGameScene(SceneBase):
         if(len(self.cu)>0):
             self.Economy = True
         if(self.Economy == True):
-            if(self.MoneyCounter==30):
+            if(self.MoneyCounter==60):
                 self.MoneyCounter=0
                 if UpgradeData.economy:
-                    CurrencyManagement.AddMoonCrystals(20)
-                elif not UpgradeData.economy:
                     CurrencyManagement.AddMoonCrystals(15)
+                elif not UpgradeData.economy:
+                    CurrencyManagement.AddMoonCrystals(10)
 
             else:
                 self.MoneyCounter+=1
