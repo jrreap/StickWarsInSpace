@@ -23,15 +23,16 @@ class LevelSelect(SceneBase):
         SceneBase.__init__(self)
         self.text = Text(228, 600, "Level Select", bold=True,
                          color=(109, 177, 255), fontSize=45)
-        self.marsbutton = Button("Mars", (510, 325), self.Mars, size=(120, 60), font_size=20,
+        self.marsbutton = Button("2. Mars", (690, 325), self.Mars, size=(120, 60), font_size=20,
                                   bg=(109, 177, 255))
-        self.moonbutton = Button("Moon", (690, 325), self.Moon, size=(120, 60), font_size=20,
+        self.moonbutton = Button("1. Moon", (510, 325), self.Moon, size=(120, 60), font_size=20,
                                          bg=(109, 177, 255))
-        self.saturnbutton = Button("Saturn", (510, 425), self.Saturn, size=(120, 60), font_size=20, bg=(109, 177, 255))
-        self.mercurybutton = Button("Mercury", (690, 425), self.Mercury, size=(120, 60), font_size=20,
+        self.saturnbutton = Button("3. Saturn", (510, 425), self.Saturn, size=(120, 60), font_size=20, bg=(109, 177, 255))
+        self.mercurybutton = Button("4. Mercury", (690, 425), self.Mercury, size=(120, 60), font_size=20,
                                  bg=(109, 177, 255))
 
-        self.uranusbutton = Button("Uranus", (510, 525), self.Uranus, size=(120,60), font_size=20, bg=(109,177,255))
+        self.uranusbutton = Button("5. Uranus", (510, 525), self.Uranus, size=(120,60), font_size=20, bg=(109,177,255))
+        self.neptunebutton = Button("6. Neptune", (690, 525), self.Neptune, size=(120,60), font_size=20, bg=(109,177,255))
         # Start music
         b = Boombox()
 
@@ -65,6 +66,9 @@ class LevelSelect(SceneBase):
                 if self.uranusbutton.IsClicked(mousepos):
                     self.uranusbutton.call_back_()
 
+                if self.neptunebutton.IsClicked(mousepos):
+                    self.neptunebutton.call_back_()
+
     def Update(self):
         pass
 
@@ -79,6 +83,7 @@ class LevelSelect(SceneBase):
         self.saturnbutton.Draw(screen)
         self.moonbutton.Draw(screen)
         self.uranusbutton.Draw(screen)
+        self.neptunebutton.Draw(screen)
 
     # Button functions
     def Mercury(self):
@@ -102,3 +107,7 @@ class LevelSelect(SceneBase):
     def Uranus(self):
         print("Starting New Game : Ur ANUS...")
         self.SwitchToScene("Scenes.Levels.Level5Opening.Level5Opening")
+
+    def Neptune(self):
+        print("Starting New Game : Neptune...")
+        
