@@ -9,6 +9,14 @@ class Camera(object):
     cx = 0
     cy = 0
 
+    # Method to check if the Camera offset is valid
+    @classmethod
+    def CheckCameraOffsets(cls, xoff, xadd):
+        if 0 <= (xoff + xadd) <= 2375:
+            return True
+        else:
+            return False
+
     # Method to set the Camera offset values used in screen rendering
     @classmethod
     def SetCameraOffset(cls, xoff, yoff):
@@ -16,7 +24,7 @@ class Camera(object):
         # 3600
 
         # Make sure these values are not below 0
-        if xoff >= 0 or xoff <= 2350:
+        if 0 <= xoff <= 2375:
             cls.cx = xoff
         else:
             print("[ERROR] Offset values can't be less than 0 or greater than 3600!")
@@ -25,7 +33,7 @@ class Camera(object):
             if xoff < 0:
                 cls.cx = 0
             else:
-                cls.cx = 3600
+                cls.cx = 2375
 
         if yoff >= 0:
             cls.cy = yoff
