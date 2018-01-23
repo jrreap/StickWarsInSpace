@@ -181,15 +181,7 @@ class SaturnGameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
 
         UnitSpawner.BuildUnitsInQueue()
-    
         #You attack
-        if(self.AttackRate == 30):
-            pass
-        # You attack
-        if(self.AttackRate == 30):
-            UnitSpawner.BuildUnitsInQueue()
-        
-        # You attack
         AttackDefend.UnitsAttack(self.cu, self.ce, self.AttackRate, self.EAttackRate)
         if(self.AttackRate>50):
             self.AttackRate=0
@@ -200,26 +192,34 @@ class SaturnGameScene(SceneBase):
         else:
             self.EAttackRate += 1
         #Attack Base
-        if(self.Health!=1000):
+        if(self.Health!=1000 ):
+            if(self.Health!=1500):
+                if(len(self.cu)>0):
+                    self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+        if(self.Health==1500):
             if(len(self.cu)>0):
-                self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+                self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health==1000):
             if(len(self.cu)>0):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.Levels.Level3Victory.Level3Victory")
+            self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
 
          #Enemies Attack Base
         if(self.EHealth!=1000):
-            if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
+            if(self.EHealth!=1500):
+                if(len(self.ce)>0):
+                    self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
         if(self.EHealth==1000):
             if(len(self.ce)>0):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
+        if(self.EHealth==1500):
+            if(len(self.ce)>0):
+                self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.Levels.Level3Defeat.Level3Defeat")
+            self.SwitchToScene("Scenes.Levels.Level2Defeat.Level2Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 
