@@ -21,6 +21,7 @@ import pygame
 import random
 from Scenes.Levels.Level4Victory import Level4Victory
 from Scenes.Levels.Level4Defeat import Level4Defeat
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 
 class MercuryGameScene(SceneBase):
@@ -33,7 +34,12 @@ class MercuryGameScene(SceneBase):
         self.AttackRate = 0
         self.EAttackRate = 0
         self.EHealth = 1000
-        self.Health = 1000
+        if UpgradeData.defense:
+            self.Health = 1500
+        elif not UpgradeData.defense:
+            self.Health = 1000
+
+        print(self.Health)
 
         self.offset = 0
         self.movecamera = 0

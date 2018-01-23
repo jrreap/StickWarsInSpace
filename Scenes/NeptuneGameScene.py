@@ -21,6 +21,7 @@ import pygame
 import random
 from Scenes.Levels.Level6Victory import Level6Victory
 from Scenes.Levels.Level6Defeat import Level6Defeat
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 
 class NeptuneGameScene(SceneBase):
@@ -33,7 +34,12 @@ class NeptuneGameScene(SceneBase):
         self.AttackRate = 0
         self.EAttackRate = 0
         self.EHealth = 1000
-        self.Health = 1000
+        if UpgradeData.defense:
+            self.Health = 1500
+        elif not UpgradeData.defense:
+            self.Health = 1000
+
+        print(self.Health)
 
         self.offset = 0
         self.movecamera = 0

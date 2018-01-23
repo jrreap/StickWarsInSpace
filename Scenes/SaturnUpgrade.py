@@ -17,7 +17,7 @@ class SaturnUpgrade(SceneBase):
 
         self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
 
-        self.defensebutton = Button("+10% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
+        self.defensebutton = Button("+500 Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
 
 
         self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(200,60), font_size=20, bg=(109,177,255))
