@@ -100,26 +100,23 @@ class MoonGameScene(SceneBase):
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
                 
                 elif event.key == pygame.K_RIGHT:
-                    print "downR"
                     if self.movecamera >= 0:
                         self.movecamera += self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    print "downL"
-                    if self.movecamera <= 3600:
+                    if self.movecamera <= 1200:
                         self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_m:
                     CurrencyManagement.AddMoonCrystals(100)
                     
             elif event.type == pygame.KEYUP:
-                print "up"
                 if event.key == pygame.K_RIGHT:
                     if self.movecamera >= 0:
                         self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    if self.movecamera <= 3600:
+                    if self.movecamera <= 1200:
                         self.movecamera += self.scrollfactor
 
             # Mouse click events
@@ -152,7 +149,9 @@ class MoonGameScene(SceneBase):
 
     def Update(self):
         if self.movecamera != 0:
+            if Camera.CheckCameraOffsets(self.offset, self.movecamera):
                 self.offset += self.movecamera
+                print self.offset
                 Camera.SetCameraOffset(self.offset, 0)
                 
         self.cu = UnitLoader.GetCreatedUnits()
@@ -217,7 +216,7 @@ class MoonGameScene(SceneBase):
             if(len(self.ce)>0):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
-            print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
+            print "You lost"
             self.SwitchToScene("Scenes.Levels.Level1Defeat.Level1Defeat")
 
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
