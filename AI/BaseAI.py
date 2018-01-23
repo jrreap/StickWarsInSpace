@@ -8,7 +8,7 @@ class BaseAI():
 
     # Income variables
     mooncrystals = 500
-    income = 1
+    income = 10
 
     # Used to calculate the current "danger" posed to the AI and when it should drain its resources
     dangervalue = 0
@@ -30,21 +30,22 @@ class BaseAI():
         print("AI Instantiated Successfully")
 
     def AIUpdate(self):
-        if random.randint(1, (1000 / self.difficulty)) <= 50:
+        if random.randint(1, (1000 / self.difficulty)) <= 100:
             self.AddIncome()
 
         self.CalculateDangerValue()
 
-        if self.cooldown >= 3:
+        if self.cooldown > 2:
             self.isPaused = True
-            self.cooldown = self.cooldown - 3
+            self.x = 1000
+            self.cooldown = 0
 
         if self.isPaused:
             if self.x == 0:
                 self.isPaused = False
                 self.x = 0
             else:
-                self.x = self.x + 1
+                self.x = self.x - 1
 
         if self.mooncrystals > 0 and self.dangervalue >= 1 and not self.isPaused:
             self.BuildUnit()
@@ -54,8 +55,6 @@ class BaseAI():
     def CalculateDangerValue(self):
         count = 0
         countai = 0
-        #JAYDEN COULDNT HAVE USED len(), NOOOOOOOO, HE'S TOO GOOD FOR THAT
-        #salt
         for unit in UnitLoader.GetCreatedUnits():
             count = count + 1
 
