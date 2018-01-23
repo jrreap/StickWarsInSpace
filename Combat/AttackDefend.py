@@ -23,8 +23,8 @@ class AttackDefend():
         if((Rate*(Friendlies.attackrate))>50):
             Enemies.DamageUnit(Friendlies.damage)
             if(Enemies.health<1):
+                CurrencyManagement.AddMoonCrystals((Enemies.unitcost)/2)
                 UnitSpawner.DeleteUnit(Enemies)
-                CurrencyManagement.AddMoonCrystals(100)
 
     @classmethod
     def EAttack(cls, Friendlies, Enemies, EnemyList, Rate, OGSpeed=0, EOGSpeed=0):
@@ -35,7 +35,6 @@ class AttackDefend():
             Enemies.DamageUnit(Friendlies.damage)
             if(Enemies.health<1):
                 UnitLoader.DeleteUnit(Enemies)
-                CurrencyManagement.AddMoonCrystals(100)
             
     @classmethod
     def UnitsAttack(cls, Units, Enemies, AttackRate, EAttackRate):
