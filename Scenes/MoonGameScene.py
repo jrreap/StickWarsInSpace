@@ -64,7 +64,7 @@ class MoonGameScene(SceneBase):
                                              bg=(109, 177, 255))
         self.buildspaceraider = Button("SpaceRaider 50", (1130, 195), self.BSR, size=(120, 60), font_size=15,
                                        bg=(109, 177, 255))
-        self.buildtank = Button("Tank \n $300", (1130, 355), self.BTANK, size=(120, 60), font_size=15, bg=(109, 177, 255))
+        self.buildtank = Button("Tank 300", (1130, 355), self.BTANK, size=(120, 60), font_size=15, bg=(109, 177, 255))
 
         self.buildmenutoggle = False
 
