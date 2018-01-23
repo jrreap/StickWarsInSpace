@@ -33,7 +33,7 @@ class MarsGameScene(SceneBase):
         self.AttackRate = 0
         self.EAttackRate = 0
         self.EHealth = 1000
-        self.Health = 1000
+        self.Health = 1500
 
         self.offset = 0
         self.movecamera = 0
@@ -189,9 +189,13 @@ class MarsGameScene(SceneBase):
         else:
             self.EAttackRate += 1
         #Attack Base
-        if(self.Health!=1000):
+        if(self.Health!=1000 ):
+            if(self.Health!=1500):
+                if(len(self.cu)>0):
+                    self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+        if(self.Health==1500):
             if(len(self.cu)>0):
-                self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
+                self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health==1000):
             if(len(self.cu)>0):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
@@ -201,11 +205,15 @@ class MarsGameScene(SceneBase):
 
          #Enemies Attack Base
         if(self.EHealth!=1000):
-            if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
+            if(self.EHealth!=1500):
+                if(len(self.ce)>0):
+                    self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
         if(self.EHealth==1000):
             if(len(self.ce)>0):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
+        if(self.EHealth==1500):
+            if(len(self.ce)>0):
+                self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.Levels.Level2Defeat.Level2Defeat")
