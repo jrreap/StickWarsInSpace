@@ -11,8 +11,8 @@ class SpaceMongolianLoreKraymer (SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
-        self.backbutton = Button("Back", (900,525), self.GoBack, size=(120,60), font_size=20, bg=(109,177,255))
-        self.returnbutton = Button("Menu", (900, 605), self.Return, size=(120,60), font_size=20, bg=(109,177,255))
+        self.backbutton = Button("Back", (900,605), self.GoBack, size=(120,60), font_size=20, bg=(109,177,255))
+        self.returnbutton = Button("Menu", (900, 525), self.Return, size=(120,60), font_size=20, bg=(109,177,255))
 
         b = Boombox()
         if not b.MusicStatus():

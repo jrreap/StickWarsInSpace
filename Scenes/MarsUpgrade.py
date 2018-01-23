@@ -69,7 +69,7 @@ class MarsUpgrade(SceneBase):
         global x
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
+        screen.blit(GetImage("./Images/background.jpg"), (0, 0))
 
         if not UpgradeData.economy:
             self.economybutton.Draw(screen)

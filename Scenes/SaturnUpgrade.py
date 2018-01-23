@@ -63,7 +63,7 @@ class SaturnUpgrade(SceneBase):
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
+        screen.blit(GetImage("./Images/background.jpg"), (0, 0))
         if not UpgradeData.economy:
             self.economybutton.Draw(screen)
         if not UpgradeData.defense:
