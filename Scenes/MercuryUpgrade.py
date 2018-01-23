@@ -5,8 +5,8 @@ from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from UI.Button import Button
 from UI.Text import Text
-from UpgradeDataBullshit.EconomyUpgrade import EconomyUpgrade
 from Scenes.Levels.Level5Opening import Level5Opening
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 
 
@@ -15,14 +15,7 @@ class MercuryUpgrade(SceneBase):
     def __init__(self):
         SceneBase.__init__(self)
 
-        a = EconomyUpgrade()
-        global x
-        x = 0
-        
-        
-        if a.returneconomy() is 1:
-            self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
-            x = 1
+        self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
         self.defensebutton = Button("+10% Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
 
 
@@ -51,10 +44,10 @@ class MercuryUpgrade(SceneBase):
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons has been pressed
-                if self.economybutton.IsClicked(mousepos) and x is 1:
+                if self.economybutton.IsClicked(mousepos) and not UpgradeData.economy:
                     self.economybutton.call_back_()
 
-                if self.defensebutton.IsClicked(mousepos):
+                if self.defensebutton.IsClicked(mousepos) and not UpgradeData.defense:
                     self.defensebutton.call_back_()
 
                 if self.speedbutton.IsClicked(mousepos):
@@ -72,20 +65,23 @@ class MercuryUpgrade(SceneBase):
         screen.fill((0, 0, 0))
 
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
-        if x is 1:
+        if not UpgradeData.economy:
             self.economybutton.Draw(screen)
-        self.defensebutton.Draw(screen)
+        if not UpgradeData.defense:
+            self.defensebutton.Draw(screen)
         self.speedbutton.Draw(screen)
         self.ragebutton.Draw(screen)
 
     def Economy(self):
+        UpgradeData.EconomyUpgrade(True)
         print("Economy upgraded")
-        a = EconomyUpgrade()
-        a.seteconomy()
+        print(UpgradeData.economy)
         self.SwitchToScene("Scenes.Levels.Level5Opening.Level5Opening")
 
     def Defense(self):
+        UpgradeData.DefenseUpgrade(True)
         print("Defense upgraded")
+        print(UpgradeData.defense)
         self.SwitchToScene("Scenes.Levels.Level5Opening.Level5Opening")
 
     def Speed(self):

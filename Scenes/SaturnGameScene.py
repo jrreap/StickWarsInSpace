@@ -22,6 +22,7 @@ import random
 from Scenes.SaturnUpgrade import SaturnUpgrade
 from Scenes.Levels.Level3Victory import Level3Victory
 from Scenes.Levels.Level3Defeat import Level3Defeat
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 
 

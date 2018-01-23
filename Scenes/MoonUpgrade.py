@@ -5,8 +5,8 @@ from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from UI.Button import Button
 from UI.Text import Text
-from UpgradeDataBullshit.EconomyUpgrade import EconomyUpgrade
 from Scenes.Levels.Level2Opening import Level2Opening
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 
 
@@ -71,14 +71,15 @@ class MoonUpgrade(SceneBase):
         self.ragebutton.Draw(screen)
 
     def Economy(self):
+        UpgradeData.EconomyUpgrade(True)
         print("Economy upgraded")
-        a = EconomyUpgrade()
-        a.seteconomy()
-        a.returneconomy()
+        print(UpgradeData.economy)
         self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
     def Defense(self):
+        UpgradeData.DefenseUpgrade(True)
         print("Defense upgraded")
+        print(UpgradeData.defense)
         self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
     def Speed(self):

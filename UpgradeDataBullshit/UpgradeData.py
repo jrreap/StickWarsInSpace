@@ -3,19 +3,32 @@ import random
 
 class UpgradeData():
 
-    def __init__(self):
-        print("hope")
-        
-    economy = 1
-    def economy(self):
-        x = economy
-        x+= .1
-        print("added .1 to economy")
+    economy = False
+    defense = False
+    speed = False
+    rage = False
+    damage = False
 
-    def reconomy(self):
-        value = economy
-        return value
-        print("returning value of economy")
+    @classmethod
+    def EconomyUpgrade(cls, x):
+        cls.economy = x
+    @classmethod
+    def DefenseUpgrade(cls, x):
+        cls.defense = x
+    @classmethod
+    def SpeedUpgrade(cls, x):
+        cls.speed = x
+    @classmethod
+    def RageUpgrade(cls, x):
+        cls.rage = x
+    @classmethod
+    def DamageUpgrade(cls, x):
+        cls.damage = x
+
+
+        
+    
+        
 
     
 
