@@ -20,7 +20,7 @@ class BaseAI():
     isPaused = False
 
     # Unit variables
-    UnlockedUnits = ["Rifle Blaster"]
+    UnlockedUnits = ["RifleBlaster"]
 
     # Difficulty variables
     difficulty = 1
@@ -35,9 +35,9 @@ class BaseAI():
 
         self.CalculateDangerValue()
 
-        if self.cooldown > 2:
+        if self.cooldown > (1 + self.difficulty) + (self.dangervalue - 1) :
             self.isPaused = True
-            self.x = 1000
+            self.x = (1000 / self.difficulty)
             self.cooldown = 0
 
         if self.isPaused:
@@ -81,7 +81,7 @@ class BaseAI():
 
     def BuildUnit(self):
         randtemp = random.randint(0,len(self.UnlockedUnits)-1)
-        unit = Unit(UnitLoader.units['RifleBlaster'])
+        unit = Unit(UnitLoader.units[self.UnlockedUnits[randtemp]])
 
         self.cooldown = self.cooldown + 1
 
