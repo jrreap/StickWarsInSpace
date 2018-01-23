@@ -58,15 +58,13 @@ class MoonGameScene(SceneBase):
 
         self.buildmenu = ToggleMenu((1140, 350), size=(160, 400), bg=(176, 185, 186), shown=False)
 
-        self.buildrifleblaster = Button("RifleBlaster", (1130, 225), self.BRB, size=(120, 30), font_size=15,
+        self.buildrifleblaster = Button("RifleBlaster \n $100", (1130, 275), self.BRB, size=(120, 60), font_size=15,
                                         bg=(109, 177, 255))
-        self.buildhorserifleblaster = Button("HorseRifleBlaster", (1130, 425), self.BHRB, size=(120, 30), font_size=15,
+        self.buildhorserifleblaster = Button("HorseRifleBlaster \n $200", (1130, 435), self.BHRB, size=(120, 60), font_size=12,
                                              bg=(109, 177, 255))
-        self.buildspaceraider = Button("SpaceRaider", (1130, 175), self.BSR, size=(120, 30), font_size=15,
+        self.buildspaceraider = Button("SpaceRaider \n $50", (1130, 195), self.BSR, size=(120, 60), font_size=15,
                                        bg=(109, 177, 255))
-        self.buildtank = Button("Tank", (1130, 275), self.BTANK, size=(120, 30), font_size=15, bg=(109, 177, 255))
-        self.buildplane = Button("Plane", (1130, 325), self.BPLANE, size=(120, 30), font_size=15, bg=(109, 177, 255))
-        self.buildturret = Button("Turret", (1130, 375), self.BTRT, size=(120, 30), font_size=15, bg=(109, 177, 255))
+        self.buildtank = Button("Tank \n $300", (1130, 355), self.BTANK, size=(120, 60), font_size=15, bg=(109, 177, 255))
 
         self.buildmenutoggle = False
 
@@ -76,8 +74,6 @@ class MoonGameScene(SceneBase):
         self.buildmenu.AddButton(self.buildrifleblaster)
         self.buildmenu.AddButton(self.buildspaceraider)
         self.buildmenu.AddButton(self.buildtank)
-        self.buildmenu.AddButton(self.buildplane)
-        self.buildmenu.AddButton(self.buildturret)
 
         b = Boombox()
         b.PlayMusic("level1playmusic")
@@ -146,12 +142,6 @@ class MoonGameScene(SceneBase):
 
                 elif self.buildtank.IsClicked(mousepos):
                     self.buildtank.call_back_()
-
-                elif self.buildplane.IsClicked(mousepos):
-                    self.buildplane.call_back_()
-
-                elif self.buildturret.IsClicked(mousepos):
-                    self.buildturret.call_back_()
 
                 elif self.buildrifleblaster.IsClicked(mousepos):
                     self.buildrifleblaster.call_back_()
@@ -314,12 +304,3 @@ class MoonGameScene(SceneBase):
 
         UnitLoader.EnqueueUnit(unit)
 
-    def BPLANE(self):
-        unit = Unit(UnitLoader.units["Plane"])
-
-        UnitLoader.EnqueueUnit(unit)
-
-    def BTRT(self):
-        unit = Unit(UnitLoader.units["Turret"])
-
-        UnitLoader.EnqueueUnit(unit)
