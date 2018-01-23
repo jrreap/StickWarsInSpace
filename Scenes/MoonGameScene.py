@@ -21,6 +21,7 @@ import pygame
 import random
 from Scenes.Levels.Level1Victory import Level1Victory
 from Scenes.Levels.Level1Defeat import Level1Defeat
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 
 class MoonGameScene(SceneBase):
@@ -164,7 +165,11 @@ class MoonGameScene(SceneBase):
         if(self.Economy == True):
             if(self.MoneyCounter==30):
                 self.MoneyCounter=0
-                CurrencyManagement.AddMoonCrystals(1)
+                if UpgradeData.economy:
+                    CurrencyManagement.AddMoonCrystals(20)
+                elif not UpgradeData.economy:
+                    CurrencyManagement.AddMoonCrystals(15)
+
             else:
                 self.MoneyCounter+=1
                 

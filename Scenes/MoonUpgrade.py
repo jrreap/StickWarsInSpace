@@ -16,14 +16,14 @@ class MoonUpgrade(SceneBase):
         SceneBase.__init__(self)
         
         
-        self.economybutton = Button("+10% Economy", (300,200), self.Economy, size=(200,60), font_size=20, bg=(109,177,255))
+        self.economybutton = Button("+5 MoonCrystals Economy", (300,200), self.Economy, size=(240,60), font_size=20, bg=(109,177,255))
 
-        self.defensebutton = Button("+500 Mothership HP", (300, 300), self.Defense, size=(200,60), font_size=20, bg=(109,177,255))
+        self.defensebutton = Button("+500 Mothership HP", (300, 300), self.Defense, size=(240,60), font_size=20, bg=(109,177,255))
 
 
-        self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(200,60), font_size=20, bg=(109,177,255))
+        self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(240,60), font_size=20, bg=(109,177,255))
 
-        self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(200,60), font_size=20, bg=(109,177,255))
+        self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(240,60), font_size=20, bg=(109,177,255))
 
 
        

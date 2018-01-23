@@ -170,7 +170,11 @@ class UranusGameScene(SceneBase):
         if(self.Economy == True):
             if(self.MoneyCounter==30):
                 self.MoneyCounter=0
-                CurrencyManagement.AddMoonCrystals(1)
+                if UpgradeData.economy:
+                    CurrencyManagement.AddMoonCrystals(20)
+                elif not UpgradeData.economy:
+                    CurrencyManagement.AddMoonCrystals(15)
+
             else:
                 self.MoneyCounter+=1
 
