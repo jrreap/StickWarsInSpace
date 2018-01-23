@@ -37,7 +37,7 @@ class BaseAI():
 
         if self.cooldown > (1 + self.difficulty) + (self.dangervalue - 1) :
             self.isPaused = True
-            self.x = (1000 / self.difficulty)
+            self.x = (800 / self.difficulty) - (10 * self.dangervalue)
             self.cooldown = 0
 
         if self.isPaused:
