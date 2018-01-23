@@ -58,11 +58,11 @@ class MoonGameScene(SceneBase):
 
         self.buildmenu = ToggleMenu((1140, 350), size=(160, 400), bg=(176, 185, 186), shown=False)
 
-        self.buildrifleblaster = Button("RifleBlaster \n $100", (1130, 275), self.BRB, size=(120, 60), font_size=15,
+        self.buildrifleblaster = Button("RifleBlaster 100", (1130, 275), self.BRB, size=(120, 60), font_size=15,
                                         bg=(109, 177, 255))
-        self.buildhorserifleblaster = Button("HorseRifleBlaster \n $200", (1130, 435), self.BHRB, size=(120, 60), font_size=12,
+        self.buildhorserifleblaster = Button("HorseRifleBlaster 200", (1130, 435), self.BHRB, size=(120, 60), font_size=12,
                                              bg=(109, 177, 255))
-        self.buildspaceraider = Button("SpaceRaider \n $50", (1130, 195), self.BSR, size=(120, 60), font_size=15,
+        self.buildspaceraider = Button("SpaceRaider 50", (1130, 195), self.BSR, size=(120, 60), font_size=15,
                                        bg=(109, 177, 255))
         self.buildtank = Button("Tank \n $300", (1130, 355), self.BTANK, size=(120, 60), font_size=15, bg=(109, 177, 255))
 
@@ -151,7 +151,6 @@ class MoonGameScene(SceneBase):
         if self.movecamera != 0:
             if Camera.CheckCameraOffsets(self.offset, self.movecamera):
                 self.offset += self.movecamera
-                print self.offset
                 Camera.SetCameraOffset(self.offset, 0)
                 
         self.cu = UnitLoader.GetCreatedUnits()

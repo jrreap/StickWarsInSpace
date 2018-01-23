@@ -100,26 +100,23 @@ class MarsGameScene(SceneBase):
                     self.buildmenu.ToggleMenu(self.buildmenutoggle)
                 
                 elif event.key == pygame.K_RIGHT:
-                    #print "downR"
                     if self.movecamera >= 0:
                         self.movecamera += self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    #print "downL"
-                    if self.movecamera <= 3600:
+                    if self.movecamera <= 1200:
                         self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_m:
                     CurrencyManagement.AddMoonCrystals(100)
                     
             elif event.type == pygame.KEYUP:
-                #print "up"
                 if event.key == pygame.K_RIGHT:
                     if self.movecamera >= 0:
                         self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_LEFT:
-                    if self.movecamera <= 3600:
+                    if self.movecamera <= 1200:
                         self.movecamera += self.scrollfactor
 
             # Mouse click events
@@ -152,6 +149,7 @@ class MarsGameScene(SceneBase):
 
     def Update(self):
         if self.movecamera != 0:
+            if Camera.CheckCameraOffsets(self.offset, self.movecamera):
                 self.offset += self.movecamera
                 Camera.SetCameraOffset(self.offset, 0)
                 
