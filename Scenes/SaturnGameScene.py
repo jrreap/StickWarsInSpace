@@ -33,6 +33,8 @@ class SaturnGameScene(SceneBase):
         UnitLoader.__init__()
 
         self.counter = 0
+        self.Economy = False
+        self.MoneyCounter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
         self.EHealth = 1000
@@ -158,6 +160,16 @@ class SaturnGameScene(SceneBase):
                 
         self.cu = UnitLoader.GetCreatedUnits()
         self.ce = UnitSpawner.GetCreatedUnits()
+
+        #Generate Money
+        if(len(self.cu)>0):
+            self.Economy = True
+        if(self.Economy == True):
+            if(self.MoneyCounter==30):
+                self.MoneyCounter=0
+                CurrencyManagement.AddMoonCrystals(1)
+            else:
+                self.MoneyCounter+=1
 
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
