@@ -46,7 +46,7 @@ class LevelSelect(SceneBase):
                 self.SwitchToScene(None)
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                self.SwitchToScene(None)
+                self.SwitchToScene("Scenes.MenuScene.MenuScene")
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
