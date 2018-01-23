@@ -201,7 +201,7 @@ class MoonGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
+            self.SwitchToScene("Scenes.Levels.Level1Victory.Level1Victory")
 
          #Enemies Attack Base
         if(self.EHealth!=1000):
@@ -216,7 +216,7 @@ class MoonGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.Levels.Level2Defeat.Level2Defeat")
+            self.SwitchToScene("Scenes.Levels.Level1Defeat.Level1Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 

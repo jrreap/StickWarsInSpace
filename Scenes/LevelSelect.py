@@ -14,6 +14,7 @@ from Scenes.SaturnGameScene import SaturnGameScene
 from Scenes.Levels.Level2Opening import Level2Opening
 from Scenes.Levels.Level4Opening import Level4Opening
 from Scenes.Levels.Level5Opening import Level5Opening
+from Scenes.Levels.Level6Opening import Level6Opening
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -110,4 +111,5 @@ class LevelSelect(SceneBase):
 
     def Neptune(self):
         print("Starting New Game : Neptune...")
+        self.SwitchToScene("Scenes.Levels.Level6Opening.Level6Opening")
         

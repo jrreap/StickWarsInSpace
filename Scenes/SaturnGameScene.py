@@ -204,7 +204,7 @@ class SaturnGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
+            self.SwitchToScene("Scenes.Levels.Level3Victory.Level3Victory")
 
          #Enemies Attack Base
         if(self.EHealth!=1000):
@@ -219,7 +219,7 @@ class SaturnGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.Levels.Level2Defeat.Level2Defeat")
+            self.SwitchToScene("Scenes.Levels.Level3Defeat.Level3Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 

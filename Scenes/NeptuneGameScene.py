@@ -19,11 +19,11 @@ from CurrencyManagement.CurrencyManagement import CurrencyManagement
 from Options.Options import Options
 import pygame
 import random
-from Scenes.Levels.Level4Victory import Level4Victory
-from Scenes.Levels.Level4Defeat import Level4Defeat
+from Scenes.Levels.Level6Victory import Level6Victory
+from Scenes.Levels.Level6Defeat import Level6Defeat
 
 
-class MercuryGameScene(SceneBase):
+class NeptuneGameScene(SceneBase):
 
     def __init__(self):
         SceneBase.__init__(self)
@@ -76,7 +76,7 @@ class MercuryGameScene(SceneBase):
         self.buildmenu.AddButton(self.buildtank)
 
         b = Boombox()
-        b.PlayMusic("level4playmusic")
+        b.PlayMusic("level6playmusic")
 
     def ProcessInput(self, events, pressed_keys):
 
@@ -90,7 +90,7 @@ class MercuryGameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.Levels.Level4Victory.Level4Victory")
+                    self.SwitchToScene("Scenes.Levels.Level6Victory.Level6Victory")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)
@@ -201,7 +201,7 @@ class MercuryGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.Levels.Level4Victory.Level4Victory")
+            self.SwitchToScene("Scenes.Levels.Level6Victory.Level6Victory")
 
          #Enemies Attack Base
         if(self.EHealth!=1000):
@@ -216,14 +216,14 @@ class MercuryGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
-            self.SwitchToScene("Scenes.Levels.Level4Defeat.Level4Defeat")
+            self.SwitchToScene("Scenes.Levels.Level6Defeat.Level6Defeat")
         #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 
     def Render(self, screen):
         screen.fill((0, 0, 0))
 
-        screen.blit(GetImage("Images/MERCURYBG.jpg"), (0 - Camera.GetXOffset(), 0))
+        screen.blit(GetImage("Images/Neptune.jpg"), (0 - Camera.GetXOffset(), 0))
 
         # Draw your units on screen
         for unit in self.cu:
@@ -301,4 +301,5 @@ class MercuryGameScene(SceneBase):
         unit = Unit(UnitLoader.units["Tank"])
 
         UnitLoader.EnqueueUnit(unit)
+
 

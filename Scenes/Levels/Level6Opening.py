@@ -3,6 +3,7 @@ from Scenes.SceneBase import SceneBase
 from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
+from Scenes.NeptuneGameScene import NeptuneGameScene
 
 class Level6Opening (SceneBase):
 
@@ -32,4 +33,5 @@ class Level6Opening (SceneBase):
 
     def Continue(self):
         print("going to final level")
+        self.SwitchToScene(NeptuneGameScene())
         
