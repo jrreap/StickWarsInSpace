@@ -29,6 +29,8 @@ class MoonGameScene(SceneBase):
         SceneBase.__init__(self)
         UnitLoader.__init__()
 
+        self.Economy = False
+        self.MoneyCounter = 0
         self.counter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
@@ -156,6 +158,16 @@ class MoonGameScene(SceneBase):
         self.cu = UnitLoader.GetCreatedUnits()
         self.ce = UnitSpawner.GetCreatedUnits()
 
+        #Generate Money
+        if(len(self.cu)>0):
+            self.Economy = True
+        if(self.Economy == True):
+            if(self.MoneyCounter==30):
+                self.MoneyCounter=0
+                CurrencyManagement.AddMoonCrystals(1)
+            else:
+                self.MoneyCounter+=1
+                
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
         self.UnitMovement.MoveEnemyUnits()
