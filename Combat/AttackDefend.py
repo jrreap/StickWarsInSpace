@@ -10,10 +10,7 @@ class AttackDefend():
         detect = False
         UnitRange = Unit1.unitrange
         if abs(Unit2.xpos-Unit1.xpos)<=UnitRange*50:
-            if(Unit2.ypos == Unit1.ypos):
-                detect = True
-            else:
-                detect = False
+            detect = True
         else:
             detect = False
         return detect
