@@ -6,7 +6,7 @@ class UpgradeData():
     economy = False
     defense = False
     speed = False
-    rage = False
+    health = False
     damage = False
 
     @classmethod
@@ -16,11 +16,8 @@ class UpgradeData():
     def DefenseUpgrade(cls, x):
         cls.defense = x
     @classmethod
-    def SpeedUpgrade(cls, x):
-        cls.speed = x
-    @classmethod
-    def RageUpgrade(cls, x):
-        cls.rage = x
+    def HealthUpgrade(cls, x):
+        cls.health = x
     @classmethod
     def DamageUpgrade(cls, x):
         cls.damage = x

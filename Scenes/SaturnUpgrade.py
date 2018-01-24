@@ -20,9 +20,9 @@ class SaturnUpgrade(SceneBase):
         self.defensebutton = Button("+500 Mothership HP", (300, 300), self.Defense, size=(240,60), font_size=20, bg=(109,177,255))
 
 
-        self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(240,60), font_size=20, bg=(109,177,255))
+        self.damagebutton = Button("Unit Damage +10", (300,400), self.Damage, size=(240,60), font_size=20, bg=(109,177,255))
 
-        self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(240,60), font_size=20, bg=(109,177,255))
+        self.healthbutton = Button("Unit Health +20", (300,500), self.Health, size=(240,60), font_size=20, bg=(109,177,255))
 
 
 
@@ -50,11 +50,11 @@ class SaturnUpgrade(SceneBase):
                 if self.defensebutton.IsClicked(mousepos) and not UpgradeData.defense:
                     self.defensebutton.call_back_()
 
-                if self.speedbutton.IsClicked(mousepos):
-                    self.speedbutton.call_back_()
+                if self.damagebutton.IsClicked(mousepos) and not UpgradeData.damage:
+                    self.damagebutton.call_back_()
 
-                if self.ragebutton.IsClicked(mousepos):
-                    self.ragebutton.call_back_()
+                if self.healthbutton.IsClicked(mousepos) and not UpgradeData.health:
+                    self.healthbutton.call_back_()
 
 
     def Update(self):
@@ -68,8 +68,10 @@ class SaturnUpgrade(SceneBase):
             self.economybutton.Draw(screen)
         if not UpgradeData.defense:
             self.defensebutton.Draw(screen)
-        self.speedbutton.Draw(screen)
-        self.ragebutton.Draw(screen)
+        if not UpgradeData.damage:
+            self.damagebutton.Draw(screen)
+        if not UpgradeData.health:
+            self.healthbutton.Draw(screen)
 
     def Economy(self):
         UpgradeData.EconomyUpgrade(True)
@@ -83,12 +85,14 @@ class SaturnUpgrade(SceneBase):
         print(UpgradeData.defense)
         self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
 
-    def Speed(self):
-        print("Speed Spell gotten")
+    def Damage(self):
+        UpgradeData.DamageUpgrade(True)
+        print("damage upgraded")
         self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
 
-    def Rage(self):
-        print("Rage Spell gotten")
+    def Health(self):
+        UpgradeData.HealthUpgrade(True)
+        print("health upgraded")
         self.SwitchToScene("Scenes.Levels.Level4Opening.Level4Opening")
             
     

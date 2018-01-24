@@ -21,9 +21,9 @@ class MoonUpgrade(SceneBase):
         self.defensebutton = Button("+500 Mothership HP", (300, 300), self.Defense, size=(240,60), font_size=20, bg=(109,177,255))
 
 
-        self.speedbutton = Button("Speed Spell", (300,400), self.Speed, size=(240,60), font_size=20, bg=(109,177,255))
+        self.damagebutton = Button("Unit Damage +10", (300,400), self.Damage, size=(240,60), font_size=20, bg=(109,177,255))
 
-        self.ragebutton = Button("Rage Spell", (300,500), self.Rage, size=(240,60), font_size=20, bg=(109,177,255))
+        self.healthbutton = Button("Unit Health +20", (300,500), self.Health, size=(240,60), font_size=20, bg=(109,177,255))
 
 
        
@@ -51,11 +51,11 @@ class MoonUpgrade(SceneBase):
                 if self.defensebutton.IsClicked(mousepos):
                     self.defensebutton.call_back_()
 
-                if self.speedbutton.IsClicked(mousepos):
-                    self.speedbutton.call_back_()
+                if self.damagebutton.IsClicked(mousepos):
+                    self.damagebutton.call_back_()
 
-                if self.ragebutton.IsClicked(mousepos):
-                    self.ragebutton.call_back_()
+                if self.healthbutton.IsClicked(mousepos):
+                    self.healthbutton.call_back_()
 
 
     def Update(self):
@@ -67,8 +67,8 @@ class MoonUpgrade(SceneBase):
         screen.blit(GetImage("./Images/background.jpg"), (0, 0))
         self.economybutton.Draw(screen)
         self.defensebutton.Draw(screen)
-        self.speedbutton.Draw(screen)
-        self.ragebutton.Draw(screen)
+        self.damagebutton.Draw(screen)
+        self.healthbutton.Draw(screen)
 
     def Economy(self):
         UpgradeData.EconomyUpgrade(True)
@@ -82,12 +82,14 @@ class MoonUpgrade(SceneBase):
         print(UpgradeData.defense)
         self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
-    def Speed(self):
-        print("Speed Spell gotten")
+    def Damage(self):
+        UpgradeData.DamageUpgrade(True)
+        print("unit damage upgraded")
         self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
-    def Rage(self):
-        print("Rage Spell gotten")
+    def Health(self):
+        UpgradeData.HealthUpgrade(True)
+        print("unit health upgraded")
         self.SwitchToScene("Scenes.Levels.Level2Opening.Level2Opening")
 
         

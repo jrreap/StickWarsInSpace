@@ -1,5 +1,6 @@
 from UnitManagement.LaneManager import LaneManager
 from CurrencyManagement.CurrencyManagement import CurrencyManagement
+from UpgradeDataBullshit.UpgradeData import UpgradeData
 
 class UnitLoader():
 
@@ -62,6 +63,13 @@ class UnitLoader():
         # Set starting position to be in the main lane
         unit.xpos = 150 + (20*unit.laneid)
         unit.ypos = 550 - (50*unit.laneid)
+
+        if UpgradeData.damage:
+            unit.damage +=10
+
+        if UpgradeData.health:
+            unit.health +=20
+    
 
         cls.createdUnits.append(unit)
 

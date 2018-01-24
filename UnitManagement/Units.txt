@@ -15,10 +15,10 @@ OGSpeed=4
 
 HorseRifleBlaster
 Animation Folder=HorseRifleBlaster
-HP=250
+HP=150
 Damage=50
 Speed=5
-Attack rate=.5
+Attack rate=1
 Range=6
 Price=200
 Training time=2
