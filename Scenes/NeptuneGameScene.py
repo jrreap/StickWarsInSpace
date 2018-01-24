@@ -37,11 +37,11 @@ class NeptuneGameScene(SceneBase):
         self.MoneyCounter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
-        self.EHealth = 1000
+        self.Health = 1000
         if UpgradeData.defense:
-            self.Health = 1500
+            self.EHealth = 1500
         elif not UpgradeData.defense:
-            self.Health = 1000
+            self.EHealth = 1000
 
         print(self.Health)
 
@@ -205,16 +205,6 @@ class NeptuneGameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-        # Move all spawned enemy units
-        if(self.counter == 25):
-            self.UnitMovement.MoveEnemyUnits()
-            if (random.randint(0, 100) <= 5):
-                #UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
-                pass
-            self.counter = 0
-        else:
-            self.counter = self.counter + 1
-
         # Call the AI
         self.AI.AIUpdate()
 
@@ -239,7 +229,7 @@ class NeptuneGameScene(SceneBase):
                     self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
         if(self.Health==1500):
             if(len(self.cu)>0):
-                self.Health = WinCon.ReachedPlayer(self.cu, 0)
+                self.Health = WinCon.ReachedPlayer(self.cu, 0, self.Health)
         if(self.Health==1000):
             if(len(self.cu)>0):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
@@ -257,7 +247,7 @@ class NeptuneGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth==1500):
             if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
+                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.Levels.Level6Defeat.Level6Defeat")

@@ -10,6 +10,7 @@ from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborji
 from Scenes.Instructions import Instructions
 from Scenes.LevelSelect import LevelSelect
 from Scenes.Credits import Credits
+from DLC.DLCCheck import DLCCheck
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -93,7 +94,10 @@ class MenuScene(SceneBase):
 
     def StartGame(self):
         print("Starting New Game...")
-        self.SwitchToScene(LevelSelect())
+        if DLCCheck.CheckDLC():
+            self.SwitchToScene(LevelSelect())
+        else:
+            print("[ERROR] DLC key not found")
 
     def Lore(self):
         print("Going to Lore...")

@@ -199,15 +199,6 @@ class MoonGameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-        # Move all spawned enemy units
-        if(self.counter == 25):
-            self.UnitMovement.MoveEnemyUnits()
-            if (random.randint(0, 100) <= 5):
-                #UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
-                pass
-            self.counter = 0
-        else:
-            self.counter = self.counter + 1
 
         # Call the AI
         self.AI.AIUpdate()
@@ -251,7 +242,7 @@ class MoonGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth==1500):
             if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
+                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.Levels.Level1Defeat.Level1Defeat")
