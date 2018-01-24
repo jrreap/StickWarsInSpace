@@ -1,6 +1,6 @@
 
 SpaceRaider
-Animation Folder=RifleBlaster
+Animation Folder=SpaceRaider
 HP=100
 Damage=100
 Speed=4
