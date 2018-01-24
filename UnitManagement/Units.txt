@@ -27,20 +27,6 @@ Hight=155
 Frames=10
 OGSpeed=5
 
-Turret
-Animation Folder=RifleBlaster
-HP=1000
-Damage=25
-Speed=0
-Attack rate=1
-Range=10
-Price=100
-Training time=5
-Width=90
-Hight=150
-Frames=7
-OGSpeed=0
-
 RifleBlaster
 Animation Folder=RifleBlaster
 HP=100
@@ -68,18 +54,4 @@ Width=400
 Hight=100
 Frames=10
 OGSpeed=.5
-
-Plane
-Animation Folder=RifleBlaster
-HP=200
-Damage=200
-Speed=2
-Attack rate=5
-Range=8
-Price=200
-Training time=5
-Width=90
-Hight=150
-Frames=7
-OGSpeed=2
 #add extra units above this line#
