@@ -1,9 +1,9 @@
 
 SpaceRaider
 Animation Folder=RifleBlaster
-HP=50
+HP=100
 Damage=100
-Speed=3
+Speed=4
 Attack rate=1
 Range=1
 Price=50
@@ -11,14 +11,14 @@ Training time=1
 Width=90
 Hight=150
 Frames=7
-OGSpeed=3
+OGSpeed=4
 
 HorseRifleBlaster
 Animation Folder=HorseRifleBlaster
-HP=200
-Damage=40
+HP=250
+Damage=50
 Speed=5
-Attack rate=1
+Attack rate=.5
 Range=6
 Price=200
 Training time=2
@@ -43,15 +43,15 @@ OGSpeed=2
 
 Tank
 Animation Folder=Tank
-HP=400
+HP=1000
 Damage=500
 Speed=1
 Attack rate=5
-Range=2
+Range=4
 Price=300
-Training time=5
+Training time=4
 Width=400
 Hight=100
 Frames=10
-OGSpeed=.5
+OGSpeed=1
 #add extra units above this line#
