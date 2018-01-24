@@ -34,6 +34,8 @@ class LevelSelect(SceneBase):
 
         self.uranusbutton = Button("5. Uranus", (510, 525), self.Uranus, size=(120,60), font_size=20, bg=(109,177,255))
         self.neptunebutton = Button("6. Neptune", (690, 525), self.Neptune, size=(120,60), font_size=20, bg=(109,177,255))
+
+        self.continuebutton = Button("Return to Menu", (900,500), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
         # Start music
         b = Boombox()
 
@@ -67,6 +69,9 @@ class LevelSelect(SceneBase):
                 if self.uranusbutton.IsClicked(mousepos):
                     self.uranusbutton.call_back_()
 
+                if self.continuebutton.IsClicked(mousepos):
+                    self.continuebutton.call_back_()
+
                 if self.neptunebutton.IsClicked(mousepos):
                     self.neptunebutton.call_back_()
 
@@ -84,6 +89,7 @@ class LevelSelect(SceneBase):
         self.saturnbutton.Draw(screen)
         self.moonbutton.Draw(screen)
         self.uranusbutton.Draw(screen)
+        self.continuebutton.Draw(screen)
         self.neptunebutton.Draw(screen)
 
     # Button functions
@@ -112,4 +118,8 @@ class LevelSelect(SceneBase):
     def Neptune(self):
         print("Starting New Game : Neptune...")
         self.SwitchToScene("Scenes.Levels.Level6Opening.Level6Opening")
+
+    def Continue(self):
+        print("returning to menu")
+        self.SwitchToScene("Scenes.MenuScene.MenuScene")
         
