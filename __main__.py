@@ -23,18 +23,20 @@ def Start(width, height, fps, starting_scene):
                 
                 #Check if the input is a EXIT command or key
                 if event.type == pygame.QUIT:
-                    quit_attempt = True
-                elif event.type == pygame.KEYDOWN:
-                    alt_pressed = pressed_keys[pygame.K_LALT]
-                    if event.key == pygame.K_F4 and alt_pressed:
-                        quit_attempt = True                            
+                    quit_attempt = True                         
                 
                 #Check if we are quitting
                 if quit_attempt:
+                    pygame.mixer.music.stop()
                     active_scene.Terminate()
+                    pygame.display.quit()
+                    pygame.quit()
+                    break
                 else:
                     filtered_events.append(event)
-                    
+            if quit_attempt:
+                break
+            
             active_scene.ProcessInput(filtered_events, pressed_keys)
             active_scene.Update()
             active_scene.Render(screen)
