@@ -22,9 +22,9 @@ Attack rate=1
 Range=6
 Price=200
 Training time=2
-Width=500
-Hight=300
-Frames=7
+Width=250
+Hight=155
+Frames=10
 OGSpeed=5
 
 Turret
