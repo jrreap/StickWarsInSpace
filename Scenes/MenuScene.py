@@ -9,6 +9,7 @@ from UI.Text import Text
 from Scenes.Lore.SpaceMongolianLoreTohnborjin import SpaceMongolianLoreTohnborjin
 from Scenes.Instructions import Instructions
 from Scenes.LevelSelect import LevelSelect
+from Scenes.Credits import Credits
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -108,4 +109,5 @@ class MenuScene(SceneBase):
 
     def Credits(self):
         print("going to credits...")
+        self.SwitchToScene(Credits())
         
