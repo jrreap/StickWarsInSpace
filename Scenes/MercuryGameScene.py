@@ -288,10 +288,13 @@ class MercuryGameScene(SceneBase):
         UnitLoader.createdUnits = []
         UnitLoader.buildCount = 0
         UnitLoader.lane = 0
+        UnitLoader.queuedUnits = []
         CurrencyManagement.mooncrystals = 100
         UnitSpawner.createdUnits = []
+        UnitSpawner.queuedUnits = []
         UnitSpawner.buildCount = 0
-        UnitLoader.lane = 0
+        UnitSpawner.lane = 0
+        Camera.SetCameraOffset(0, 0)
 
     # Button functions
 
