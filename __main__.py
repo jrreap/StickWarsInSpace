@@ -33,11 +33,14 @@ def Start(width, height, fps, starting_scene):
                 if quit_attempt:
                     pygame.mixer.music.stop()
                     active_scene.Terminate()
-                    pygame.close()
-                    sys.exit()
+                    pygame.display.quit()
+                    pygame.quit()
+                    break
                 else:
                     filtered_events.append(event)
-                    
+            if quit_attempt:
+                break
+            
             active_scene.ProcessInput(filtered_events, pressed_keys)
             active_scene.Update()
             active_scene.Render(screen)
