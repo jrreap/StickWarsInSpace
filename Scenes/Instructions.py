@@ -9,7 +9,7 @@ class Instructions (SceneBase):
 
     def __init__ (self):
         SceneBase.__init__(self)
-        self.returnbutton = Button("Return to Menu", (900, 525), self.GoBack, size = (300,60), font_size = 20, bg = (109,177,255))
+        self.returnbutton = Button("Return to Menu", (900, 425), self.GoBack, size = (300,60), font_size = 20, bg = (109,177,255))
 
     def ProcessInput (self, events, pressed_keys):
         mousepos = pygame.mouse.get_pos()
