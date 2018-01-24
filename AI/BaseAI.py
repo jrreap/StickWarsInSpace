@@ -20,13 +20,21 @@ class BaseAI():
     isPaused = False
 
     # Unit variables
-    UnlockedUnits = ["RifleBlaster"]
+    UnlockedUnits = ["SpaceRaider"]
 
     # Difficulty variables
     difficulty = 1
 
     def __init__(self, difficulty):
         self.difficulty = difficulty
+
+        if self.difficulty == 2:
+            self.UnlockedUnits.append("RifleBlaster")
+        if self.difficulty == 3:
+            self.UnlockedUnits.append("HorseRifleBlaster")
+        if self.difficulty == 6:
+            self.UnlockedUnits.append("Tank")
+
         print("AI Instantiated Successfully")
 
     def AIUpdate(self):
