@@ -18,7 +18,7 @@ class UranusUpgrade(SceneBase):
         self.economybutton = Button("+5 MoonCrystals Economy", (300,200), self.Economy, size=(240,60), font_size=20, bg=(109,177,255))
         self.defensebutton = Button("+500 Mothership HP", (300, 300), self.Defense, size=(240,60), font_size=20, bg=(109,177,255))
 
-
+        self.continuebutton = Button("Make the Game Great Again", (900,500), self.Continue, size=(240,60), font_size=20, bg=(109,177,255))
         self.damagebutton = Button("Unit Damage +10", (300,400), self.Damage, size=(240,60), font_size=20, bg=(109,177,255))
 
         self.healthbutton = Button("Unit Health +20", (300,500), self.Health, size=(240,60), font_size=20, bg=(109,177,255))
@@ -56,6 +56,9 @@ class UranusUpgrade(SceneBase):
                 if self.healthbutton.IsClicked(mousepos) and not UpgradeData.health:
                     self.healthbutton.call_back_()
 
+                if self.continuebutton.IsClicked(mousepos):
+                    self.continuebutton.call_back_()
+
 
     def Update(self):
         pass
@@ -74,6 +77,10 @@ class UranusUpgrade(SceneBase):
             self.damagebutton.Draw(screen)
         if not UpgradeData.health:
             self.healthbutton.Draw(screen)
+        self.continuebutton.Draw(screen)
+
+    def Continue(self):
+        self.SwitchToScene("Scenes.Levels.Level6Opening.Level6Opening")
 
     def Economy(self):
         UpgradeData.EconomyUpgrade(True)
