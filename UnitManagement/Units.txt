@@ -56,7 +56,7 @@ Frames=7
 OGSpeed=2
 
 Tank
-Animation Folder=RifleBlaster
+Animation Folder=Tank
 HP=400
 Damage=500
 Speed=1
@@ -64,9 +64,9 @@ Attack rate=5
 Range=2
 Price=300
 Training time=5
-Width=90
-Hight=150
-Frames=7
+Width=800
+Hight=200
+Frames=10
 OGSpeed=.5
 
 Plane
