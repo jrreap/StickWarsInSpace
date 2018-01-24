@@ -244,7 +244,7 @@ class UranusGameScene(SceneBase):
                 self.Health = WinCon.ReachedPlayer(self.cu, 0)
         if(self.Health<=0):
             print "Congrats you have won"
-            self.SwitchToScene("Scenes.Levels.Level2Victory.Level2Victory")
+            self.SwitchToScene("Scenes.Levels.Level5Victory.Level5Victory")
 
          #Enemies Attack Base
         if(self.EHealth!=1000):
