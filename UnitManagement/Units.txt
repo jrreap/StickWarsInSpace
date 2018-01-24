@@ -64,8 +64,8 @@ Attack rate=5
 Range=2
 Price=300
 Training time=5
-Width=800
-Hight=200
+Width=400
+Hight=100
 Frames=10
 OGSpeed=.5
 
