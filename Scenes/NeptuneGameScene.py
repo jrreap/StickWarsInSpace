@@ -178,7 +178,7 @@ class NeptuneGameScene(SceneBase):
 
         self.ebasehealth.SetFillPercentage(self.EHealth, 1000)
 
-        #Generate Money
+      #Generate Money
         if(len(self.cu)>0):
             self.Economy = True
         if(self.Economy == True):
@@ -191,6 +191,14 @@ class NeptuneGameScene(SceneBase):
 
             else:
                 self.MoneyCounter+=1
+        if(len(self.cu)<1):
+                if(len(self.ce)<1):
+                    if(self.Economy == True):
+                        self.Economy = False
+                        if(CurrencyManagement.GetMoonCrystals()<100):
+                            CurrencyManagement.AddMoonCrystals(100-CurrencyManagement.GetMoonCrystals())
+
+
                 
         # Move all the units based on the current movement mode
         self.UnitMovement.MoveUnits()
