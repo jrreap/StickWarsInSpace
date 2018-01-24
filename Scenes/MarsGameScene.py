@@ -36,13 +36,14 @@ class MarsGameScene(SceneBase):
         self.MoneyCounter = 0
         self.AttackRate = 0
         self.EAttackRate = 0
-        self.EHealth = 1000
+        self.Health = 1000
         if UpgradeData.defense:
-            self.Health = 1500
-        elif not UpgradeData.defense:
-            self.Health = 1000
+            self.EHealth = 1500
+        else:
+            self.EHealth = 1000
 
-        print(self.Health)
+        print(self.EHealth)
+        print (UpgradeData.defense)
 
         self.offset = 0
         self.movecamera = 0
@@ -244,7 +245,7 @@ class MarsGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth==1500):
             if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
+                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1, self.EHealth)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.Levels.Level2Defeat.Level2Defeat")
