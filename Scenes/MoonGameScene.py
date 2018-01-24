@@ -251,7 +251,7 @@ class MoonGameScene(SceneBase):
                 self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth==1500):
             if(len(self.ce)>0):
-                self.EHealth = WinCon.ReachedEPlaer(self.ce, 1)
+                self.EHealth = WinCon.ReachedEPlayer(self.ce, 1)
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.Levels.Level1Defeat.Level1Defeat")
