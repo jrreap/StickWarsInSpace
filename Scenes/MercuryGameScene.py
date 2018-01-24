@@ -9,6 +9,7 @@ from UI.Button import Button
 from UI.Bar import Bar
 from UI.StatBar import StatBar
 from UI.ToggleMenu import ToggleMenu
+from UI.Text import Text
 from Combat.Detect import Detect
 from Combat.AttackDefend import AttackDefend
 from Combat.WinCon import WinCon
@@ -77,6 +78,14 @@ class MercuryGameScene(SceneBase):
         self.buildmenutoggle = False
 
         self.buildqueue = StatBar(" ", (1090, 635), size=(200, 20), bg=(176, 185, 186), fg=(109, 177, 255))
+
+        self.basehealth = StatBar(" ", (80, 45), size=(150, 20), bg=(176, 185, 186), fg=(219, 40, 0))
+
+        self.ebasehealth = StatBar(" ", (80, 15), size=(150, 20), bg=(176, 185, 186), fg=(109, 177, 255))
+
+        self.text = Text(15, 80, "Base Health", bold=True, fontSize=18)
+
+        self.etext = Text(45, 80, "Enemy Base Health", bold=True, fontSize=18)
 
         self.buildmenu.AddButton(self.buildhorserifleblaster)
         self.buildmenu.AddButton(self.buildrifleblaster)
@@ -163,6 +172,10 @@ class MercuryGameScene(SceneBase):
                 
         self.cu = UnitLoader.GetCreatedUnits()
         self.ce = UnitSpawner.GetCreatedUnits()
+
+        self.basehealth.SetFillPercentage(self.Health, 1000)
+
+        self.ebasehealth.SetFillPercentage(self.EHealth, 1000)
 
         #Generate Money
         if(len(self.cu)>0):
@@ -283,15 +296,24 @@ class MercuryGameScene(SceneBase):
         self.buildmenu.Draw(screen)
         self.openmenu.Draw(screen)
 
+        self.basehealth.Draw(screen)
+        self.ebasehealth.Draw(screen)
+
+        self.text.Draw(screen)
+        self.etext.Draw(screen)
+
     # Cleanup function
     def Terminate(self):
         UnitLoader.createdUnits = []
         UnitLoader.buildCount = 0
         UnitLoader.lane = 0
+        UnitLoader.queuedUnits = []
         CurrencyManagement.mooncrystals = 100
         UnitSpawner.createdUnits = []
+        UnitSpawner.queuedUnits = []
         UnitSpawner.buildCount = 0
-        UnitLoader.lane = 0
+        UnitSpawner.lane = 0
+        Camera.SetCameraOffset(0, 0)
 
     # Button functions
 
