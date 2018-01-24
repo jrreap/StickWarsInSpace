@@ -171,7 +171,7 @@ class SaturnGameScene(SceneBase):
             if Camera.CheckCameraOffsets(self.offset, self.movecamera):
                 self.offset += self.movecamera
                 Camera.SetCameraOffset(self.offset, 0)
-                
+
         self.cu = UnitLoader.GetCreatedUnits()
         self.ce = UnitSpawner.GetCreatedUnits()
 
@@ -206,15 +206,6 @@ class SaturnGameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
         UnitLoader.BuildUnitsInQueue(self.buildqueue)
 
-        # Move all spawned enemy units
-        if(self.counter == 25):
-            self.UnitMovement.MoveEnemyUnits()
-            if (random.randint(0, 100) <= 5):
-                #UnitSpawner.EnqueueUnit(UnitSpawner.units["RifleBlaster"])
-                pass
-            self.counter = 0
-        else:
-            self.counter = self.counter + 1
 
         # Call the AI
         self.AI.AIUpdate()
@@ -223,6 +214,7 @@ class SaturnGameScene(SceneBase):
         self.UnitMovement.MoveEnemyUnits()
 
         UnitSpawner.BuildUnitsInQueue()
+
         #You attack
         AttackDefend.UnitsAttack(self.cu, self.ce, self.AttackRate, self.EAttackRate)
         if(self.AttackRate>50):
@@ -262,7 +254,6 @@ class SaturnGameScene(SceneBase):
         if(self.EHealth<=0):
             print "YOU LOST YOU FUCKING SUCK YOU LITTLE DUMBASS"
             self.SwitchToScene("Scenes.Levels.Level3Defeat.Level3Defeat")
-        #self.EHealth = WinCon.ReachedPlayer(self.ce, 1, self.EHealth)
         
 
     def Render(self, screen):
