@@ -1,11 +1,11 @@
 
 SpaceRaider
 Animation Folder=SpaceRaider
-HP=100
+HP=150
 Damage=100
 Speed=4
 Attack rate=1
-Range=1
+Range=2
 Price=50
 Training time=1
 Width=90
@@ -15,11 +15,11 @@ OGSpeed=4
 
 HorseRifleBlaster
 Animation Folder=HorseRifleBlaster
-HP=150
+HP=200
 Damage=50
 Speed=5
 Attack rate=1
-Range=6
+Range=8
 Price=200
 Training time=2
 Width=250
@@ -33,7 +33,7 @@ HP=100
 Damage=20
 Speed=2
 Attack rate=1
-Range=8
+Range=10
 Price=100
 Training time=1
 Width=90
@@ -47,9 +47,9 @@ HP=500
 Damage=200
 Speed=1
 Attack rate=1
-Range=7
+Range=6
 Price=300
-Training time=4
+Training time=5
 Width=400
 Hight=100
 Frames=10
