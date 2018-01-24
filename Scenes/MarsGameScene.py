@@ -287,6 +287,10 @@ class MarsGameScene(SceneBase):
         UnitLoader.createdUnits = []
         UnitLoader.buildCount = 0
         UnitLoader.lane = 0
+        CurrencyManagement.mooncrystals = 100
+        UnitSpawner.createdUnits = []
+        UnitSpawner.buildCount = 0
+        UnitLoader.lane = 0
 
     # Button functions
 
