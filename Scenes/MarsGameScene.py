@@ -305,11 +305,13 @@ class MarsGameScene(SceneBase):
         UnitLoader.buildCount = 0
         UnitLoader.lane = 0
         UnitLoader.queuedUnits = []
+        UnitLoader.currentUnit = None
         CurrencyManagement.mooncrystals = 100
         UnitSpawner.createdUnits = []
         UnitSpawner.buildCount = 0
         UnitSpawner.lane = 0
         UnitSpawner.queuedUnits = []
+        UnitSpawner.currentUnit = None
         Camera.SetCameraOffset(0, 0)
 
     # Button functions
