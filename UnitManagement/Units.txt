@@ -43,10 +43,10 @@ OGSpeed=2
 
 Tank
 Animation Folder=Tank
-HP=700
-Damage=500
+HP=500
+Damage=200
 Speed=1
-Attack rate=5
+Attack rate=1
 Range=7
 Price=300
 Training time=4
