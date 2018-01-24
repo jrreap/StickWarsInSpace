@@ -53,7 +53,7 @@ class NeptuneGameScene(SceneBase):
         if Options.hardcoremode:
             self.AI = BaseAI(6)
         else:
-            self.AI = BaseAI(1)
+            self.AI = BaseAI(3)
 
         self.defendbutton = Button("Defend", (60, 635), self.Attack, size=(120, 30), font_size=20, bg=(109, 177, 255))
         self.holdbutton = Button("Hold", (185, 635), self.HoldPosition, size=(120, 30), font_size=20,
@@ -288,6 +288,10 @@ class NeptuneGameScene(SceneBase):
     def Terminate(self):
         UnitLoader.createdUnits = []
         UnitLoader.buildCount = 0
+        UnitLoader.lane = 0
+        CurrencyManagement.mooncrystals = 100
+        UnitSpawner.createdUnits = []
+        UnitSpawner.buildCount = 0
         UnitLoader.lane = 0
 
     # Button functions
