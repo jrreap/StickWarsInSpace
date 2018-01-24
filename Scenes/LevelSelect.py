@@ -35,7 +35,7 @@ class LevelSelect(SceneBase):
         self.uranusbutton = Button("5. Uranus", (510, 525), self.Uranus, size=(120,60), font_size=20, bg=(109,177,255))
         self.neptunebutton = Button("6. Neptune", (690, 525), self.Neptune, size=(120,60), font_size=20, bg=(109,177,255))
 
-        self.continuebutton = Button("Return to Menu", (900,500), self.Continue, size=(120,60), font_size=20, bg=(109,177,255))
+        self.continuebutton = Button("Back", (50, 625), self.Continue, size=(60, 30), bg=(109, 177, 255))
         # Start music
         b = Boombox()
 
