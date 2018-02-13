@@ -5,6 +5,7 @@ from ImageCache.ImageLoader import GetImage
 from UI.Button import Button
 from Scenes.MarsUpgrade import MarsUpgrade
 from Music.Boombox import Boombox
+from UpgradeDataBullshit.LevelData import LevelData
 
 
 class Level2Victory (SceneBase):
@@ -39,6 +40,8 @@ class Level2Victory (SceneBase):
     def Continue(self):
         print("going to mars upgrade")
         self.SwitchToScene(MarsUpgrade())
+        LevelData.Mars(True)
+        
         
 
       

@@ -15,6 +15,7 @@ from Scenes.Levels.Level2Opening import Level2Opening
 from Scenes.Levels.Level4Opening import Level4Opening
 from Scenes.Levels.Level5Opening import Level5Opening
 from Scenes.Levels.Level6Opening import Level6Opening
+from UpgradeDataBullshit.LevelData import LevelData
 
 
 # This scene is responsible for rendering the menu "scene"
@@ -54,25 +55,25 @@ class LevelSelect(SceneBase):
             elif event.type == pygame.MOUSEBUTTONDOWN:
 
                 # Check if the buttons has been pressed
-                if self.marsbutton.IsClicked(mousepos):
+                if self.marsbutton.IsClicked(mousepos) and LevelData.mars:
                     self.marsbutton.call_back_()
 
-                if self.mercurybutton.IsClicked(mousepos):
+                if self.mercurybutton.IsClicked(mousepos) and LevelData.mercury:
                     self.mercurybutton.call_back_()
 
-                if self.saturnbutton.IsClicked(mousepos):
+                if self.saturnbutton.IsClicked(mousepos) and LevelData.saturn:
                     self.saturnbutton.call_back_()
 
                 if self.moonbutton.IsClicked(mousepos):
                     self.moonbutton.call_back_()
 
-                if self.uranusbutton.IsClicked(mousepos):
+                if self.uranusbutton.IsClicked(mousepos) and LevelData.uranus:
                     self.uranusbutton.call_back_()
 
                 if self.continuebutton.IsClicked(mousepos):
                     self.continuebutton.call_back_()
 
-                if self.neptunebutton.IsClicked(mousepos):
+                if self.neptunebutton.IsClicked(mousepos) and LevelData.neptune:
                     self.neptunebutton.call_back_()
 
     def Update(self):
@@ -84,13 +85,18 @@ class LevelSelect(SceneBase):
         screen.blit(GetImage("./Images/MoonBG1.jpg"), (0, 0))
 
         self.text.Draw(screen)
-        self.marsbutton.Draw(screen)
-        self.mercurybutton.Draw(screen)
-        self.saturnbutton.Draw(screen)
+        if LevelData.mars:
+            self.marsbutton.Draw(screen)
+        if LevelData.mercury:
+            self.mercurybutton.Draw(screen)
+        if LevelData.saturn:
+            self.saturnbutton.Draw(screen)
         self.moonbutton.Draw(screen)
-        self.uranusbutton.Draw(screen)
+        if LevelData.uranus:
+            self.uranusbutton.Draw(screen)
         self.continuebutton.Draw(screen)
-        self.neptunebutton.Draw(screen)
+        if LevelData.neptune:
+            self.neptunebutton.Draw(screen)
 
     # Button functions
     def Mercury(self):

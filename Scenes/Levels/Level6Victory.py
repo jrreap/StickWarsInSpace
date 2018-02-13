@@ -4,6 +4,7 @@ from Scenes.GameScene import GameScene
 from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from UI.Button import Button
+from UpgradeDataBullshit.LevelData import LevelData
 
 
 class Level6Victory (SceneBase):
@@ -39,5 +40,6 @@ class Level6Victory (SceneBase):
     def Continue(self):
         print("going to victory screen")
         self.SwitchToScene("Scenes.MenuScene.MenuScene")
+        LevelData.Neptune(True)
 
       

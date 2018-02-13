@@ -5,6 +5,7 @@ from ImageCache.ImageLoader import GetImage
 from Scenes.UranusUpgrade import UranusUpgrade
 from UI.Button import Button
 from Music.Boombox import Boombox
+from UpgradeDataBullshit.LevelData import LevelData
 
 
 class Level5Victory (SceneBase):
@@ -39,5 +40,6 @@ class Level5Victory (SceneBase):
     def Continue(self):
         print("going to uranus upgrade")
         self.SwitchToScene(UranusUpgrade())
+        LevelData.Uranus(True)
 
       

@@ -6,6 +6,7 @@ from UI.Button import Button
 from UI.Text import Text
 from Scenes.SaturnUpgrade import SaturnUpgrade
 from Music.Boombox import Boombox
+from UpgradeDataBullshit.LevelData import LevelData
 
 
 
@@ -43,6 +44,8 @@ class Level3Victory (SceneBase):
     def Continue(self):
         print("continueing to upgrade scene")
         self.SwitchToScene(SaturnUpgrade())
+        LevelData.Saturn(True)
+        
         
 
       

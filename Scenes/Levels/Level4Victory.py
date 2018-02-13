@@ -5,6 +5,7 @@ from ImageCache.ImageLoader import GetImage
 from Music.Boombox import Boombox
 from Scenes.MercuryUpgrade import MercuryUpgrade
 from UI.Button import Button
+from UpgradeDataBullshit.LevelData import LevelData
 
 
 class Level4Victory (SceneBase):
@@ -40,5 +41,6 @@ class Level4Victory (SceneBase):
     def Continue(self):
         print("going to mercuryupgrade")
         self.SwitchToScene(MercuryUpgrade())
+        LevelData.Mercury(True)
 
       
