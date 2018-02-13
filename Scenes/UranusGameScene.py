@@ -107,7 +107,7 @@ class UranusGameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.Levels.Level5Victory.Level5Victory")
+                    print("removed")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)
@@ -125,7 +125,7 @@ class UranusGameScene(SceneBase):
                         self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_m:
-                    CurrencyManagement.AddMoonCrystals(100)
+                    print("removed")
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:

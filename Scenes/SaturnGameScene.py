@@ -109,7 +109,7 @@ class SaturnGameScene(SceneBase):
                     self.SwitchToScene(None)
 
                 elif event.key == pygame.K_ESCAPE:
-                    self.SwitchToScene("Scenes.Levels.Level3Victory.Level3Victory")
+                    print("removed")
 
                 elif event.key == pygame.K_a:
                     self.buildqueue.SetFillPercentage(10, 100)
@@ -127,7 +127,7 @@ class SaturnGameScene(SceneBase):
                         self.movecamera -= self.scrollfactor
 
                 elif event.key == pygame.K_m:
-                    CurrencyManagement.AddMoonCrystals(100)
+                    print("removed")
                     
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:

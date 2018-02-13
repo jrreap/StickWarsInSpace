@@ -38,5 +38,6 @@ class Level6Victory (SceneBase):
 
     def Continue(self):
         print("going to victory screen")
+        self.SwitchToScene("Scenes.MenuScene.MenuScene")
 
       
