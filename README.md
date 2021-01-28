@@ -1,5 +1,14 @@
 # Stick Wars : IN SPACE
 
+A project designed for the Charter School of Wilmington's Software Engineering class (2018). Influenced by popular strategy games at the time, such as Stick Wars and Total War. Features include:
+
+- Full economy system
+- Four unique unit types, fully animated and complete with their own stats
+- Upgrades and tech
+- Six unique worlds and levels, each with a unique general to defeat!
+- Lore and a campaign
+- HARDCORE mode
+
 ## Code Infrastructure:
 
 Notes on how the code packages and modules are setup. Please read this before coding anything!
